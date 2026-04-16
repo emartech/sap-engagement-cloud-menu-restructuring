@@ -1,0 +1,142 @@
+{
+  "id": "b2",
+  "name": "Conservative (B2)",
+  "subtitle": "User-edited, Contacts naming",
+  "description": "Same as B1 but channel settings stay inside Channels instead of a separate group. Fewer top-level items, bigger Channels group.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "campaign_analytics",
+        "revenue_attributor",
+        "audience_reporting",
+        "revenue_analytics",
+        "flexible_analytics",
+        "event_attribution"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "email_campaign_list",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist",
+        "sms_channel",
+        "sms_settings",
+        "mobile_channel",
+        "mobile_wallet",
+        "conversation",
+        "web_channel",
+        "web_push",
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "personalization_0",
+        "aim_coupon_pools",
+        "context_access_manager",
+        "mediadb_brand_center"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "sdk_management",
+        "business_area"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "web_extend",
+        "sales_data_load_screen",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "universal_schema_builder",
+        "custdev_icalendar_configurator"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
+  ],
+  "renames": {
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "conversation": "Conversational Channels",
+    "engagement_events": "Engagement Event Integrations",
+    "context_access_manager": "Asset Tag Management",
+    "sdk_management": "Apps and Channel Settings",
+    "sms_settings": "SMS/MMS Settings",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

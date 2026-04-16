@@ -1,0 +1,29 @@
+{
+  "id": "f3",
+  "name": "Progressive (F3)",
+  "subtitle": "Best UX, Harder Sell",
+  "description": "Optimizes for best UX: Channels drops to 10 items (pure channels only). Bounce Management + Blocklist move to Audience (they manage contact reachability). Low-traffic email settings (Frequency Cap, Link Categories, SMS Settings) go to Administration. Best group balance but requires strongest justification.",
+  "links": ["home", "automation"],
+  "groups": [
+    {"name": "Analytics", "items": ["unified_dashboard", "ai_assisted_report_builder", "campaign_analytics", "revenue_analytics", "audience_reporting", "event_attribution", "revenue_attributor", "flexible_analytics"]},
+    {"name": "Content", "items": ["content_design", "mediadb_brand_center", "templates", "personalization_0", "aim_coupon_pools", "context_access_manager"]},
+    {"name": "Channels", "items": ["email_campaign_list", "sms_channel", "mobile_channel", "mobile_wallet", "conversation", "web_channel", "web_push", "crm_ads", "embedded_messaging", "custdev_bmw_channels"]},
+    {"name": "Audience", "items": ["segments", "sap_cdp_segmentation", "contacts_page", "contact_lists", "sap_corporate_account", "sap_corporate_account_list", "consent", "bounce_mail_management", "internal_blacklist"]},
+    {"name": "Administration", "items": ["account_setup", "admin_user_management", "security_settings", "sdk_management", "business_area", "link_categories", "frequency_cap", "sms_settings"]},
+    {"name": "Data and Integrations", "items": ["integration_monitor", "engagement_events", "web_extend", "sales_data_load_screen", "universal_schema_builder", "automation_webhook_node", "spc_data_quality", "sap_commerce_cloud_integration", "custdev_icalendar_configurator"]}
+  ],
+  "renames": {
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "conversation": "Conversational Channel",
+    "engagement_events": "Engagement Event Integrations",
+    "context_access_manager": "Asset Tag Management",
+    "sdk_management": "Apps and Channel Settings",
+    "security_settings": "API Credentials",
+    "consent": "Consent Management",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": ["add_contact", "self_service_sso"]
+}

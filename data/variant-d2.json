@@ -1,0 +1,111 @@
+{
+  "id": "d2",
+  "name": "Lean Groups (D2)",
+  "subtitle": "No separate Channel Settings",
+  "description": "Based on D1 but without a separate Channel Settings group — fewer top-level groups. Channel-related settings merge back into Channels. Event Attribution stays in Analytics. Audience group, context_access_manager in Administration, iCalendar in Data & Integrations all carry over from D1.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "campaign_analytics",
+        "revenue_analytics",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "event_attribution",
+        "revenue_attributor",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "mediadb_brand_center",
+        "templates",
+        "personalization_0",
+        "aim_coupon_pools"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "email_campaign_list",
+        "sms_channel",
+        "mobile_channel",
+        "mobile_wallet",
+        "conversation",
+        "web_channel",
+        "web_push",
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist",
+        "sms_settings",
+        "sdk_management"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Administration",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "context_access_manager",
+        "business_area"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "web_extend",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "custdev_icalendar_configurator"
+      ]
+    }
+  ],
+  "renames": {
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "conversation": "Conversational Channel",
+    "engagement_events": "Engagement Event Integrations",
+    "context_access_manager": "Asset Tag Management",
+    "sdk_management": "Apps and Channel Settings",
+    "sms_settings": "SMS/MMS Settings",
+    "security_settings": "API Credentials",
+    "segments": "Audiences",
+    "contacts_page": "All Contacts",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

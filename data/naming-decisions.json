@@ -1,0 +1,369 @@
+{
+  "link_categories": {
+    "selected": "Link Categories",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "unified_dashboard": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "home": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "ai_assisted_report_builder": {
+    "selected": "custom",
+    "note": "",
+    "status": "approved",
+    "customs": [
+      "XYZ"
+    ]
+  },
+  "event_attribution": {
+    "selected": null,
+    "custom": "",
+    "note": "Should check SAP help portal for more info",
+    "status": "skipped",
+    "customs": []
+  },
+  "audience_reporting": {
+    "selected": "c1",
+    "custom": "",
+    "note": "Also needs page title update",
+    "status": "skipped",
+    "customs": []
+  },
+  "flexible_analytics": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "campaign_analytics": {
+    "selected": "XYZ",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": [
+      "XYZ"
+    ]
+  },
+  "revenue_analytics": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "automation": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "content_design": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "mediadb_brand_center": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "templates": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "personalization_0": {
+    "selected": null,
+    "custom": "",
+    "note": "Maybe Personalization tokens? Should check help portal.",
+    "status": "skipped",
+    "customs": []
+  },
+  "aim_coupon_pools": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "custdev_icalendar_configurator": {
+    "selected": null,
+    "custom": "",
+    "note": "Configurator? Settings? Integration? Look up SAP Help portal before decision.",
+    "status": "skipped",
+    "customs": []
+  },
+  "email_campaign_list": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "bounce_mail_management": {
+    "selected": "Bounce Management",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "frequency_cap": {
+    "selected": "Frequency Cap",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "internal_blacklist": {
+    "selected": "Internal Blocklist",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "mobile_channel": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sms_channel": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sms_settings": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "mobile_wallet": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "conversation": {
+    "selected": "baseline",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "web_push": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "web_channel": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "crm_ads": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "embedded_messaging": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "custdev_bmw_channels": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "segments": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sap_cdp_segmentation": {
+    "selected": null,
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "contacts_page": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "contact_lists": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sap_corporate_account": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sap_corporate_account_list": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "consent": {
+    "selected": null,
+    "custom": "",
+    "note": "Consent Management?",
+    "status": "skipped",
+    "customs": []
+  },
+  "account_setup": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "admin_user_management": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "security_settings": {
+    "selected": null,
+    "custom": "",
+    "note": "Not sure. Currently, I only found API credentials there, but not sure if it has more setting in Enterprise edition or not.",
+    "status": "skipped",
+    "customs": []
+  },
+  "sdk_management": {
+    "selected": "baseline",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "context_access_manager": {
+    "selected": "baseline",
+    "custom": "",
+    "note": "Should check page title!",
+    "status": "approved",
+    "customs": []
+  },
+  "business_area": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "engagement_events": {
+    "selected": "original",
+    "custom": "",
+    "note": "This shouldn't be called integrations",
+    "status": "approved",
+    "customs": []
+  },
+  "revenue_attributor": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "integration_monitor": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "web_extend": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sales_data_load_screen": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "universal_schema_builder": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "automation_webhook_node": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "spc_data_quality": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  },
+  "sap_commerce_cloud_integration": {
+    "selected": "original",
+    "custom": "",
+    "note": "",
+    "status": "approved",
+    "customs": []
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "claude2",
+  "name": "Claude Progressive",
+  "subtitle": "Bold UX, SAP-doc aligned grouping",
+  "description": "Pushes further: Personalization becomes its own group (SAP docs treat it as a top-level capability). Bounce/Blocklist move to Audience (contact reachability). Email Templates move to Channels (SAP docs: Email > Templates). Webhook Presets move near Automation (SAP docs: Automation > Webhook). Tag Management in Administration (SAP docs: Account Administration). Channels drops to 9 pure messaging items.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Personalization"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Data and Integrations"
+    },
+    {
+      "type": "group",
+      "name": "Administration"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Channels",
+      "items": [
+        "email_campaign_list",
+        "templates",
+        "sms_channel",
+        "mobile_channel",
+        "web_channel",
+        "web_push",
+        "crm_ads",
+        "conversation",
+        "mobile_wallet",
+        "embedded_messaging",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "mediadb_brand_center",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Personalization",
+      "items": [
+        "personalization_0",
+        "aim_coupon_pools"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "contact_lists",
+        "contacts_page",
+        "consent",
+        "bounce_mail_management",
+        "internal_blacklist",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "sap_cdp_segmentation"
+      ]
+    },
+    {
+      "name": "Analytics",
+      "items": [
+        "campaign_analytics",
+        "revenue_analytics",
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "event_attribution",
+        "revenue_attributor",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Data and Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "web_extend",
+        "universal_schema_builder",
+        "sales_data_load_screen",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Administration",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "business_area",
+        "security_settings",
+        "sdk_management",
+        "automation_webhook_node",
+        "link_categories",
+        "frequency_cap",
+        "sms_settings"
+      ]
+    }
+  ],
+  "renames": {
+    "event_attribution": "Conversion Analytics",
+    "templates": "Block-Based Email Templates",
+    "aim_coupon_pools": "Omnichannel Vouchers",
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "conversation": "Conversational Channels",
+    "consent": "Consent Management",
+    "security_settings": "API Credentials",
+    "sdk_management": "Apps and Channel Settings",
+    "context_access_manager": "Asset Tag Management",
+    "spc_data_quality": "Product Catalog",
+    "engagement_events": "Engagement Event Integrations",
+    "automation_webhook_node": "Webhook Presets"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

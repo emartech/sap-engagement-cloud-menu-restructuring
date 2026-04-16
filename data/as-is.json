@@ -1,0 +1,32 @@
+{
+  "id": "as-is",
+  "name": "As-Is",
+  "subtitle": "Current Structure",
+  "description": "The existing SAP Engagement Cloud side menu with sub-groups. This is the baseline for comparison.",
+  "links": [],
+  "groups": [
+    {"name": "Analytics", "items": ["unified_dashboard","ai_assisted_report_builder","audience_reporting","event_attribution","revenue_analytics","campaign_analytics","flexible_analytics"]},
+    {"name": "Automation", "items": ["automation"]},
+    {"name": "Content", "subgroups": [
+      {"label": "Brand Center", "items": ["content_design","mediadb_brand_center","templates"]},
+      {"label": "Personalised Content", "items": ["personalization_0","aim_coupon_pools","custdev_icalendar_configurator"]}
+    ]},
+    {"name": "Channels", "subgroups": [
+      {"label": "Email", "items": ["email_campaign_list","link_categories","bounce_mail_management","frequency_cap","internal_blacklist"]},
+      {"label": "Mobile", "items": ["mobile_channel","sms_channel","sms_settings","mobile_wallet"]},
+      {"label": null, "items": ["conversation"]},
+      {"label": "Web", "items": ["web_push","web_channel"]},
+      {"label": "Other", "items": ["crm_ads","embedded_messaging","custdev_bmw_channels"]}
+    ]},
+    {"name": "Contacts", "subgroups": [
+      {"label": null, "items": ["segments","sap_cdp_segmentation","contacts_page","contact_lists","sap_corporate_account","sap_corporate_account_list"]},
+      {"label": "Contact Data", "items": ["consent","add_contact"]}
+    ]},
+    {"name": "Management", "subgroups": [
+      {"label": "Account Management", "items": ["account_setup","admin_user_management","self_service_sso","security_settings","sdk_management","business_area","context_access_manager"]},
+      {"label": "Data Management", "items": ["integration_monitor","engagement_events","revenue_attributor","web_extend","sales_data_load_screen","universal_schema_builder","automation_webhook_node","spc_data_quality","sap_commerce_cloud_integration"]}
+    ]}
+  ],
+  "renames": {},
+  "removed": []
+}

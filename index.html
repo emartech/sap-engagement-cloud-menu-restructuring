@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Engagement Cloud — Menu Restructuring</title>
+<link rel="stylesheet" href="style.css?v=44">
+</head>
+<body>
+
+<div class="shell-bar">
+  <div class="shell-bar-left">
+    <span class="shell-bar-brand">SAP Engagement Cloud</span>
+    <span class="shell-bar-sep">|</span>
+    <span class="shell-bar-page">Menu Restructuring</span>
+  </div>
+  <div class="shell-bar-center">
+    <button class="mode-tab active" data-tab="ux">UX Versions</button>
+    <button class="mode-tab" data-tab="shortlist">Shortlist</button>
+  </div>
+  <div class="shell-bar-right">
+    <button class="btn-shell" id="btnExport">Export Feedback</button>
+    <button class="btn-shell btn-shell-text" id="btnClear">Clear Feedback</button>
+  </div>
+</div>
+
+<div class="variant-bar">
+  <div class="variant-tabs" id="variantTabs"></div>
+  <div class="variant-bar-right">
+    <div class="view-selector">
+      <button class="view-btn active" data-view="menu">Versions</button>
+      <button class="view-btn" data-view="compare">Compare</button>
+    </div>
+  </div>
+</div>
+
+<div class="info-bar">
+  <div class="info-bar-desc" id="variantDesc"></div>
+  <div class="info-bar-actions">
+    <button class="btn-edit-link" id="btnEditVariant">Edit this variant</button>
+  </div>
+</div>
+
+<div class="main-content" id="mainContent">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="detail-panel" id="detailPanel">
+    <div class="detail-empty">Select an item from the menu to see details.</div>
+  </main>
+</div>
+
+<div class="compare-view" id="compareView" style="display:none;"></div>
+
+<div class="custom-overlay" id="customOverlay" style="display:none;">
+  <div class="custom-overlay-bar">
+    <button class="custom-back-btn" id="customBack">← Back</button>
+    <span class="custom-overlay-title">Custom Menu Builder</span>
+  </div>
+  <div class="custom-view" id="customView"></div>
+</div>
+
+<script src="app.js?v=50"></script>
+</body>
+</html>

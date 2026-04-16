@@ -1,0 +1,146 @@
+{
+  "id": "claude",
+  "name": "Claude Balanced",
+  "subtitle": "Evidence-based, optimized ordering",
+  "description": "Groups ordered by workflow: campaign creation (Channels → Content) before measurement (Analytics). Items within groups ordered by usage. High-traffic email settings stay in Channels; low-traffic config goes to Administration. Audience group name (not Contacts). All renames are consensus + research-backed.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Data and Integrations"
+    },
+    {
+      "type": "group",
+      "name": "Administration"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Channels",
+      "items": [
+        "email_campaign_list",
+        "sms_channel",
+        "mobile_channel",
+        "web_channel",
+        "crm_ads",
+        "web_push",
+        "conversation",
+        "mobile_wallet",
+        "bounce_mail_management",
+        "internal_blacklist",
+        "embedded_messaging",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "personalization_0",
+        "content_design",
+        "templates",
+        "aim_coupon_pools",
+        "mediadb_brand_center",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "contact_lists",
+        "contacts_page",
+        "consent",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "sap_cdp_segmentation"
+      ]
+    },
+    {
+      "name": "Analytics",
+      "items": [
+        "campaign_analytics",
+        "revenue_analytics",
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "event_attribution",
+        "revenue_attributor",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Data and Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "automation_webhook_node",
+        "web_extend",
+        "universal_schema_builder",
+        "sales_data_load_screen",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Administration",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "business_area",
+        "security_settings",
+        "sdk_management",
+        "link_categories",
+        "frequency_cap",
+        "sms_settings"
+      ]
+    }
+  ],
+  "renames": {
+    "event_attribution": "Conversion Analytics",
+    "templates": "Block-Based Email Templates",
+    "aim_coupon_pools": "Omnichannel Vouchers",
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "conversation": "Conversational Channels",
+    "consent": "Consent Management",
+    "security_settings": "API Credentials",
+    "sdk_management": "Apps and Channel Settings",
+    "context_access_manager": "Asset Tag Management",
+    "spc_data_quality": "Product Catalog",
+    "engagement_events": "Engagement Event Integrations"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

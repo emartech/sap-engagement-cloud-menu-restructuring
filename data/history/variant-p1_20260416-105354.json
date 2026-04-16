@@ -1,0 +1,144 @@
+{
+  "id": "p1",
+  "name": "Peti's Version (P1)",
+  "subtitle": "Flat structure, Peti's renames",
+  "description": "As-Is structure flattened with Peti's naming suggestions. Email settings stay in Channels for searchability. SMS Settings removed (merge as tab into SMS per R\u00e9ka). Link Categories removed (move to tab on Email page per R\u00e9ka).",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "event_attribution",
+        "revenue_analytics",
+        "campaign_analytics",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "email_campaign_list",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist",
+        "mobile_channel",
+        "sms_channel",
+        "mobile_wallet",
+        "conversation",
+        "web_push",
+        "web_channel",
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "content_design",
+        "mediadb_brand_center",
+        "templates",
+        "personalization_0",
+        "aim_coupon_pools",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "sdk_management",
+        "business_area",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Data Management",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "revenue_attributor",
+        "web_extend",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data Management"
+    }
+  ],
+  "renames": {
+    "event_attribution": "Conversion Analytics",
+    "templates": "Block-Based Email Templates",
+    "sms_channel": "SMS",
+    "conversation": "Conversational Channels",
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "context_access_manager": "Asset Tag Management",
+    "sdk_management": "Apps and Channel Settings",
+    "spc_data_quality": "Product Catalog",
+    "email_campaign_list": "Email"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso",
+    "sms_settings",
+    "link_categories"
+  ]
+}

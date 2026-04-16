@@ -1,0 +1,164 @@
+{
+  "id": "cust5",
+  "name": "Channel-Split (CUST5)",
+  "subtitle": "User-Created",
+  "description": "Custom menu variant created in the builder.",
+  "links": [
+    "home",
+    "automation",
+    "custdev_bmw_channels",
+    "embedded_messaging"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
+        "flexible_analytics",
+        "event_attribution",
+        "revenue_attributor"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Email Channel",
+      "items": [
+        "email_campaign_list",
+        "bounce_mail_management",
+        "internal_blacklist",
+        "link_categories",
+        "frequency_cap"
+      ]
+    },
+    {
+      "name": "Mobile Channels",
+      "items": [
+        "sms_channel",
+        "sms_settings",
+        "mobile_channel",
+        "mobile_wallet",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web Channels",
+      "items": [
+        "web_channel",
+        "web_push",
+        "crm_ads"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "content_design",
+        "templates",
+        "personalization_0",
+        "aim_coupon_pools",
+        "context_access_manager",
+        "mediadb_brand_center"
+      ]
+    },
+    {
+      "name": "Data and Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "web_extend",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "business_area",
+        "sdk_management",
+        "security_settings"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "group",
+      "name": "Email Channel"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile Channels"
+    },
+    {
+      "type": "group",
+      "name": "Web Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Data and Integrations"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    }
+  ],
+  "renames": {
+    "conversation": "Conversational Channels",
+    "consent": "Consent Management",
+    "context_access_manager": "Asset Tag Management",
+    "sdk_management": "Apps and Channel Settings",
+    "security_settings": "API Credentials",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

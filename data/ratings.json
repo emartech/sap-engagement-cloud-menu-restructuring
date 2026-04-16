@@ -1,0 +1,10 @@
+{
+  "criteria": ["Findability", "Consistency", "Feasibility", "Group Balance", "Settings Clarity"],
+  "ratings": {
+    "p1": {"scores": [3, 3, 5, 2, 2], "total": 15, "note": "Flat As-Is with Peti's renames. Safe, no structural changes. Channels still 15 items."},
+    "b2": {"scores": [3, 3, 4, 3, 2], "total": 15, "note": "Channels back to 17 items. Simpler top-level but messy inside."},
+    "d2": {"scores": [4, 3, 4, 3, 2], "total": 16, "note": "Lean groups. No separate Channel Settings — simpler but settings scattered."},
+    "f3": {"scores": [5, 4, 2, 5, 4], "total": 20, "note": "Progressive: best UX. Bounce+Blocklist in Audience novel but sound. Channels clean at 10. Harder sell."},
+    "cust5": {"scores": [4, 3, 3, 4, 3], "total": 17, "note": "Channel-split approach. Email/Mobile/Web as separate groups. User-created variant."}
+  }
+}

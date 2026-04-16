@@ -1,0 +1,87 @@
+{
+  "b2": {
+    "context_access_manager": {
+      "vote": "down",
+      "comment": "This is defenitley not a channel"
+    },
+    "custdev_icalendar_configurator": {
+      "comment": "Not sure about the placement"
+    },
+    "automation": {
+      "vote": null
+    },
+    "home": {
+      "vote": null
+    }
+  },
+  "as-is": {
+    "automation": {
+      "vote": "down"
+    }
+  },
+  "d2": {
+    "engagement_events": {
+      "vote": "up"
+    },
+    "web_extend": {
+      "vote": "up"
+    },
+    "sales_data_load_screen": {
+      "vote": "down",
+      "comment": ""
+    }
+  },
+  "f3": {
+    "group_content": {
+      "vote": null
+    }
+  },
+  "cust5": {
+    "embedded_messaging": {
+      "vote": "down"
+    }
+  },
+  "p1": {
+    "email_campaign_list": {
+      "vote": "down",
+      "comment": "Should be renamed \"Email\" or \"Email Channel\" in line with the decision of SMS (SMS / SMS Channel)"
+    },
+    "sms_channel": {
+      "vote": "down",
+      "comment": "Namind decision needed: SMS Campaigns, SMS, or SMS Channels? Should be in line with Email."
+    },
+    "group_content_management": {
+      "vote": "up"
+    },
+    "custdev_icalendar_configurator": {
+      "comment": "Similar to vouchers, they should be in the same category. Naming could be revised (generating vs. configuring)",
+      "vote": "up"
+    },
+    "personalization_0": {
+      "comment": "Personalization Tokens?"
+    },
+    "group_audience": {
+      "vote": "up"
+    },
+    "sap_cdp_segmentation": {
+      "comment": "Is this the right name? Are these \"CDP Segments\" imported from another SAP LoB or a \"segmentATION\" feature that can be used within Engagement Cloud Enterprise Edition?",
+      "vote": "down"
+    },
+    "security_settings": {
+      "vote": "down",
+      "comment": "EC:EE function review needed"
+    },
+    "self_service_sso": {
+      "vote": "down",
+      "comment": "Do we need this or not? Setup or Settings?"
+    },
+    "spc_data_quality": {
+      "vote": "up",
+      "comment": "Peti wrote Product Catalog Data, but he is also okay with this version"
+    },
+    "mediadb_brand_center": {
+      "vote": "down",
+      "comment": "This can only stay if it can be opened as a regular page instead of modal dialog."
+    }
+  }
+}

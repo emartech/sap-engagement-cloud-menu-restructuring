@@ -1,0 +1,1101 @@
+[
+  {
+    "id": "home",
+    "name": "Home",
+    "pageTitle": "Good [X], Y!",
+    "asIsParent": "User Menu",
+    "asIsGroup": null,
+    "type": "link",
+    "upv": 528000,
+    "pv": 4396297,
+    "tillyName": "Home",
+    "tillyCom": "Needs to be added; Home needs to be part of the main menu",
+    "rationale": {
+      "what": "The application home page / dashboard. Displays a personalized welcome, quick-access widgets, and an overview of recent activity. SAP Fiori guidelines require \"Home\" as the first element in side navigation.",
+      "officialCategory": "Home (top-level)",
+      "namingRationale": "SAP Fiori guidelines mandate \"Home\" as the first navigation element. No rename needed.",
+      "namingSuggestion": "\"Home\" — SAP Fiori standard. Non-negotiable."
+    }
+  },
+  {
+    "id": "unified_dashboard",
+    "name": "Unified Dashboard",
+    "pageTitle": "Unified Dashboard",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 4780,
+    "pv": 6147,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Cross-account marketing performance dashboard — view aggregated KPIs across multiple SAP Emarsys accounts (e.g., US, Canada, Mexico). Shows overall email, revenue, and engagement metrics.",
+      "officialCategory": "Dashboards > Unified Dashboard",
+      "openQuestion": "The \"Unified\" name implies cross-account aggregation. Users unfamiliar with multi-account setups may not understand what \"Unified\" means.",
+      "namingRationale": "\"Unified\" implies cross-account aggregation, which may confuse single-account users. However, it accurately describes the feature for multi-account enterprises. SAP docs use this name consistently.",
+      "namingSuggestion": "Keep \"Unified Dashboard\" — the name is established and accurate for the Enterprise Edition which targets multi-account setups."
+    }
+  },
+  {
+    "id": "ai_assisted_report_builder",
+    "name": "AI-assisted Report Builder",
+    "pageTitle": "AI-assisted Report Builder",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 3794,
+    "pv": 5013,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "AI-powered reporting tool that lets users build custom reports using natural language queries and AI-assisted data exploration. Creates visualizations and exports.",
+      "officialCategory": "Reports and Analytics > AI-assisted Report Builder",
+      "namingRationale": "\"AI-assisted Report Builder\" is descriptive but long (4 words). The \"AI-assisted\" prefix highlights the AI capability. SAP docs use this exact name.",
+      "namingSuggestion": "Keep \"AI-assisted Report Builder\" — the AI prefix is a differentiator and selling point. Shortening to \"AI Reports\" would lose the \"builder\" aspect (users create custom reports, not just view AI-generated ones)."
+    }
+  },
+  {
+    "id": "audience_reporting",
+    "name": "Audience Reporting",
+    "pageTitle": "Audience Reporting",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 4188,
+    "pv": 5889,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Analyze audience composition, growth trends, engagement levels, and segment performance over time. Provides insights into who your contacts are and how they behave.",
+      "officialCategory": "Reports and Analytics > Audience Reporting",
+      "namingRationale": "\"Audience Reporting\" clearly describes reports about your audience/contacts. Consistent with the \"Audience\" group rename direction.",
+      "namingSuggestion": "Keep \"Audience Reporting\" — clear, descriptive, aligned with the Audience group name direction."
+    }
+  },
+  {
+    "id": "event_attribution",
+    "name": "Event Attribution",
+    "pageTitle": "Event Attribution & Conversion Report",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 1155,
+    "pv": 1485,
+    "tillyName": "Conversion Goals (?)",
+    "tillyCom": "Naming review needed",
+    "rationale": {
+      "what": "Configure how engagement events (clicks, opens, conversions) are attributed to campaigns. Defines conversion goals and attribution windows. Part of the analytics measurement framework.",
+      "arguments": {
+        "Analytics": "Both Event Attribution and Revenue Attribution configure how campaign outcomes are measured. Users looking for measurement tools expect them in Analytics.",
+        "Administration": "It is a configuration page (setting attribution rules), not a reporting page. However, SAP docs place it under Email > Reporting, suggesting an analytics context.",
+        "Channels": "Attribution rules are channel-specific (email attribution windows). Could live near channel configuration."
+      },
+      "currentChoice": "Placed in Analytics alongside Revenue Attribution. Both configure campaign measurement rules and are conceptually paired.",
+      "openQuestion": "SAP docs place this under Email > Reporting. While it configures rules rather than displaying reports, users associate attribution with analytics. Consider whether \"Conversion Analytics\" (Peti's suggestion) better describes the feature.",
+      "officialCategory": "Analytics / Reporting configuration",
+      "namingRationale": "Original \"Event Attribution\" is technically accurate but unclear to non-technical users. Peti suggests \"Conversion Analytics\" (focuses on the outcome — conversions). TillyG suggests \"Conversion Goals (?)\" (implies goal-setting). SAP docs use \"Event Attribution\" in the context of email response metrics.",
+      "namingSuggestion": "\"Conversion Analytics\" (Peti's suggestion) — clearer for marketers who think in terms of conversions, not abstract \"events.\" Aligns with the analytics context where this feature lives."
+    },
+    "petiName": "Conversion Analytics",
+    "petiComment": "Réka's note: Fruzsi's suggestion: rename it to Conversion Analytics"
+  },
+  {
+    "id": "revenue_analytics",
+    "name": "Revenue Analytics",
+    "pageTitle": "Revenue Analytics",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 7476,
+    "pv": 10701,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Analyze revenue generated from marketing campaigns — track purchase attribution, revenue trends, product performance, and ROI across channels.",
+      "officialCategory": "Reports and Analytics > Revenue Analytics",
+      "namingRationale": "\"Revenue Analytics\" is clear and well-established. SAP docs use this name. It describes revenue-focused reporting and analysis.",
+      "namingSuggestion": "Keep \"Revenue Analytics\" — no ambiguity, standard naming."
+    }
+  },
+  {
+    "id": "campaign_analytics",
+    "name": "Campaign Analytics",
+    "pageTitle": "Campaign Analytics",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 10488,
+    "pv": 15013,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Detailed campaign performance reporting — open rates, click rates, conversion rates, delivery stats across all email campaigns. The primary operational analytics view for campaign managers.",
+      "officialCategory": "Reports and Analytics > Campaign Analytics",
+      "namingRationale": "\"Campaign Analytics\" is the primary operational analytics view (10.5K UPV). Clear, matches user expectation. SAP docs use this name.",
+      "namingSuggestion": "Keep \"Campaign Analytics\" — highest-traffic analytics item. Name is perfect."
+    }
+  },
+  {
+    "id": "flexible_analytics",
+    "name": "Integrated Custom Reports",
+    "pageTitle": "Integrated Custom Reports",
+    "asIsParent": "Analytics",
+    "asIsGroup": null,
+    "upv": 572,
+    "pv": 723,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Build custom reports with flexible dimensions and metrics. Allows users to create tailored analytics views beyond the standard reports. Formerly known as \"Flex Reports\".",
+      "officialCategory": "Reports and Analytics > Integrated Custom Reports",
+      "namingRationale": "\"Integrated Custom Reports\" is functional but the \"Integrated\" prefix is unclear — integrated with what? The internal name \"Flex Reports\" is more memorable. SAP docs use \"Integrated Custom Reports.\"",
+      "namingSuggestion": "Consider \"Custom Reports\" (drop \"Integrated\") — shorter, clearer. The \"custom\" part conveys that users build their own reports. The \"Integrated\" prefix adds no value to the user."
+    }
+  },
+  {
+    "id": "automation",
+    "name": "Automation Programs",
+    "pageTitle": "Automation Programs",
+    "asIsParent": "Automation",
+    "asIsGroup": null,
+    "type": "link",
+    "upv": 104273,
+    "pv": 427727,
+    "tillyName": "Automation Programs",
+    "tillyCom": "No sub-menu item needed",
+    "rationale": {
+      "what": "Create and manage automated marketing workflows (journeys) — trigger-based programs that send messages, update contact data, and orchestrate multi-step campaigns across channels.",
+      "officialCategory": "Automation (top-level)",
+      "namingRationale": "TillyG confirms \"Automation Programs\" as the standalone link name. No rename needed.",
+      "namingSuggestion": "\"Automation Programs\" — confirmed. Clear and descriptive."
+    }
+  },
+  {
+    "id": "content_design",
+    "name": "Content Design",
+    "pageTitle": "Content Design",
+    "asIsParent": "Content",
+    "asIsGroup": "Brand Center",
+    "upv": 523,
+    "pv": 958,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Visual content creation tool for building reusable content blocks, email sections, and design components. Part of the Brand Center in SAP docs — the centralized brand asset management area.",
+      "officialCategory": "Brand Center > Content Design",
+      "openQuestion": "Tree test showed low success (26%) — users split between Content and Channels. The \"design\" framing confuses users who think channel-first (e.g., \"I want to design my Web Channel themes\"). Consider whether clearer naming would help.",
+      "arguments": {
+        "Content": "SAP docs: Brand Center > Content Design. A visual tool for building reusable content components.",
+        "Channels": "Tree test showed users split between Content and Channels when looking for design tools (26% success rate)."
+      },
+      "currentChoice": "Placed under Content, aligned with SAP docs' Brand Center categorization.",
+      "namingRationale": "\"Content Design\" is vague — design of what? SAP docs place it under Brand Center. The tree test showed 26% success — users split between Content and Channels. The name doesn't clearly communicate \"visual email/content block editor.\"",
+      "namingSuggestion": "Consider \"Content Block Editor\" or \"Visual Content Editor\" — more descriptive of what users actually do (build reusable content blocks). However, \"Content Design\" is established in the SAP docs."
+    }
+  },
+  {
+    "id": "mediadb_brand_center",
+    "name": "Media Database",
+    "pageTitle": "Media Database",
+    "asIsParent": "Content",
+    "asIsGroup": "Brand Center",
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "Page opens in a new modal window, full-page view needed",
+    "rationale": {
+      "what": "Central media library for storing, organizing, and managing images, files, and brand assets used across campaigns and channels. Opens as a popup/modal window.",
+      "officialCategory": "Brand Center > Media Database",
+      "openQuestion": "Currently opens in a popup modal, not as a full page. Consider if this should remain a menu item or be accessed from within content editors.",
+      "namingRationale": "\"Media Database\" is functional but slightly outdated terminology. Modern platforms use \"Media Library\" or \"Asset Library.\" SAP docs use \"Media Database.\"",
+      "namingSuggestion": "Consider \"Media Library\" — more modern, aligns with industry standard. However, \"Media Database\" is the SAP-established term. Low priority rename since the feature is clear either way."
+    }
+  },
+  {
+    "id": "templates",
+    "name": "Email Templates",
+    "pageTitle": "Your Templates",
+    "asIsParent": "Content",
+    "asIsGroup": "Brand Center",
+    "upv": 1234,
+    "pv": 1906,
+    "tillyName": "Block-Based Email Templates",
+    "tillyCom": "Page title update and [< Back] button functionality review needed",
+    "rationale": {
+      "what": "Library of reusable email templates — block-based (VCE) and HTML templates that serve as starting points for email campaigns. Users create, manage, and distribute templates across teams. The \"back\" button navigates to Email Campaigns, indicating tight coupling.",
+      "arguments": {
+        "Content": "Templates are reusable content assets. Placing under Content groups all creation tools together.",
+        "Channels / Email": "SAP docs place Email Templates under Email. The \"back\" navigation links to Email Campaigns, confirming tight functional coupling with the email channel."
+      },
+      "currentChoice": "Placed under Content for convenience, though SAP docs place it under Email.",
+      "openQuestion": "SAP documentation clearly categorizes Email Templates under Email, not Content. The navigation back-link to Email Campaigns confirms functional coupling. The rename to \"Block-Based Email Templates\" (per Peti/TillyG alignment) clarifies the email-specific scope.",
+      "officialCategory": "Email > Email Templates",
+      "namingRationale": "Original \"Email Templates\" is clear but doesn't distinguish from the newer Content Design editor. Peti and TillyG both suggest \"Block-Based Email Templates\" — aligned with PM Levente. The \"block-based\" qualifier differentiates from legacy HTML templates and positions it relative to Content Design.",
+      "namingSuggestion": "\"Block-Based Email Templates\" — both reviewers agree, PM-aligned. Accurately describes the VCE (Visual Content Editor) template system."
+    },
+    "petiName": "Block-Based Email Templates",
+    "petiComment": "Réka's note: Renaming is aligned with Levente - we had to compromise on this, as there is one menu structure so even though it wouldn't be confusing in the new edition to use only Email Templates as naming, but in the old version there still would be an issue."
+  },
+  {
+    "id": "personalization_0",
+    "name": "Personalization",
+    "pageTitle": "Personalization",
+    "asIsParent": "Content",
+    "asIsGroup": "Personalised Content",
+    "upv": 6040,
+    "pv": 8709,
+    "tillyName": "Personalization Tokens (?)",
+    "tillyCom": "Naming review needed",
+    "rationale": {
+      "what": "Omnichannel personalization engine — create personalization tokens, dynamic content rules, and scripting for inserting contact-specific content across all channels (email, web, mobile). SAP docs place this as a top-level capability under Email > Personalization, but it works across channels.",
+      "arguments": {
+        "Content": "Personalization rules are created while building content. Content creators need quick access to define dynamic content blocks and tokens.",
+        "Standalone group": "SAP docs treat Personalization as a major capability spanning email, web, and mobile. A standalone group would give it appropriate prominence.",
+        "Channels": "Personalization is applied within channels (email personalization, web personalization). Could be channel-adjacent."
+      },
+      "currentChoice": "Placed under Content — personalization rules are a content creation tool, used while building campaigns.",
+      "openQuestion": "SAP describes this as an omnichannel capability, broader than just email content. The feature includes personalization tokens, scripting language, and conditional content rules. Does it deserve more prominence than a Content sub-item?",
+      "officialCategory": "Email > Personalization (but omnichannel)",
+      "namingRationale": "Original \"Personalization\" is broad. TillyG suggests \"Personalization Tokens (?)\" which narrows the scope to token-based personalization. SAP docs describe it as omnichannel personalization including tokens AND scripting language.",
+      "namingSuggestion": "Keep \"Personalization\" — the feature covers more than just tokens (also scripting, conditional content). \"Personalization Tokens\" is too narrow."
+    }
+  },
+  {
+    "id": "aim_coupon_pools",
+    "name": "Omnichannel Voucher",
+    "pageTitle": "Omnichannel Voucher Management",
+    "asIsParent": "Content",
+    "asIsGroup": "Personalised Content",
+    "upv": 4816,
+    "pv": 10786,
+    "tillyName": "Omnichannel Vouchers",
+    "tillyCom": "Placement review needed (Content VS. Management)",
+    "rationale": {
+      "what": "Manage voucher/coupon pools for marketing campaigns — create pools, upload codes, set redemption rules. SAP docs place vouchers under Personalization, NOT under Content. Vouchers are personalization tokens inserted into campaigns.",
+      "arguments": {
+        "Content": "Vouchers are content elements inserted into campaigns. Campaign creators access voucher pools while building emails.",
+        "Personalization": "SAP docs explicitly place Vouchers under Personalization — they are personalization tokens that deliver unique codes per recipient.",
+        "Management": "Voucher pool management (creating pools, uploading codes, tracking redemption) is an administrative task."
+      },
+      "currentChoice": "Placed under Content for ease of access during campaign creation.",
+      "openQuestion": "SAP officially categorizes Vouchers under Personalization, not Content. If Personalization becomes a separate group, Vouchers should move with it. The \"Omnichannel\" prefix indicates cross-channel use beyond just email.",
+      "officialCategory": "Personalization > Vouchers",
+      "namingRationale": "Original \"Omnichannel Voucher\" (singular). TillyG suggests \"Omnichannel Vouchers\" (plural) which is grammatically natural. SAP docs use \"Vouchers\" (plural) as the section name.",
+      "namingSuggestion": "\"Omnichannel Vouchers\" (plural, per TillyG) — matches SAP docs usage and is grammatically natural."
+    },
+    "petiName": "Omnichannel Voucher"
+  },
+  {
+    "id": "custdev_icalendar_configurator",
+    "name": "iCalendar Configurator",
+    "pageTitle": "N/A",
+    "asIsParent": "Content",
+    "asIsGroup": "Personalised Content",
+    "upv": null,
+    "pv": null,
+    "tillyName": "N/A",
+    "tillyCom": "Placement review needed (Content VS. Management)",
+    "rationale": {
+      "what": "Configure iCalendar (.ics) file generation for embedding calendar events in email campaigns. Recipients can add events directly to their calendar apps. A niche integration tool with no analytics data.",
+      "arguments": {
+        "Content": "iCalendar files are embedded content in email campaigns. Placing it under Content aligns with the content creation workflow.",
+        "Data & Integrations": "It generates calendar data for external calendar applications — an integration between the platform and external systems.",
+        "Administration": "A niche configuration tool with no usage data. Rarely accessed after initial setup."
+      },
+      "currentChoice": "Placed in Data & Integrations as an integration tool between the platform and external calendar systems.",
+      "openQuestion": "Very niche feature with no analytics data. Consider whether it needs a standalone menu item at all, or could be a setting within Email configuration.",
+      "officialCategory": "Not documented as standalone (integration tool)",
+      "namingRationale": "\"iCalendar Configurator\" is technically accurate but niche. Most users won't know what iCalendar means. No usage data suggests it's rarely accessed.",
+      "namingSuggestion": "Consider \"Calendar Event Generator\" — describes the user outcome (creating calendar events for email recipients) rather than the technical standard. Low priority given no usage data."
+    }
+  },
+  {
+    "id": "email_campaign_list",
+    "name": "Email Campaigns",
+    "pageTitle": "Email Campaign List",
+    "asIsParent": "Channels",
+    "asIsGroup": "Email",
+    "upv": 340667,
+    "pv": 5140299,
+    "tillyName": "Email Campaigns",
+    "tillyCom": "Page title review and update needed (Email Channel?)",
+    "petiName": "Email Campaigns",
+    "rationale": {
+      "what": "The main email campaign management page — create, view, filter, launch, and manage all email campaigns (batch, triggered, on-event). The most-used feature in the platform (341K UPV).",
+      "officialCategory": "Email > Email Campaign List",
+      "namingRationale": "Both Peti and TillyG agree on \"Email Campaigns.\" The current page title is \"Email Campaign List\" which is overly specific. SAP docs: \"The Email Campaign List Page.\"",
+      "namingSuggestion": "\"Email Campaigns\" — consensus from both reviewers. Clear, concise, matches user expectation."
+    }
+  },
+  {
+    "id": "link_categories",
+    "name": "Link Categories",
+    "pageTitle": "Link Categories",
+    "asIsParent": "Channels",
+    "asIsGroup": "Email",
+    "upv": 1276,
+    "pv": 2796,
+    "tillyName": "Email Link Categories",
+    "tillyCom": "Placement review needed (Channel VS. Content VS. Management)",
+    "rationale": {
+      "what": "Define categories for tracked links in email campaigns. Used for external analytics integration (UTM parameters), click reporting segmentation, and link organization. Located under Email > Links in SAP docs.",
+      "arguments": {
+        "Channels": "SAP docs place Link Categories under Email > Links. They are used during email campaign creation to categorize tracked links for analytics.",
+        "Administration": "Link categories are configured once and reused. Low usage (1,276 UPV) suggests infrequent access after initial setup.",
+        "Content": "Link categories could be viewed as a content organization tool, similar to how tags organize content assets."
+      },
+      "currentChoice": "Placement varies — either near Email Campaigns in Channels or in Administration as a low-traffic configuration.",
+      "openQuestion": "SAP docs categorize this under Email > Links. With the \"Email\" prefix rename, the scope is clear regardless of placement. The key question: is this accessed during campaign creation (Channels) or during initial setup (Administration)?",
+      "officialCategory": "Email > Links",
+      "namingRationale": "Original \"Link Categories\" is ambiguous without the \"Email\" sub-group context. TillyG suggests \"Email Link Categories\" — the \"Email\" prefix is essential after flattening the sub-groups.",
+      "namingSuggestion": "\"Email Link Categories\" — mandatory \"Email\" prefix for clarity since the Email sub-group no longer provides context."
+    },
+    "petiComment": "Réka's note: Put it as a tab on the Email page. All other channels (except SMS Settings) work like this « This would need DEV involvement and the OOP Cloud is not committed to these changes (TillyG.)"
+  },
+  {
+    "id": "bounce_mail_management",
+    "name": "Bounce Management",
+    "pageTitle": "Bounce Management",
+    "asIsParent": "Channels",
+    "asIsGroup": "Email",
+    "upv": 3402,
+    "pv": 6125,
+    "tillyName": "Email Bounce Management",
+    "tillyCom": "Placement review needed (Channel VS. Contact/Audience VS. Management)",
+    "rationale": {
+      "what": "View and manage bounced email contacts — filter by bounce type (soft/hard/block), review bounce reasons, reset soft bounces, configure soft bounce thresholds. Located under Email > Deliverability in SAP docs. Accessed via Contacts > Bounce Management in the current menu.",
+      "arguments": {
+        "Channels": "SAP docs place Bounce Management under Email > Deliverability. The current menu access path is Contacts > Bounce Management. High usage (3,402 UPV) suggests regular operational access.",
+        "Audience / Contacts": "Bounce management is fundamentally about contact reachability — which contacts can receive email. The current access path uses \"Contacts\" as the parent.",
+        "Administration": "Soft bounce threshold configuration is a one-time setting. But viewing/filtering bounced contacts is an ongoing operational task."
+      },
+      "currentChoice": "Dual-purpose feature: both an operational contact management tool AND an email deliverability setting.",
+      "openQuestion": "SAP docs place this under Email > Deliverability, but the menu access path is Contacts > Bounce Management. The feature serves two audiences: campaign ops (checking bounces daily) and admins (configuring thresholds once). Should placement follow the docs (Email/Channels) or the operational pattern (Contacts/Audience)?",
+      "officialCategory": "Email > Deliverability",
+      "namingRationale": "Original \"Bounce Management\" is ambiguous after flattening. Both Peti and TillyG suggest \"Email Bounce Management.\" SAP docs title: \"Bounce Management\" (under Email > Deliverability).",
+      "namingSuggestion": "\"Email Bounce Management\" — consensus rename. The \"Email\" prefix is critical for disambiguation in a flat menu."
+    },
+    "petiName": "Email Bounce Management",
+    "petiComment": "As long as we have 'Email' in front of the name, I'd leave it here for searchability purposes"
+  },
+  {
+    "id": "frequency_cap",
+    "name": "Frequency Cap",
+    "pageTitle": "Frequency Cap",
+    "asIsParent": "Channels",
+    "asIsGroup": "Email",
+    "upv": 515,
+    "pv": 613,
+    "tillyName": "Email Frequency Cap",
+    "tillyCom": "Placement review needed (Channel VS. Management)",
+    "rationale": {
+      "what": "Set limits on how many marketing emails a contact receives within a time period. Prevents over-messaging. Located under General Settings in SAP docs — a platform-wide email delivery policy, not channel-specific.",
+      "arguments": {
+        "Administration": "SAP docs place Frequency Cap under General Settings — a platform-wide policy, not channel-specific. Very low usage (515 UPV) confirms it is set once and rarely revisited.",
+        "Channels": "Frequency limits directly affect email campaign delivery. Campaign planners may check this when scheduling sends.",
+        "Audience / Contacts": "Frequency caps protect contacts from over-messaging — it is a contact experience policy."
+      },
+      "currentChoice": "Placement varies — either in Administration (SAP docs support: General Settings) or in Channels (proximity to email campaigns).",
+      "openQuestion": "SAP docs explicitly categorize this under General Settings (account-level), not under Email or Channels. This is the strongest evidence for Administration/Account Management placement.",
+      "officialCategory": "General Settings",
+      "namingRationale": "Both Peti and TillyG suggest \"Email Frequency Cap.\" SAP docs place this under General Settings (not email-specific), but it currently only applies to email communications.",
+      "namingSuggestion": "\"Email Frequency Cap\" — consensus rename. Note: if frequency capping expands to other channels in the future, the \"Email\" prefix may need revision."
+    },
+    "petiName": "Email Frequency Cap",
+    "petiComment": "As long as we have 'Email' in front of the name, I'd leave it here for searchability purposes"
+  },
+  {
+    "id": "internal_blacklist",
+    "name": "Internal Blocklist",
+    "pageTitle": "Internal Blocklist",
+    "asIsParent": "Channels",
+    "asIsGroup": "Email",
+    "upv": 6048,
+    "pv": 22164,
+    "tillyName": "Email and Domain Blocklist",
+    "tillyCom": "Placement review needed (Channel VS. Contact/Audience VS. Management)",
+    "rationale": {
+      "what": "Manage the account's internal blocklist — exclude specific email addresses or entire domains from receiving any email communication. Used to protect sender reputation and honor opt-out requests. Located under Email > Deliverability Information in SAP docs. Accessed via Contacts > Internal Blocklist.",
+      "arguments": {
+        "Channels": "SAP docs place Internal Blocklist under Email > Deliverability. It configures which addresses/domains are blocked from email contact.",
+        "Audience / Contacts": "Blocklisting is about managing contact status — who can and cannot be contacted. The current access path is Contacts > Internal Blocklist. High usage (6,048 UPV) shows active management.",
+        "Administration": "Could be viewed as a compliance/policy setting. But the high traffic argues against burying it in admin settings."
+      },
+      "currentChoice": "Placed near email operations due to high usage and email-specific scope.",
+      "openQuestion": "At 6,048 UPV this is more actively used than most features. SAP docs place it under Email > Deliverability. The high traffic suggests daily operational use by campaign teams, not occasional admin access.",
+      "officialCategory": "Email > Deliverability",
+      "namingRationale": "Both Peti and TillyG suggest \"Email and Domain Blocklist.\" The rename modernizes \"Blocklist\" (from \"Blacklist\") and clarifies that both individual emails AND entire domains can be blocked.",
+      "namingSuggestion": "\"Email and Domain Blocklist\" — consensus rename. More descriptive and uses inclusive language."
+    },
+    "petiName": "Email and Domain Blocklist",
+    "petiComment": "As long as we have 'Email' in front of the name, I'd leave it here for searchability purposes"
+  },
+  {
+    "id": "mobile_channel",
+    "name": "Mobile Engage",
+    "pageTitle": "Mobile Engage",
+    "asIsParent": "Channels",
+    "asIsGroup": "Mobile",
+    "upv": 32837,
+    "pv": 157134,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Mobile push notification channel — send personalized push messages to users of your mobile app via Apple Push Notification Service (APNs) and Firebase Cloud Messaging (FCM). Requires Mobile Engage SDK integration.",
+      "officialCategory": "Mobile Apps > Mobile Engage",
+      "openQuestion": "SAP docs use \"Mobile Engage\" as the feature name, which encompasses push notifications, in-app messages, and app inbox. The name implies broader mobile engagement beyond just push.",
+      "namingRationale": "\"Mobile Engage\" is an SAP product name, not a descriptive label. It encompasses push notifications, in-app messages, and app inbox. SAP docs use \"Mobile Engage\" consistently.",
+      "namingSuggestion": "Keep \"Mobile Engage\" — it's an established product name. Renaming to \"Mobile Push\" would be too narrow (it covers more than push). The name has strong recognition (32.8K UPV)."
+    }
+  },
+  {
+    "id": "sms_channel",
+    "name": "SMS Campaigns",
+    "pageTitle": "SMS",
+    "asIsParent": "Channels",
+    "asIsGroup": "Mobile",
+    "upv": 17261,
+    "pv": 39801,
+    "tillyName": "SMS Campaigns",
+    "tillyCom": "Page title update needed",
+    "petiName": "SMS Channel",
+    "petiComment": "Réka's note: We suggest to merge SMS Settings on a tab into this screen. We would validate it with the main menu settings. Implementation decesion is up for the PM to decide. If we want to keep them separate the settings menu would come directly under the SMS menu. « This would need DEV involvement and the OOP Cloud is not committed to these changes (TillyG.)",
+    "rationale": {
+      "what": "Create and send SMS and MMS marketing campaigns — batch and triggered text messages to contacts. Includes sender ID management, campaign creation, and delivery reporting.",
+      "officialCategory": "SMS > SMS and MMS",
+      "openQuestion": "SAP docs title is \"SMS and MMS - Overview\". The menu name \"SMS Campaigns\" focuses on the campaign aspect. Peti suggests \"SMS Channel\" to align with other channel naming patterns.",
+      "namingRationale": "Peti suggests \"SMS Channel\" (consistent with other channel naming). TillyG keeps \"SMS Campaigns.\" SAP docs use \"SMS and MMS\" as the section name. The current page title is \"SMS.\"",
+      "namingSuggestion": "\"SMS Campaigns\" — keeps consistency with \"Email Campaigns\" pattern. However, \"SMS\" alone (as the page title) is also acceptable since it sits under a Channels group."
+    }
+  },
+  {
+    "id": "sms_settings",
+    "name": "SMS Settings",
+    "pageTitle": "SMS and MMS Settings",
+    "asIsParent": "Channels",
+    "asIsGroup": "Mobile",
+    "upv": 949,
+    "pv": 1346,
+    "tillyName": "SMS Settings",
+    "tillyCom": "Page title update needed",
+    "rationale": {
+      "what": "Configure SMS and MMS sending settings — sender IDs, character encoding, general delivery options. SAP docs describe this as part of SMS channel setup.",
+      "arguments": {
+        "Channels": "SMS Settings configure the SMS channel — sender IDs, encoding, delivery options. SAP docs describe this as part of SMS channel setup. Placing it near SMS Campaigns keeps channel configuration together.",
+        "Administration": "Low usage (949 UPV) indicates infrequent access after initial setup. EME guidelines suggest merging as a tab within SMS Campaigns (product team delivery)."
+      },
+      "currentChoice": "Placed near SMS Campaigns in Channels, or in Administration for low-traffic variants.",
+      "openQuestion": "EME guidelines recommend merging SMS Settings as a tab within the SMS Campaigns page (requires development). Until then, proximity to SMS Campaigns is the closest menu-level approximation.",
+      "officialCategory": "SMS > Settings",
+      "namingRationale": "TillyG suggests \"SMS Settings\" (keep simple). EME guidelines recommend merging this as a tab within SMS Campaigns (product team delivery).",
+      "namingSuggestion": "\"SMS Settings\" — keep simple. Long-term: merge into SMS Campaigns as a tab (requires development)."
+    },
+    "petiComment": "As per Réka's note, this should be removed « This would need DEV involvement and the OOP Cloud is not committed to these changes (TillyG.)"
+  },
+  {
+    "id": "mobile_wallet",
+    "name": "Mobile Wallet",
+    "pageTitle": "Mobile Wallet",
+    "asIsParent": "Channels",
+    "asIsGroup": "Mobile",
+    "upv": 1325,
+    "pv": 2309,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Create and distribute mobile wallet passes (Apple Wallet, Google Pay) — digital loyalty cards, coupons, boarding passes, and event tickets that contacts can save to their mobile wallet apps.",
+      "officialCategory": "Mobile Apps > Mobile Wallet",
+      "namingRationale": "\"Mobile Wallet\" accurately describes the feature — Apple Wallet and Google Pay passes. Industry-standard term.",
+      "namingSuggestion": "Keep \"Mobile Wallet\" — clear, industry-standard. No rename needed."
+    }
+  },
+  {
+    "id": "conversation",
+    "name": "Conversational",
+    "pageTitle": "Conversational Channel",
+    "asIsParent": "Channels",
+    "asIsGroup": null,
+    "upv": 1431,
+    "pv": 3790,
+    "tillyName": "Conversational Channels",
+    "tillyCom": "Menu item name update needed",
+    "rationale": {
+      "what": "Manage conversational messaging channels — WhatsApp, LINE, Viber, and other direct messaging platforms. Create and send marketing messages through these channels. SAP official name: \"Conversational Channel\" (singular in docs).",
+      "arguments": {
+        "Channels": "Conversational Channel is a standalone messaging channel in SAP docs, covering WhatsApp, LINE, Viber, and similar direct messaging platforms."
+      },
+      "currentChoice": "Placed in Channels. SAP official name is \"Conversational Channel\" (singular).",
+      "openQuestion": "SAP docs use \"Conversational Channel\" (singular). Peti and TillyG both suggest \"Conversational Channels\" (plural) since multiple messaging platforms are under this umbrella. The plural form is technically more accurate.",
+      "officialCategory": "Standalone channel (top-level in docs)",
+      "namingRationale": "Original \"Conversational\" is an adjective, incomplete as a menu label. SAP docs use \"Conversational Channel\" (singular). Both Peti and TillyG suggest \"Conversational Channels\" (plural) since it covers WhatsApp, LINE, Viber — multiple platforms.",
+      "namingSuggestion": "\"Conversational Channels\" (plural) — both reviewers agree. Covers the multi-platform nature (WhatsApp, LINE, Viber). The plural form is more accurate than SAP's singular usage."
+    },
+    "petiName": "Conversational Channels",
+    "petiComment": "Réka's note: Renaming is aligned with Vivien, as multiple channels are now under this menu"
+  },
+  {
+    "id": "web_push",
+    "name": "Web Push",
+    "pageTitle": "Web Push",
+    "asIsParent": "Channels",
+    "asIsGroup": "Web",
+    "upv": 4663,
+    "pv": 9462,
+    "tillyName": "–",
+    "tillyCom": "Why isn't Web Push also part of Web Channel?",
+    "rationale": {
+      "what": "Send personalized browser push notifications to website visitors who have opted in. A separate technology from Web Channel — Web Push sends notifications to the browser, Web Channel displays content on the website.",
+      "officialCategory": "Web > Web Push",
+      "openQuestion": "Web Push and Web Channel are both under \"Web\" in SAP docs but serve different purposes. Web Push is a notification channel; Web Channel is on-site personalization. Keeping them together under \"Web\" or separating them is a design choice.",
+      "namingRationale": "No rename suggested. \"Web Push\" accurately describes browser push notifications.",
+      "namingSuggestion": "Keep \"Web Push\" — clear, industry-standard term."
+    }
+  },
+  {
+    "id": "web_channel",
+    "name": "Web Channel",
+    "pageTitle": "Web Channel",
+    "asIsParent": "Channels",
+    "asIsGroup": "Web",
+    "upv": 14030,
+    "pv": 38006,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "On-site personalization and engagement — display targeted overlays, popups, embedded content, and inline banners on your website based on visitor segments and behavior. NOT just a messaging channel — it's a website personalization tool.",
+      "officialCategory": "Web > Web Channel",
+      "openQuestion": "Web Channel is fundamentally different from other \"channels\" — it's website personalization, not message sending. This distinction may affect whether it belongs with messaging channels or with content/personalization tools.",
+      "namingRationale": "TillyG questions \"Isn't Web Push also part of Web Channel?\" SAP docs separate them: Web Channel is on-site personalization (overlays, popups); Web Push is browser push notifications. They are different technologies.",
+      "namingSuggestion": "Keep \"Web Channel\" — SAP docs use this name. Consider adding a brief description in the menu to differentiate from Web Push."
+    }
+  },
+  {
+    "id": "crm_ads",
+    "name": "Digital Ads",
+    "pageTitle": "Digital Ads",
+    "asIsParent": "Channels",
+    "asIsGroup": "Other",
+    "upv": 4671,
+    "pv": 8890,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Manage digital advertising audiences — sync SAP Emarsys segments to ad platforms (Google Ads, Facebook/Meta, Snapchat) for retargeting and lookalike audience creation.",
+      "officialCategory": "Digital Ads",
+      "namingRationale": "\"Digital Ads\" is clear and modern. The internal ID \"crm_ads\" reflects the CRM-audience-to-ad-platform sync, but \"Digital Ads\" is the better user-facing name. SAP docs use this name.",
+      "namingSuggestion": "Keep \"Digital Ads\" — concise, modern, accurately describes the audience sync to ad platforms."
+    }
+  },
+  {
+    "id": "embedded_messaging",
+    "name": "Embedded Messaging",
+    "pageTitle": "N/A",
+    "asIsParent": "Channels",
+    "asIsGroup": "Other",
+    "upv": 104,
+    "pv": 293,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "In-app messaging inbox — display persistent messages within your website or mobile app that users can view at any time. Differs from push (one-time alert) and web channel (on-site overlay).",
+      "officialCategory": "Mobile Apps / Web > Embedded Messaging",
+      "openQuestion": "Embedded Messaging spans both mobile (app inbox) and web (site inbox). Very low usage (104 UPV). Consider if this needs standalone menu visibility.",
+      "namingRationale": "\"Embedded Messaging\" describes in-app/in-web inbox messaging. The \"Embedded\" prefix distinguishes it from push notifications. Very low usage (104 UPV).",
+      "namingSuggestion": "Consider \"App Inbox\" or \"Message Inbox\" — more intuitive than \"Embedded Messaging.\" However, it covers both web and mobile inboxes, so \"Embedded\" captures the cross-platform nature. Low priority given minimal usage."
+    }
+  },
+  {
+    "id": "custdev_bmw_channels",
+    "name": "BMW Channels",
+    "pageTitle": "N/A",
+    "asIsParent": "Channels",
+    "asIsGroup": "Other",
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "flags": [
+      "custom"
+    ],
+    "rationale": {
+      "what": "Customer-specific channel integration for BMW. Custom development feature not available to all accounts.",
+      "officialCategory": "Custom (customer-specific)",
+      "namingRationale": "\"BMW Channels\" is a customer-specific customization. Not visible to other accounts.",
+      "namingSuggestion": "Keep \"BMW Channels\" — customer-specific, no rename needed."
+    }
+  },
+  {
+    "id": "segments",
+    "name": "Segments",
+    "pageTitle": "Segments",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": 123560,
+    "pv": 876515,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Create and manage audience segments — define dynamic and static groups of contacts based on attributes, behaviors, purchase history, and engagement data. The second most-used feature (123K UPV). Foundation for all targeted campaign sending.",
+      "arguments": {
+        "Audience / Contacts": "Segmentation is the core audience definition tool. SAP docs place it under Contact Management > Segmentation."
+      },
+      "currentChoice": "Placed in the Audience/Contacts group. The second most-used feature (123K UPV), foundational to all targeted marketing.",
+      "openQuestion": "Should the parent group be called \"Contacts\" (SAP data model term, familiar) or \"Audience\" (broader scope, avoids naming conflict with the Contacts page)?",
+      "officialCategory": "Contact Management > Segmentation",
+      "namingRationale": "No rename suggested — \"Segments\" is well-understood. The question is about the parent GROUP name (Contacts vs. Audience), not the item name.",
+      "namingSuggestion": "Keep \"Segments\" — universally understood marketing term. Do not rename to \"Audiences\" or \"Segmentation.\""
+    }
+  },
+  {
+    "id": "sap_cdp_segmentation",
+    "name": "SAP CDP Segmentation",
+    "pageTitle": "N/A",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Access segments created in SAP Customer Data Platform (CDP) for use in SAP Emarsys campaigns. Bridges CDP audience definitions with marketing execution.",
+      "officialCategory": "Contact Management > SAP CDP Segmentation",
+      "namingRationale": "\"SAP CDP Segmentation\" clearly identifies the integration with SAP Customer Data Platform. The SAP prefix is necessary to distinguish from native segmentation.",
+      "namingSuggestion": "Keep \"SAP CDP Segmentation\" — the SAP CDP prefix is essential for disambiguation. No usage data (new/niche feature)."
+    }
+  },
+  {
+    "id": "contacts_page",
+    "name": "Contacts",
+    "pageTitle": "Contacts",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": null,
+    "pv": null,
+    "tillyName": "List of all contacts",
+    "tillyCom": "A new page should be created",
+    "flags": [
+      "new"
+    ],
+    "rationale": {
+      "what": "Central contact directory — view, search, and browse all contacts in the database. Page does not exist yet — needs to be created as a new feature.",
+      "arguments": {
+        "Audience / Contacts": "Central contact directory — the entry point for contact management. SAP docs: Contact Management."
+      },
+      "currentChoice": "Placed in the Audience/Contacts group. Page needs to be created as a new feature.",
+      "openQuestion": "If the parent group is renamed to \"Audience,\" the item name \"Contacts\" is clear. If the group stays \"Contacts,\" having \"Contacts\" as both group and page creates naming confusion.",
+      "officialCategory": "Contact Management > Contacts (new)",
+      "namingRationale": "TillyG suggests \"List of all contacts\" as a description, but \"Contacts\" as the page name. This page doesn't exist yet — it needs to be created.",
+      "namingSuggestion": "\"Contacts\" — simple, clear. The parent group name (Contacts vs. Audience) should differentiate to avoid \"Contacts under Contacts\" confusion."
+    }
+  },
+  {
+    "id": "contact_lists",
+    "name": "Contact Lists",
+    "pageTitle": "Contact Lists",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": 31963,
+    "pv": 103740,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Create and manage static contact lists — manually curated groups of contacts for targeted campaigns, exclusions, or seed lists. Different from segments (dynamic) — lists are static snapshots.",
+      "officialCategory": "Contact Management > Contact Lists",
+      "namingRationale": "\"Contact Lists\" is clear and well-established (32K UPV). Distinguishes static lists from dynamic segments.",
+      "namingSuggestion": "Keep \"Contact Lists\" — high usage, clear meaning. The \"Contact\" prefix remains accurate even if the parent group is renamed to \"Audience.\""
+    }
+  },
+  {
+    "id": "sap_corporate_account",
+    "name": "Corporate Accounts",
+    "pageTitle": "Corporate Accounts",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": 860,
+    "pv": 8057,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Manage B2B corporate accounts — company-level records that group multiple individual contacts. Used for account-based marketing (ABM) to target organizations rather than individuals.",
+      "officialCategory": "B2B Marketing > Corporate Accounts",
+      "namingRationale": "\"Corporate Accounts\" clearly describes B2B company-level records. SAP docs use this name under B2B Marketing.",
+      "namingSuggestion": "Keep \"Corporate Accounts\" — standard B2B marketing terminology."
+    }
+  },
+  {
+    "id": "sap_corporate_account_list",
+    "name": "Corporate Account Lists",
+    "pageTitle": "Corporate Account Lists",
+    "asIsParent": "Contacts",
+    "asIsGroup": null,
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Create and manage lists of corporate accounts — static groupings of companies for B2B campaign targeting and ABM workflows.",
+      "officialCategory": "B2B Marketing > Corporate Account Lists",
+      "namingRationale": "\"Corporate Account Lists\" follows the same pattern as \"Contact Lists\" — static groupings of corporate accounts.",
+      "namingSuggestion": "Keep \"Corporate Account Lists\" — consistent with \"Contact Lists\" naming pattern."
+    }
+  },
+  {
+    "id": "consent",
+    "name": "Consent",
+    "pageTitle": "N/A",
+    "asIsParent": "Contacts",
+    "asIsGroup": "Contact Data",
+    "upv": 2803,
+    "pv": 3598,
+    "tillyName": "Consent Management",
+    "tillyCom": "Naming and placement review needed (Cotact/Audience VS. Management)",
+    "rationale": {
+      "what": "Configure explicit consent capture for data tracking and collection in mobile apps. SAP docs place this under Mobile Engage, surprisingly — it's about mobile app data consent, not general contact consent management.",
+      "arguments": {
+        "Audience / Contacts": "Consent status is a property of contacts — each contact has consent preferences that determine what communications they receive.",
+        "Administration": "Consent management involves compliance rules and legal requirements — could be an admin function.",
+        "Mobile": "SAP docs surprisingly place Consent under Mobile Engage, focused on mobile app data consent capture."
+      },
+      "currentChoice": "Placed in the Audience/Contacts group, renamed to \"Consent Management.\"",
+      "openQuestion": "SAP docs place Consent under Mobile Engage (mobile app consent). This feature may be newly introduced for the Enterprise Edition. Verify: (1) Is this Enterprise-only? (2) Does it cover all-channel consent or just mobile? (3) If new, it may not have analytics data from the classic edition.",
+      "officialCategory": "Mobile Engage > Consent",
+      "namingRationale": "TillyG suggests \"Consent Management.\" SAP docs place this under Mobile Engage (mobile app consent capture). The feature may be new to the Enterprise Edition.",
+      "namingSuggestion": "\"Consent Management\" — more descriptive than bare \"Consent.\" Note: verify scope — if this only covers mobile app consent (per SAP docs), the name should reflect that. If it covers all-channel consent, \"Consent Management\" is appropriate."
+    }
+  },
+  {
+    "id": "add_contact",
+    "name": "Add Contact",
+    "pageTitle": "Add Contact",
+    "asIsParent": "Contacts",
+    "asIsGroup": "Contact Data",
+    "upv": 1836,
+    "pv": 3158,
+    "tillyName": "[ Remove from the menu ]",
+    "tillyCom": "Should be part of the \"Contacts\" and \"Contact Lists\" pages",
+    "flags": [
+      "removed"
+    ],
+    "rationale": {
+      "what": "Manually add a single contact to the database — enter contact details (email, name, fields) via a form. Low-frequency admin task that could be part of the Contacts page.",
+      "officialCategory": "Contact Management > Add Contact",
+      "namingRationale": "\"Add Contact\" is a simple action, not a standalone feature. TillyG recommends removal — this action should be part of the Contacts page, not a separate menu item.",
+      "namingSuggestion": "Remove from menu — integrate as an action button within the Contacts page. Keeping it as a menu item wastes navigation space for a single-purpose form."
+    }
+  },
+  {
+    "id": "account_setup",
+    "name": "Account Setup",
+    "pageTitle": "N/A",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Configure account-level settings — company information, time zone, language, data retention policies, and other foundational account parameters.",
+      "officialCategory": "Account Administration > Account Setup",
+      "namingRationale": "\"Account Setup\" is clear and standard. SAP docs: Account Administration > Account Setup.",
+      "namingSuggestion": "Keep \"Account Setup\" — no ambiguity."
+    }
+  },
+  {
+    "id": "admin_user_management",
+    "name": "User Management",
+    "pageTitle": "User Management",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": 35257,
+    "pv": 79427,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Manage platform users — create/edit user accounts, assign roles and permissions, configure access levels. The primary admin tool (35K UPV).",
+      "officialCategory": "Account Administration > User Management",
+      "namingRationale": "\"User Management\" is universally understood (35K UPV). SAP docs use this name.",
+      "namingSuggestion": "Keep \"User Management\" — high usage, crystal clear, industry standard."
+    }
+  },
+  {
+    "id": "self_service_sso",
+    "name": "Single Sign-On Setup",
+    "pageTitle": "Single Sign-On Setup",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": 821,
+    "pv": 1115,
+    "tillyName": "[ Remove from the menu ? ]",
+    "tillyCom": "Function review needed",
+    "flags": [
+      "removed"
+    ],
+    "rationale": {
+      "what": "Configure Single Sign-On (SSO) for the account — set up SAML-based SSO so users can log in via their corporate identity provider.",
+      "officialCategory": "Account Administration > SSO Setup",
+      "openQuestion": "Marked for removal. Low usage (821 UPV). May be replaced by organization-level SSO configuration outside the product.",
+      "namingRationale": "\"Single Sign-On Setup\" is descriptive. The \"Setup\" suffix correctly implies one-time configuration. TillyG questions if it's still relevant.",
+      "namingSuggestion": "Keep \"Single Sign-On Setup\" if the feature remains. Consider removal if SSO is managed at the organization level outside the product."
+    }
+  },
+  {
+    "id": "security_settings",
+    "name": "Security Settings",
+    "pageTitle": "Security Settings",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": 5066,
+    "pv": 7845,
+    "tillyName": "API Credentials (?)",
+    "tillyCom": "Function review needed (currently only API Credentials are available here)",
+    "rationale": {
+      "what": "Manage API credentials — create, view, and revoke API keys (username/secret pairs) for programmatic access to the SAP Emarsys API. Despite the \"Security Settings\" name, the page currently only contains API credential management.",
+      "arguments": {
+        "Administration": "SAP docs: Account Administration > Security Settings. Currently only contains API credential management (create/revoke API keys)."
+      },
+      "currentChoice": "Placed in Administration, renamed to \"API Credentials\" to accurately reflect current page content.",
+      "openQuestion": "The \"Security Settings\" name implies broader scope (password policies, 2FA, session management) but the page currently only manages API credentials. Renaming to \"API Credentials\" is accurate but limits future expansion if security features are added.",
+      "officialCategory": "Account Administration > Security Settings (API Credentials)",
+      "namingRationale": "TillyG observes the page currently only contains API credential management. \"Security Settings\" implies broader scope (password policies, 2FA). \"API Credentials\" accurately reflects current content.",
+      "namingSuggestion": "\"API Credentials\" — accurately describes current page content. If security features are added later, the name can expand back to \"Security Settings.\""
+    }
+  },
+  {
+    "id": "sdk_management",
+    "name": "Apps and Channel Configurations",
+    "pageTitle": "N/A",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": 448,
+    "pv": 667,
+    "tillyName": "Apps and Channel Settings",
+    "tillyCom": "Terminology unification (Configuration vs. Settings)",
+    "rationale": {
+      "what": "Configure mobile SDK settings, push notification certificates, and channel-specific technical integrations. Manages the connection between your mobile apps and SAP Emarsys.",
+      "arguments": {
+        "Administration": "Technical setup page for mobile SDK, push certificates, and channel integrations. SAP docs: Account Administration.",
+        "Channels": "Configures technical connections for channels (push notification setup). Could live near the channels it configures."
+      },
+      "currentChoice": "Placed in Administration as a technical setup tool.",
+      "openQuestion": "Very low usage (448 UPV) after initial setup. Primarily used by developers during integration, not by marketers. Consider whether this needs prominent menu placement or could be in a technical settings area.",
+      "officialCategory": "Account Administration > Apps and Channel Configurations",
+      "namingRationale": "TillyG suggests \"Apps and Channel Settings\" — unifying \"Configurations\" to \"Settings\" for consistency with other settings-type menu items.",
+      "namingSuggestion": "\"Apps and Channel Settings\" — terminology unification. \"Settings\" is the standard term used across the platform."
+    }
+  },
+  {
+    "id": "business_area",
+    "name": "Business Areas",
+    "pageTitle": "Business Areas",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Define business areas (organizational units) within the account — used to partition data, campaigns, and access permissions across departments or brands.",
+      "officialCategory": "Account Administration > Business Areas",
+      "namingRationale": "\"Business Areas\" describes organizational partitioning. SAP-specific terminology that may not be intuitive to all users.",
+      "namingSuggestion": "Keep \"Business Areas\" — SAP standard term. Consider adding a subtitle or description in the menu to explain the concept (organizational units for data/access partitioning)."
+    }
+  },
+  {
+    "id": "context_access_manager",
+    "name": "Tag Manager",
+    "pageTitle": "Asset Tag Management",
+    "asIsParent": "Management",
+    "asIsGroup": "Account Management",
+    "upv": 872,
+    "pv": 1014,
+    "tillyName": "Asset Tag Management",
+    "tillyCom": "Page title update and placement review needed (e.g., Segments can be also tagged, not just contents)",
+    "rationale": {
+      "what": "Create and manage platform-level tags for categorizing business objects — tag emails, automation programs, segments, and other assets for organization and filtering. Tags work across all object types.",
+      "arguments": {
+        "Content": "Tree test showed 43.5% success when users looked under Content. Tags are most commonly applied to emails and templates. But tags also work on automations, segments, and contacts.",
+        "Administration": "SAP docs place Tag Manager under Account Administration. Tags are a platform-wide organizational utility, not specific to any domain.",
+        "Audience / Contacts": "Contacts can be tagged. But tags are not primarily a contact tool."
+      },
+      "currentChoice": "Placement varies — Content (tree test data supports) or Administration (SAP docs support).",
+      "openQuestion": "Tags are genuinely cross-domain — they apply to emails, automations, segments, and contacts. SAP places it in Account Administration; tree tests show users look in Content. Neither placement is perfect. The question is: do users think of tags as \"organizing my content\" or \"platform configuration\"?",
+      "officialCategory": "Account Administration > Tag Manager",
+      "namingRationale": "Both reviewers suggest \"Asset Tag Management.\" The original \"Tag Manager\" conflicts with Google Tag Manager in users' minds. \"Asset\" clarifies these are platform-level organizational tags for business objects, not web tracking tags.",
+      "namingSuggestion": "\"Asset Tag Management\" — consensus rename. Disambiguates from web analytics tag managers and clarifies the organizational purpose."
+    }
+  },
+  {
+    "id": "integration_monitor",
+    "name": "Integration Monitor",
+    "pageTitle": "Integration Monitor",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 1938,
+    "pv": 3389,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Monitor engagement event data imports and corporate account API execution. Review errors, track data quality, debug integration issues. SAP docs place this under Data Monitoring.",
+      "officialCategory": "Data Monitoring",
+      "openQuestion": "Clearly a data monitoring/debugging tool. Fits well in Data & Integrations group.",
+      "namingRationale": "\"Integration Monitor\" clearly describes its function — monitoring integration data and errors. SAP docs: Data Monitoring.",
+      "namingSuggestion": "Keep \"Integration Monitor\" — clear, functional name. No rename needed."
+    }
+  },
+  {
+    "id": "engagement_events",
+    "name": "Engagement Events",
+    "pageTitle": "Integrations of Engagement Events",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 2134,
+    "pv": 3305,
+    "tillyName": "Engagement Event Integrations",
+    "tillyCom": "Title and/or menu item name needs to be updated",
+    "rationale": {
+      "what": "Configure event-based triggers for automation programs — define engagement events from external systems (API events, SAP Commerce events, custom events) that can trigger automated marketing workflows. SAP docs place this under Automation > Triggers.",
+      "officialCategory": "Automation > Triggers",
+      "openQuestion": "SAP docs categorize Engagement Events under Automation > Triggers, suggesting closer proximity to Automation Programs. However, the configuration involves integrating external event sources (APIs, commerce platforms), which is a data integration task.",
+      "arguments": {
+        "Data & Integrations": "Engagement Events define event-based triggers from external systems. They bridge external data with automation workflows.",
+        "Automation": "SAP docs place this under Automation > Triggers. Events trigger automated marketing programs."
+      },
+      "currentChoice": "Placed in Data & Integrations as an integration configuration tool.",
+      "namingRationale": "TillyG suggests \"Engagement Event Integrations.\" This clarifies that the feature is about configuring event-based integrations with external systems, not viewing engagement metrics.",
+      "namingSuggestion": "\"Engagement Event Integrations\" — adds \"Integrations\" to clarify the configuration/setup nature vs. reporting."
+    }
+  },
+  {
+    "id": "revenue_attributor",
+    "name": "Revenue Attribution",
+    "pageTitle": "Revenue Attribution",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 1632,
+    "pv": 1972,
+    "tillyName": "–",
+    "tillyCom": "Placement review needed (Analytics VS. Management, similar to Event Attribution)",
+    "rationale": {
+      "what": "Configure how purchase revenue is attributed back to marketing campaigns. Defines attribution windows and models for email campaigns. SAP docs place this under Email > Reporting > Email Response Metrics — it's an analytics/reporting configuration, not a standalone management tool.",
+      "arguments": {
+        "Analytics": "SAP docs place Revenue Attribution under Email > Reporting > Email Response Metrics. It defines how revenue is credited to campaigns — fundamentally an analytics configuration.",
+        "Data & Integrations": "Revenue data flows from external systems. Attribution rules define how that data is processed.",
+        "Administration": "It is a one-time configuration, rarely changed after initial setup."
+      },
+      "currentChoice": "Placed in Analytics alongside Event Attribution. SAP documentation supports this — both are campaign measurement configurations.",
+      "openQuestion": "Should attribution configuration live with the reports it feeds, or with the settings that rarely change? The SAP docs' placement under Reporting suggests the former.",
+      "officialCategory": "Email > Reporting > Email Response Metrics",
+      "namingRationale": "\"Revenue Attribution\" describes the feature accurately. However, it sits alongside \"Event Attribution\" (renamed to \"Conversion Analytics\" in some variants) — the naming should be consistent between the two.",
+      "namingSuggestion": "If Event Attribution becomes \"Conversion Analytics,\" consider renaming Revenue Attribution to \"Revenue Attribution Model\" or keeping it as-is. The two features configure different aspects of measurement — events vs. revenue — so slightly different names are acceptable."
+    },
+    "petiComment": "Analytics?"
+  },
+  {
+    "id": "web_extend",
+    "name": "Web Extend",
+    "pageTitle": "Web Extend",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": null,
+    "pv": null,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "JavaScript tracking tag for your website — collects visitor behavior data (page views, cart events, purchases) and sends it to SAP Emarsys for segmentation, personalization, and automation triggers. The foundational web tracking integration.",
+      "officialCategory": "Data Management > Web Extend",
+      "arguments": {
+        "Data & Integrations": "SAP docs: Data Management > Web Extend. A JavaScript tracking tag that collects website visitor behavior. Foundational data collection integration."
+      },
+      "currentChoice": "Placed in Data & Integrations. Web Extend is a data collection tool, not a marketing feature.",
+      "namingRationale": "\"Web Extend\" is an SAP product name for the JavaScript tracking tag. Not intuitive to new users — \"extend\" what? SAP docs use this name consistently.",
+      "namingSuggestion": "Consider \"Website Tracking\" or \"Web Tracking Tag\" — describes the actual function (collecting visitor behavior). However, \"Web Extend\" is the established SAP product name with documentation behind it."
+    }
+  },
+  {
+    "id": "sales_data_load_screen",
+    "name": "Sales Data Loads",
+    "pageTitle": "Sales Data Loads",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 931,
+    "pv": 1995,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Import offline/in-store sales data into SAP Emarsys — upload purchase transactions from POS systems, CRM exports, or other offline channels to complete the customer purchase history.",
+      "officialCategory": "Data Management > Sales Data Loads",
+      "namingRationale": "\"Sales Data Loads\" describes importing offline sales data. The \"Loads\" terminology is slightly technical — \"Import\" might be clearer.",
+      "namingSuggestion": "Consider \"Sales Data Import\" — \"Import\" is more universally understood than \"Loads.\" Low usage (931 UPV), low priority rename."
+    }
+  },
+  {
+    "id": "universal_schema_builder",
+    "name": "Universal Schema Builder",
+    "pageTitle": "Universal Schema Builder",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 589,
+    "pv": 1653,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Connect and use externally hosted data for segmentation and personalization without importing it into SAP Emarsys. Maps external data schemas for use in campaigns and segments. SAP docs place this under Data Management.",
+      "officialCategory": "Data Management",
+      "openQuestion": "A data integration tool — connects external data sources. Clearly belongs in Data & Integrations or Data Management.",
+      "namingRationale": "\"Universal Schema Builder\" is technically accurate but jargon-heavy. \"Schema\" and \"Builder\" are developer terms. SAP docs use this name.",
+      "namingSuggestion": "Consider \"External Data Connector\" — describes the user outcome (connecting external data) rather than the technical method (building schemas). However, the current name is SAP-established and developers who use this feature understand \"schema.\""
+    }
+  },
+  {
+    "id": "automation_webhook_node",
+    "name": "Webhook Node Presets",
+    "pageTitle": "Webhook Node Presets",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 3583,
+    "pv": 5908,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Create and manage reusable webhook endpoint configurations for automation programs. Webhooks send data to external systems when contacts pass through automation program nodes. SAP docs place this under Automation > Webhook Node.",
+      "officialCategory": "Automation > Webhook Node",
+      "openQuestion": "An automation tool that integrates with external systems. Could belong with Automation or with Data & Integrations depending on whether you prioritize the automation workflow context or the integration aspect.",
+      "namingRationale": "\"Webhook Node Presets\" is technical. \"Webhook\" is a developer term. \"Node\" refers to automation program nodes. \"Presets\" means reusable configurations.",
+      "namingSuggestion": "Consider \"Webhook Presets\" (drop \"Node\" — the automation context is clear from the group placement). For non-technical audiences, \"External Integration Presets\" would be clearer but loses precision."
+    }
+  },
+  {
+    "id": "spc_data_quality",
+    "name": "Product Catalog Data",
+    "pageTitle": "Product Catalog Data",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": null,
+    "pv": null,
+    "tillyName": "Product Catalog",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Monitor and manage the product catalog — the database of products used for recommendations (Predict), abandoned cart emails, and revenue tracking. Check data completeness, review import errors, and ensure product feed quality.",
+      "arguments": {
+        "Data and Integrations": "Current E-variant placement. The product catalog is fed by external data integrations (e.g., SAP Commerce). Managing catalog data quality fits with other data pipeline tools.",
+        "Administration": "As-Is placement (under Data Management sub-group of Management). It is a setup/monitoring tool, not a daily-use feature.",
+        "Content": "Products are content that appear in recommendations and emails. But this page is about data quality, not content creation."
+      },
+      "openQuestion": "Renamed from \"Product Catalog Data\" to \"Product Catalog\" per PM + research confirmation. The shorter name is clearer — \"Data\" was redundant since the page is already in a data-focused group.",
+      "officialCategory": "Data Management > Product Catalog",
+      "namingRationale": "TillyG suggests \"Product Catalog\" (shorter). PM Roland Horváth confirmed this rename. The \"Data\" suffix was redundant since the page is already in a data management context.",
+      "namingSuggestion": "\"Product Catalog\" — PM-confirmed, tree test improved with this name. Shorter and clearer."
+    }
+  },
+  {
+    "id": "sap_commerce_cloud_integration",
+    "name": "SAP Commerce Cloud Integration",
+    "pageTitle": "N/A",
+    "asIsParent": "Management",
+    "asIsGroup": "Data Management",
+    "upv": 0,
+    "pv": 428,
+    "tillyName": "–",
+    "tillyCom": "",
+    "rationale": {
+      "what": "Configure the integration between SAP Commerce Cloud and SAP Emarsys — sync product catalogs, customer data, and purchase events between the e-commerce platform and the marketing platform.",
+      "officialCategory": "Data Management > SAP Commerce Cloud Integration",
+      "namingRationale": "\"SAP Commerce Cloud Integration\" is a proper product integration name. Clear to SAP ecosystem users.",
+      "namingSuggestion": "Keep \"SAP Commerce Cloud Integration\" — product name, no ambiguity for the target audience."
+    }
+  }
+]
