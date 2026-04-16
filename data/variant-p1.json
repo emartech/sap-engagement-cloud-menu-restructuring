@@ -100,6 +100,7 @@
       "items": [
         "account_setup",
         "admin_user_management",
+        "self_service_sso",
         "security_settings",
         "sdk_management",
         "business_area",
@@ -134,7 +135,6 @@
     "spc_data_quality": "Product Catalog"
   },
   "removed": [
-    "add_contact",
-    "self_service_sso"
+    "add_contact"
   ]
 }
