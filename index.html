@@ -4,9 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAP Engagement Cloud — Menu Restructuring</title>
-<link rel="stylesheet" href="style.css?v=44">
+<link rel="stylesheet" href="style.css?v=51">
 </head>
 <body>
+
+<div id="authGate" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#F5F6F7">
+  <div style="background:#fff;padding:40px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);text-align:center;max-width:360px;width:100%">
+    <div style="font-size:18px;font-weight:700;color:#354A5F;margin-bottom:4px">SAP Engagement Cloud</div>
+    <div style="font-size:14px;color:#6A6D70;margin-bottom:24px">Menu Restructuring</div>
+    <input id="authPassword" type="password" placeholder="Password" style="width:100%;padding:10px 14px;border:1px solid #E5E5E6;border-radius:6px;font-size:14px;font-family:inherit;margin-bottom:12px;text-align:center">
+    <button id="authSubmit" style="width:100%;padding:10px;background:#0070F2;color:#fff;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Enter</button>
+    <div id="authError" style="color:#D93025;font-size:12px;margin-top:8px;display:none">Incorrect password</div>
+  </div>
+</div>
+
+<div id="appContent" style="display:none">
 
 <div class="shell-bar">
   <div class="shell-bar-left">
@@ -58,6 +70,36 @@
   <div class="custom-view" id="customView"></div>
 </div>
 
-<script src="app.js?v=50"></script>
+</div><!-- /appContent -->
+
+<script>
+// Simple client-side password gate (not security — just access control)
+const PASS_HASH = 'cc4c6f4c6f6b9ea56653a4ce29e5e2885aa6e238e251c23561824424140fd115';
+async function checkAuth() {
+  const stored = sessionStorage.getItem('menuAuthOk');
+  if (stored === 'true') { showApp(); return; }
+  document.getElementById('authSubmit').addEventListener('click', tryAuth);
+  document.getElementById('authPassword').addEventListener('keydown', e => { if (e.key === 'Enter') tryAuth(); });
+  document.getElementById('authPassword').focus();
+}
+async function tryAuth() {
+  const pw = document.getElementById('authPassword').value;
+  const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)))).map(b => b.toString(16).padStart(2,'0')).join('');
+  if (hash === PASS_HASH) {
+    sessionStorage.setItem('menuAuthOk', 'true');
+    showApp();
+  } else {
+    document.getElementById('authError').style.display = 'block';
+    document.getElementById('authPassword').value = '';
+    document.getElementById('authPassword').focus();
+  }
+}
+function showApp() {
+  document.getElementById('authGate').style.display = 'none';
+  document.getElementById('appContent').style.display = 'contents';
+}
+checkAuth();
+</script>
+<script src="app.js?v=51"></script>
 </body>
 </html>
