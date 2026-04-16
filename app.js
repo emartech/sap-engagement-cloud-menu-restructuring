@@ -421,6 +421,7 @@
     let html = '<div class="sidebar-controls"><button class="sidebar-ctrl-btn" id="expandAll">Expand All</button><button class="sidebar-ctrl-btn" id="collapseAll">Collapse All</button></div>';
 
     const entries = buildEntries(v);
+    const globalRenderedRemoved = new Set();
 
     entries.forEach(entry => {
       if (entry.type === 'link') {
@@ -468,23 +469,48 @@
         const gNameLower = g.name.toLowerCase();
         removedIds.forEach(rid => {
           if (renderedInGroup.has(rid)) return;
+          if (globalRenderedRemoved.has(rid)) return;
           const rItem = itemsMap[rid];
           if (!rItem) return;
           const parentLower = (rItem.asIsParent || '').toLowerCase();
-          // Direct match
-          if (parentLower === gNameLower) { html += renderChildItem(rid, v, g.name, -1); return; }
+          const subGroupLower = (rItem.asIsGroup || '').toLowerCase();
+
+          let matches = false;
+
+          // Best match: use asIsGroup if available
+          if (subGroupLower && gNameLower.includes(subGroupLower.toLowerCase())) {
+            matches = true;
+          } else if (subGroupLower && subGroupLower.toLowerCase().includes(gNameLower)) {
+            matches = true;
+          }
+          // Direct parent match
+          else if (parentLower === gNameLower) {
+            matches = true;
+          }
           // Contacts → Audience
-          if (parentLower === 'contacts' && (gNameLower === 'audience' || gNameLower.includes('contact'))) { html += renderChildItem(rid, v, g.name, -1); return; }
-          // Management → Administration, Account Management, Data Management, Data & Integrations
-          if (parentLower === 'management' && (gNameLower.includes('admin') || gNameLower.includes('account management') || gNameLower.includes('data'))) { html += renderChildItem(rid, v, g.name, -1); return; }
-          // Channels → Email Channel, SMS Channel, Mobile Channels, etc.
-          if (parentLower === 'channels' && (gNameLower.includes('channel') || gNameLower.includes('email') || gNameLower.includes('sms') || gNameLower.includes('mobile'))) {
-            // More specific: match by asIsGroup
-            const groupLower = (rItem.asIsGroup || '').toLowerCase();
-            if (groupLower === 'email' && gNameLower.includes('email')) { html += renderChildItem(rid, v, g.name, -1); return; }
-            if (groupLower === 'mobile' && (gNameLower.includes('sms') || gNameLower.includes('mobile'))) { html += renderChildItem(rid, v, g.name, -1); return; }
-            // Fallback: first channels-like group gets them
-            if (gNameLower === 'channels') { html += renderChildItem(rid, v, g.name, -1); return; }
+          else if (parentLower === 'contacts' && (gNameLower === 'audience' || gNameLower.includes('contact'))) {
+            // Use asIsGroup to pick the right sub-group
+            if (!subGroupLower || subGroupLower === 'contact data') matches = true;
+          }
+          // Management → match by asIsGroup first
+          else if (parentLower === 'management') {
+            if (subGroupLower === 'account management' && gNameLower.includes('account')) matches = true;
+            else if (subGroupLower === 'data management' && (gNameLower.includes('data') && !gNameLower.includes('account'))) matches = true;
+            else if (!subGroupLower && gNameLower.includes('admin')) matches = true;
+            // Fallback for Management when no subgroup and group is generic
+            else if (!subGroupLower && gNameLower === 'management') matches = true;
+          }
+          // Channels → match by asIsGroup
+          else if (parentLower === 'channels') {
+            if (subGroupLower === 'email' && gNameLower.includes('email')) matches = true;
+            else if (subGroupLower === 'mobile' && (gNameLower.includes('mobile') || gNameLower.includes('sms'))) matches = true;
+            else if (subGroupLower === 'web' && gNameLower.includes('web')) matches = true;
+            else if (gNameLower === 'channels') matches = true;
+          }
+
+          if (matches) {
+            html += renderChildItem(rid, v, g.name, -1);
+            globalRenderedRemoved.add(rid);
           }
         });
 
