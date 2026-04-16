@@ -1,11 +1,45 @@
 {
   "id": "p1",
   "name": "Peti's Version (P1)",
-  "subtitle": "Flat structure, Peti's renames",
-  "description": "As-Is structure flattened with Peti's naming suggestions. Email settings stay in Channels for searchability. SMS Settings and Link Categories removed (merge as tabs per Réka). SSO Setup kept (Peti did not suggest removal).",
+  "subtitle": "PM-aligned, flat structure",
+  "description": "Peti's custom-built variant: As-Is flattened with PM-aligned renames. Entry order: Home → Analytics → Automation → Channels → Content Management → Audience → Account Management → Data Management. SSO removed (Peti voted down, questions relevance). Email/SMS naming needs alignment decision.",
   "links": [
     "home",
     "automation"
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data Management"
+    }
   ],
   "groups": [
     {
@@ -66,7 +100,6 @@
       "items": [
         "account_setup",
         "admin_user_management",
-        "self_service_sso",
         "security_settings",
         "sdk_management",
         "business_area",
@@ -88,58 +121,20 @@
       ]
     }
   ],
-  "entryOrder": [
-    {
-      "type": "link",
-      "id": "home"
-    },
-    {
-      "type": "group",
-      "name": "Analytics"
-    },
-    {
-      "type": "link",
-      "id": "automation"
-    },
-    {
-      "type": "group",
-      "name": "Channels"
-    },
-    {
-      "type": "group",
-      "name": "Content Management"
-    },
-    {
-      "type": "group",
-      "name": "Audience"
-    },
-    {
-      "type": "group",
-      "name": "Account Management"
-    },
-    {
-      "type": "group",
-      "name": "Data Management"
-    }
-  ],
   "renames": {
     "event_attribution": "Conversion Analytics",
-    "templates": "Block-Based Email Templates",
-    "sms_channel": "SMS",
-    "conversation": "Conversational Channels",
-    "link_categories": "Email Link Categories",
     "bounce_mail_management": "Email Bounce Management",
     "frequency_cap": "Email Frequency Cap",
     "internal_blacklist": "Email and Domain Blocklist",
-    "context_access_manager": "Asset Tag Management",
+    "sms_channel": "SMS Channel",
+    "conversation": "Conversational Channels",
+    "templates": "Block-Based Email Templates",
     "sdk_management": "Apps and Channel Settings",
-    "spc_data_quality": "Product Catalog",
-    "email_campaign_list": "Email",
-    "personalization_0": "Personalization Tokens"
+    "context_access_manager": "Asset Tag Management",
+    "spc_data_quality": "Product Catalog"
   },
   "removed": [
     "add_contact",
-    "sms_settings",
-    "link_categories"
+    "self_service_sso"
   ]
 }
