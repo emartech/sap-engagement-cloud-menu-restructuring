@@ -357,7 +357,7 @@
   },
   {
     "id": "bounce_mail_management",
-    "name": "Email Bounce Management",
+    "name": "Bounce Management",
     "pageTitle": "Bounce Management",
     "asIsParent": "Channels",
     "asIsGroup": "Email",

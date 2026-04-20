@@ -130,7 +130,8 @@
     "internal_blacklist": "Email Internal Blocklist",
     "custdev_icalendar_configurator": "iCalendar Configuration",
     "sdk_management": "App and Channel Settings",
-    "spc_data_quality": "Product Catalog"
+    "spc_data_quality": "Product Catalog",
+    "bounce_mail_management": "Email Bounce Management"
   },
   "removed": []
 }
