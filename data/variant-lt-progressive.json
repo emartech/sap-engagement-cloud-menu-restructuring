@@ -2,7 +2,11 @@
   "id": "lt-progressive",
   "name": "Progressive",
   "subtitle": "Long-term vision with modern SAP naming and channel-split",
-  "description": "Long-term direction: Reports & Analytics (from CUST5), Personalization as own group (from Claude2), Audience instead of Contacts, channel-split with Email/Mobile/Web as top-level groups, Administration section. All items kept except Add Contact and SSO.",
+  "description": "Long-term direction: Audience instead of Contacts, channel-split with Email/Mobile/Web as top-level groups, Administration section with Account Management, Content Management, Data & Integrations, and Personalization. All items kept except Add Contact and SSO.",
+  "author": "Tilly & Peti",
+  "tier": "Long-term",
+  "mergedFrom": ["cust5", "claude2", "f3"],
+  "mergeNote": "Vision variant combining bold ideas from multiple sources. Represents the long-term IA direction.",
   "links": [
     "home",
     "automation",
