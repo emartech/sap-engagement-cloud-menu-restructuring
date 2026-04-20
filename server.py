@@ -8,6 +8,7 @@ os.makedirs(HISTORY_DIR, exist_ok=True)
 SAVE_FILES = {
     'naming': os.path.join(BASE, 'data', 'naming-decisions.json'),
     'feedback': os.path.join(BASE, 'data', 'feedback.json'),
+    'decisions': os.path.join(BASE, 'data', 'decisions.json'),
 }
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -22,7 +23,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         try:
             data = json.loads(body)
 
-            if path in ('/save/naming', '/save/feedback'):
+            if path in ('/save/naming', '/save/feedback', '/save/decisions'):
                 key = path.split('/')[-1]
                 with open(SAVE_FILES[key], 'w') as f:
                     json.dump(data, f, indent=2)

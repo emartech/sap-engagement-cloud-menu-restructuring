@@ -1,0 +1,176 @@
+{
+  "id": "p3",
+  "name": "Peti's Progressive (P3)",
+  "subtitle": "Channel-split, links-first, Content Management lower",
+  "description": "Peti's progressive variant: standalone links at top, then section-grouped channels (Email, Mobile, Web). Content Management moved lower. Footer section for Account Management and Data & Integrations. Uses SAP Fiori side nav separators.",
+  "links": [
+    "home",
+    "automation",
+    "crm_ads",
+    "embedded_messaging"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "event_attribution",
+        "revenue_analytics",
+        "campaign_analytics",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "email_campaign_list",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "sms_channel",
+        "mobile_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_push",
+        "web_channel"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "content_design",
+        "mediadb_brand_center",
+        "templates",
+        "personalization_0",
+        "aim_coupon_pools",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "sdk_management",
+        "business_area",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "revenue_attributor",
+        "web_extend",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "crm_ads"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "footer-start"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
+  ],
+  "renames": {
+    "event_attribution": "Conversion Analytics",
+    "email_campaign_list": "Email",
+    "bounce_mail_management": "Email Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email and Domain Blocklist",
+    "sms_channel": "SMS",
+    "conversation": "Conversational Channels",
+    "sdk_management": "Apps and Channel Settings",
+    "context_access_manager": "Asset Tag Management",
+    "templates": "Block-Based Email Templates",
+    "personalization_0": "Personalization Tokens",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

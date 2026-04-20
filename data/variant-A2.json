@@ -1,0 +1,143 @@
+{
+  "id": "A2",
+  "name": "Flat, Reduced Items",
+  "subtitle": "Flat structure with items removed",
+  "description": "2-level flat structure from Peti's Figma designs. All channel items in one Channels group, all management items in one Management group. No separators. Contacts has 6 items (no SAP CDP Segmentation). Management includes Tag Manager and Webhook Node Presets.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics",
+        "unified_dashboard"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "custdev_bmw_channels",
+        "bounce_mail_management",
+        "conversation",
+        "crm_ads",
+        "email_campaign_list",
+        "frequency_cap",
+        "internal_blacklist",
+        "link_categories",
+        "embedded_messaging",
+        "mobile_channel",
+        "sms_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "consent",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "segments"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "custdev_icalendar_configurator",
+        "mediadb_brand_center",
+        "aim_coupon_pools",
+        "personalization_0"
+      ]
+    },
+    {
+      "name": "Management",
+      "items": [
+        "sdk_management",
+        "business_area",
+        "engagement_events",
+        "integration_monitor",
+        "revenue_attributor",
+        "sales_data_load_screen",
+        "security_settings",
+        "self_service_sso",
+        "context_access_manager",
+        "universal_schema_builder",
+        "admin_user_management",
+        "web_extend",
+        "automation_webhook_node"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Management"
+    }
+  ],
+  "renames": {
+    "bounce_mail_management": "Bounce Management",
+    "conversation": "Conversational",
+    "email_campaign_list": "Email Campaigns",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email Internal Blocklist",
+    "link_categories": "Email Link Categories",
+    "mobile_channel": "Mobile Engage",
+    "sms_channel": "SMS Campaigns",
+    "templates": "Email Templates",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "aim_coupon_pools": "Omnichannel Voucher",
+    "sdk_management": "App and Channel Settings",
+    "business_area": "Business Areas",
+    "revenue_attributor": "Revenue Attribution",
+    "sales_data_load_screen": "Sales Data Loads",
+    "context_access_manager": "Tag Manager",
+    "universal_schema_builder": "Universal Schema Builder",
+    "admin_user_management": "User Management",
+    "automation_webhook_node": "Webhook Node Presets"
+  },
+  "removed": [
+    "add_contact",
+    "sap_cdp_segmentation",
+    "account_setup",
+    "sap_commerce_cloud_integration",
+    "spc_data_quality"
+  ],
+  "author": "Peti"
+}

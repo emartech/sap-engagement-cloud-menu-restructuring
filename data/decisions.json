@@ -1,0 +1,1977 @@
+{
+  "unified_dashboard_placement": {
+    "type": "placement",
+    "itemId": "unified_dashboard",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.609Z"
+  },
+  "unified_dashboard_question": {
+    "type": "naming",
+    "itemId": "unified_dashboard",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "The \"Unified\" name implies cross-account aggregation. Users unfamiliar with multi-account setups may not understand what \"Unified\" means.",
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "ai_assisted_report_builder_placement": {
+    "type": "placement",
+    "itemId": "ai_assisted_report_builder",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "audience_reporting_placement": {
+    "type": "placement",
+    "itemId": "audience_reporting",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "event_attribution_naming": {
+    "type": "naming",
+    "itemId": "event_attribution",
+    "status": "proposed",
+    "decision": "Conversion Analytics",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Event Attribution": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Conversion Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "event_attribution_placement": {
+    "type": "placement",
+    "itemId": "event_attribution",
+    "status": "proposed",
+    "decision": "Placed in Analytics alongside Revenue Attribution. Both configure campaign measurement rules and are conceptually paired.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "event_attribution_question": {
+    "type": "placement",
+    "itemId": "event_attribution",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs place this under Email > Reporting. While it configures rules rather than displaying reports, users associate attribution with analytics. Consider whether \"Conversion Analytics\" (Peti's suggestion) better describes the feature.",
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "revenue_analytics_placement": {
+    "type": "placement",
+    "itemId": "revenue_analytics",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "campaign_analytics_placement": {
+    "type": "placement",
+    "itemId": "campaign_analytics",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "flexible_analytics_placement": {
+    "type": "placement",
+    "itemId": "flexible_analytics",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "content_design_placement": {
+    "type": "placement",
+    "itemId": "content_design",
+    "status": "proposed",
+    "decision": "Placed under Content, aligned with SAP docs' Brand Center categorization.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "lt-progressive"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "content_design_question": {
+    "type": "placement",
+    "itemId": "content_design",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Tree test showed low success (26%) \u2014 users split between Content and Channels. The \"design\" framing confuses users who think channel-first (e.g., \"I want to design my Web Channel themes\"). Consider whether clearer naming would help.",
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "mediadb_brand_center_placement": {
+    "type": "placement",
+    "itemId": "mediadb_brand_center",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "lt-progressive"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "mediadb_brand_center_question": {
+    "type": "placement",
+    "itemId": "mediadb_brand_center",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Currently opens in a popup modal, not as a full page. Consider if this should remain a menu item or be accessed from within content editors.",
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "templates_naming": {
+    "type": "naming",
+    "itemId": "templates",
+    "status": "proposed",
+    "decision": "Block-Based Email Templates",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Email Templates": [
+        "as-is",
+        "b2",
+        "d2",
+        "f3",
+        "cust5",
+        "b3"
+      ],
+      "Block-Based Email Templates": [
+        "p1",
+        "g1",
+        "p2",
+        "p3",
+        "claude",
+        "claude2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "templates_placement": {
+    "type": "placement",
+    "itemId": "templates",
+    "status": "proposed",
+    "decision": "Placed under Content for convenience, though SAP docs place it under Email.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "lt-progressive"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "templates_question": {
+    "type": "naming",
+    "itemId": "templates",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP documentation clearly categorizes Email Templates under Email, not Content. The navigation back-link to Email Campaigns confirms functional coupling. The rename to \"Block-Based Email Templates\" (per Peti/TillyG alignment) clarifies the email-specific scope.",
+    "timestamp": "2026-04-17T14:29:24.611Z"
+  },
+  "personalization_0_naming": {
+    "type": "naming",
+    "itemId": "personalization_0",
+    "status": "proposed",
+    "decision": "Personalization",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Personalization": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Personalization Tokens": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "personalization_0_placement": {
+    "type": "placement",
+    "itemId": "personalization_0",
+    "status": "proposed",
+    "decision": "Placed under Content \u2014 personalization rules are a content creation tool, used while building campaigns.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ],
+      "Personalization": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "personalization_0_question": {
+    "type": "placement",
+    "itemId": "personalization_0",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP describes this as an omnichannel capability, broader than just email content. The feature includes personalization tokens, scripting language, and conditional content rules. Does it deserve more prominence than a Content sub-item?",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "aim_coupon_pools_naming": {
+    "type": "naming",
+    "itemId": "aim_coupon_pools",
+    "status": "proposed",
+    "decision": "Omnichannel Vouchers",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Omnichannel Voucher": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Omnichannel Vouchers": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "aim_coupon_pools_placement": {
+    "type": "placement",
+    "itemId": "aim_coupon_pools",
+    "status": "proposed",
+    "decision": "Placed under Content for ease of access during campaign creation.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ],
+      "Personalization": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "aim_coupon_pools_question": {
+    "type": "placement",
+    "itemId": "aim_coupon_pools",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP officially categorizes Vouchers under Personalization, not Content. If Personalization becomes a separate group, Vouchers should move with it. The \"Omnichannel\" prefix indicates cross-channel use beyond just email.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "custdev_icalendar_configurator_placement": {
+    "type": "placement",
+    "itemId": "custdev_icalendar_configurator",
+    "status": "proposed",
+    "decision": "Placed in Data & Integrations as an integration tool between the platform and external calendar systems.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Content": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "lt-progressive"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "custdev_icalendar_configurator_question": {
+    "type": "placement",
+    "itemId": "custdev_icalendar_configurator",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Very niche feature with no analytics data. Consider whether it needs a standalone menu item at all, or could be a setting within Email configuration.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "email_campaign_list_naming": {
+    "type": "naming",
+    "itemId": "email_campaign_list",
+    "status": "proposed",
+    "decision": "Email Campaigns",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Email Campaigns": [
+        "as-is",
+        "p1",
+        "g1",
+        "b2",
+        "d2",
+        "f3",
+        "cust5",
+        "b3",
+        "claude",
+        "claude2"
+      ],
+      "Email": [
+        "p2",
+        "p3"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "email_campaign_list_placement": {
+    "type": "placement",
+    "itemId": "email_campaign_list",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Email": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "link_categories_naming": {
+    "type": "naming",
+    "itemId": "link_categories",
+    "status": "proposed",
+    "decision": "Email Link Categories",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Link Categories": [
+        "as-is",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ],
+      "Email Link Categories": [
+        "iter-flat"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "link_categories_placement": {
+    "type": "placement",
+    "itemId": "link_categories",
+    "status": "proposed",
+    "decision": "Placement varies \u2014 either near Email Campaigns in Channels or in Administration as a low-traffic configuration.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Email": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "link_categories_question": {
+    "type": "naming",
+    "itemId": "link_categories",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs categorize this under Email > Links. With the \"Email\" prefix rename, the scope is clear regardless of placement. The key question: is this accessed during campaign creation (Channels) or during initial setup (Administration)?",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "bounce_mail_management_naming": {
+    "type": "naming",
+    "itemId": "bounce_mail_management",
+    "status": "proposed",
+    "decision": "Email Bounce Management",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Bounce Management": [
+        "as-is",
+        "cust5"
+      ],
+      "Email Bounce Management": [
+        "p1",
+        "g1",
+        "b2",
+        "d2",
+        "f3",
+        "b3",
+        "p2",
+        "p3",
+        "claude",
+        "claude2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "bounce_mail_management_placement": {
+    "type": "placement",
+    "itemId": "bounce_mail_management",
+    "status": "proposed",
+    "decision": "Dual-purpose feature: both an operational contact management tool AND an email deliverability setting.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Email": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "bounce_mail_management_question": {
+    "type": "placement",
+    "itemId": "bounce_mail_management",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs place this under Email > Deliverability, but the menu access path is Contacts > Bounce Management. The feature serves two audiences: campaign ops (checking bounces daily) and admins (configuring thresholds once). Should placement follow the docs (Email/Channels) or the operational pattern (Contacts/Audience)?",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "frequency_cap_naming": {
+    "type": "naming",
+    "itemId": "frequency_cap",
+    "status": "proposed",
+    "decision": "Email Frequency Cap",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Frequency Cap": [
+        "as-is",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ],
+      "Email Frequency Cap": [
+        "iter-flat"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "frequency_cap_placement": {
+    "type": "placement",
+    "itemId": "frequency_cap",
+    "status": "proposed",
+    "decision": "Placement varies \u2014 either in Administration (SAP docs support: General Settings) or in Channels (proximity to email campaigns).",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Email": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "frequency_cap_question": {
+    "type": "placement",
+    "itemId": "frequency_cap",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs explicitly categorize this under General Settings (account-level), not under Email or Channels. This is the strongest evidence for Administration/Account Management placement.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "internal_blacklist_naming": {
+    "type": "naming",
+    "itemId": "internal_blacklist",
+    "status": "proposed",
+    "decision": "Email and Domain Blocklist",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Internal Blocklist": [
+        "as-is",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ],
+      "Email Internal Blocklist": [
+        "iter-flat"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "internal_blacklist_placement": {
+    "type": "placement",
+    "itemId": "internal_blacklist",
+    "status": "proposed",
+    "decision": "Placed near email operations due to high usage and email-specific scope.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Email": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "internal_blacklist_question": {
+    "type": "placement",
+    "itemId": "internal_blacklist",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "At 6,048 UPV this is more actively used than most features. SAP docs place it under Email > Deliverability. The high traffic suggests daily operational use by campaign teams, not occasional admin access.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "mobile_channel_placement": {
+    "type": "placement",
+    "itemId": "mobile_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Mobile": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "mobile_channel_question": {
+    "type": "naming",
+    "itemId": "mobile_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs use \"Mobile Engage\" as the feature name, which encompasses push notifications, in-app messages, and app inbox. The name implies broader mobile engagement beyond just push.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_channel_naming": {
+    "type": "naming",
+    "itemId": "sms_channel",
+    "status": "proposed",
+    "decision": "SMS Campaigns",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "SMS Campaigns": [
+        "as-is",
+        "g1",
+        "b2",
+        "d2",
+        "f3",
+        "cust5",
+        "b3",
+        "claude",
+        "claude2"
+      ],
+      "SMS Channel": [
+        "p1"
+      ],
+      "SMS": [
+        "p2",
+        "p3"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_channel_placement": {
+    "type": "placement",
+    "itemId": "sms_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Mobile": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_channel_question": {
+    "type": "naming",
+    "itemId": "sms_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs title is \"SMS and MMS - Overview\". The menu name \"SMS Campaigns\" focuses on the campaign aspect. Peti suggests \"SMS Channel\" to align with other channel naming patterns.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_settings_naming": {
+    "type": "naming",
+    "itemId": "sms_settings",
+    "status": "proposed",
+    "decision": "SMS Settings",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "SMS Settings": [
+        "as-is",
+        "p1",
+        "g1",
+        "f3",
+        "cust5",
+        "p2",
+        "p3",
+        "claude",
+        "claude2"
+      ],
+      "SMS/MMS Settings": [
+        "b2",
+        "d2",
+        "b3"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_settings_placement": {
+    "type": "placement",
+    "itemId": "sms_settings",
+    "status": "proposed",
+    "decision": "Placed near SMS Campaigns in Channels, or in Administration for low-traffic variants.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Mobile": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sms_settings_question": {
+    "type": "placement",
+    "itemId": "sms_settings",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "EME guidelines recommend merging SMS Settings as a tab within the SMS Campaigns page (requires development). Until then, proximity to SMS Campaigns is the closest menu-level approximation.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "mobile_wallet_placement": {
+    "type": "placement",
+    "itemId": "mobile_wallet",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Mobile": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "conversation_naming": {
+    "type": "naming",
+    "itemId": "conversation",
+    "status": "proposed",
+    "decision": "Conversational Channels",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Conversational": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Conversational Channels": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "conversation_placement": {
+    "type": "placement",
+    "itemId": "conversation",
+    "status": "proposed",
+    "decision": "Placed in Channels. SAP official name is \"Conversational Channel\" (singular).",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Mobile": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "conversation_question": {
+    "type": "placement",
+    "itemId": "conversation",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs use \"Conversational Channel\" (singular). Peti and TillyG both suggest \"Conversational Channels\" (plural) since multiple messaging platforms are under this umbrella. The plural form is technically more accurate.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "web_push_placement": {
+    "type": "placement",
+    "itemId": "web_push",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Web": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "web_push_question": {
+    "type": "placement",
+    "itemId": "web_push",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Web Push and Web Channel are both under \"Web\" in SAP docs but serve different purposes. Web Push is a notification channel; Web Channel is on-site personalization. Keeping them together under \"Web\" or separating them is a design choice.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "web_channel_placement": {
+    "type": "placement",
+    "itemId": "web_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Web": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "web_channel_question": {
+    "type": "placement",
+    "itemId": "web_channel",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Web Channel is fundamentally different from other \"channels\" \u2014 it's website personalization, not message sending. This distinction may affect whether it belongs with messaging channels or with content/personalization tools.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "crm_ads_placement": {
+    "type": "placement",
+    "itemId": "crm_ads",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Other": [
+        "iter-sections"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "embedded_messaging_question": {
+    "type": "placement",
+    "itemId": "embedded_messaging",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Embedded Messaging spans both mobile (app inbox) and web (site inbox). Very low usage (104 UPV). Consider if this needs standalone menu visibility.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "custdev_bmw_channels_placement": {
+    "type": "placement",
+    "itemId": "custdev_bmw_channels",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Other": [
+        "iter-sections"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "segments_naming": {
+    "type": "naming",
+    "itemId": "segments",
+    "status": "proposed",
+    "decision": "Segments",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Segments": [
+        "as-is",
+        "p1",
+        "g1",
+        "b2",
+        "f3",
+        "cust5",
+        "b3",
+        "p2",
+        "p3",
+        "claude",
+        "claude2"
+      ],
+      "Audiences": [
+        "d2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "segments_placement": {
+    "type": "placement",
+    "itemId": "segments",
+    "status": "proposed",
+    "decision": "Placed in the Audience/Contacts group. The second most-used feature (123K UPV), foundational to all targeted marketing.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sap_cdp_segmentation_placement": {
+    "type": "placement",
+    "itemId": "sap_cdp_segmentation",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "contacts_page_naming": {
+    "type": "naming",
+    "itemId": "contacts_page",
+    "status": "proposed",
+    "decision": "Contacts",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-restructured",
+        "lt-progressive"
+      ],
+      "Contacts Page": [
+        "iter-flat",
+        "iter-sections"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "contacts_page_placement": {
+    "type": "placement",
+    "itemId": "contacts_page",
+    "status": "proposed",
+    "decision": "Placed in the Audience/Contacts group. Page needs to be created as a new feature.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "contact_lists_placement": {
+    "type": "placement",
+    "itemId": "contact_lists",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sap_corporate_account_placement": {
+    "type": "placement",
+    "itemId": "sap_corporate_account",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sap_corporate_account_list_placement": {
+    "type": "placement",
+    "itemId": "sap_corporate_account_list",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "consent_naming": {
+    "type": "naming",
+    "itemId": "consent",
+    "status": "proposed",
+    "decision": "Consent Management",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Consent": [
+        "as-is",
+        "p1",
+        "b2",
+        "d2",
+        "b3",
+        "p2",
+        "p3"
+      ],
+      "Consent Management": [
+        "g1",
+        "f3",
+        "cust5",
+        "claude",
+        "claude2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "consent_placement": {
+    "type": "placement",
+    "itemId": "consent",
+    "status": "proposed",
+    "decision": "Placed in the Audience/Contacts group, renamed to \"Consent Management.\"",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "consent_question": {
+    "type": "placement",
+    "itemId": "consent",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs place Consent under Mobile Engage (mobile app consent). This feature may be newly introduced for the Enterprise Edition. Verify: (1) Is this Enterprise-only? (2) Does it cover all-channel consent or just mobile? (3) If new, it may not have analytics data from the classic edition.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "account_setup_placement": {
+    "type": "placement",
+    "itemId": "account_setup",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "admin_user_management_placement": {
+    "type": "placement",
+    "itemId": "admin_user_management",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "self_service_sso_placement": {
+    "type": "placement",
+    "itemId": "self_service_sso",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "self_service_sso_question": {
+    "type": "placement",
+    "itemId": "self_service_sso",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Marked for removal. Low usage (821 UPV). May be replaced by organization-level SSO configuration outside the product.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "self_service_sso_removal": {
+    "type": "removal",
+    "itemId": "self_service_sso",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Keep": [
+        "p1"
+      ],
+      "Remove": [
+        "g1",
+        "b2",
+        "d2",
+        "f3",
+        "cust5",
+        "b3",
+        "p2",
+        "p3",
+        "claude",
+        "claude2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "security_settings_naming": {
+    "type": "naming",
+    "itemId": "security_settings",
+    "status": "proposed",
+    "decision": "API Credentials",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Security Settings": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "API User Management": [
+        "iter-restructured"
+      ],
+      "API Credentials": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "security_settings_placement": {
+    "type": "placement",
+    "itemId": "security_settings",
+    "status": "proposed",
+    "decision": "Placed in Administration, renamed to \"API Credentials\" to accurately reflect current page content.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "security_settings_question": {
+    "type": "naming",
+    "itemId": "security_settings",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "The \"Security Settings\" name implies broader scope (password policies, 2FA, session management) but the page currently only manages API credentials. Renaming to \"API Credentials\" is accurate but limits future expansion if security features are added.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sdk_management_naming": {
+    "type": "naming",
+    "itemId": "sdk_management",
+    "status": "proposed",
+    "decision": "Apps and Channel Settings",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Apps and Channel Configurations": [
+        "as-is"
+      ],
+      "App and Channel Settings": [
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sdk_management_placement": {
+    "type": "placement",
+    "itemId": "sdk_management",
+    "status": "proposed",
+    "decision": "Placed in Administration as a technical setup tool.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sdk_management_question": {
+    "type": "placement",
+    "itemId": "sdk_management",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Very low usage (448 UPV) after initial setup. Primarily used by developers during integration, not by marketers. Consider whether this needs prominent menu placement or could be in a technical settings area.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "business_area_placement": {
+    "type": "placement",
+    "itemId": "business_area",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "context_access_manager_naming": {
+    "type": "naming",
+    "itemId": "context_access_manager",
+    "status": "proposed",
+    "decision": "Asset Tag Management",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Tag Manager": [
+        "as-is",
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Asset Tag Manager": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "context_access_manager_placement": {
+    "type": "placement",
+    "itemId": "context_access_manager",
+    "status": "proposed",
+    "decision": "Placement varies \u2014 Content (tree test data supports) or Administration (SAP docs support).",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Account Management": [
+        "iter-sections",
+        "lt-progressive"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "context_access_manager_question": {
+    "type": "placement",
+    "itemId": "context_access_manager",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Tags are genuinely cross-domain \u2014 they apply to emails, automations, segments, and contacts. SAP places it in Account Administration; tree tests show users look in Content. Neither placement is perfect. The question is: do users think of tags as \"organizing my content\" or \"platform configuration\"?",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "integration_monitor_placement": {
+    "type": "placement",
+    "itemId": "integration_monitor",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "integration_monitor_question": {
+    "type": "placement",
+    "itemId": "integration_monitor",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Clearly a data monitoring/debugging tool. Fits well in Data & Integrations group.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "engagement_events_naming": {
+    "type": "naming",
+    "itemId": "engagement_events",
+    "status": "proposed",
+    "decision": "Engagement Event Integrations",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Engagement Events": [
+        "as-is",
+        "p1",
+        "g1",
+        "cust5",
+        "p2",
+        "p3"
+      ],
+      "Engagement Event Integrations": [
+        "b2",
+        "d2",
+        "f3",
+        "b3",
+        "claude",
+        "claude2"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "engagement_events_placement": {
+    "type": "placement",
+    "itemId": "engagement_events",
+    "status": "proposed",
+    "decision": "Placed in Data & Integrations as an integration configuration tool.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "engagement_events_question": {
+    "type": "placement",
+    "itemId": "engagement_events",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "SAP docs categorize Engagement Events under Automation > Triggers, suggesting closer proximity to Automation Programs. However, the configuration involves integrating external event sources (APIs, commerce platforms), which is a data integration task.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "revenue_attributor_placement": {
+    "type": "placement",
+    "itemId": "revenue_attributor",
+    "status": "proposed",
+    "decision": "Placed in Analytics alongside Event Attribution. SAP documentation supports this \u2014 both are campaign measurement configurations.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Analytics": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "revenue_attributor_question": {
+    "type": "placement",
+    "itemId": "revenue_attributor",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Should attribution configuration live with the reports it feeds, or with the settings that rarely change? The SAP docs' placement under Reporting suggests the former.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "web_extend_placement": {
+    "type": "placement",
+    "itemId": "web_extend",
+    "status": "proposed",
+    "decision": "Placed in Data & Integrations. Web Extend is a data collection tool, not a marketing feature.",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sales_data_load_screen_placement": {
+    "type": "placement",
+    "itemId": "sales_data_load_screen",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "universal_schema_builder_placement": {
+    "type": "placement",
+    "itemId": "universal_schema_builder",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "universal_schema_builder_question": {
+    "type": "placement",
+    "itemId": "universal_schema_builder",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "A data integration tool \u2014 connects external data sources. Clearly belongs in Data & Integrations or Data Management.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "automation_webhook_node_naming": {
+    "type": "naming",
+    "itemId": "automation_webhook_node",
+    "status": "proposed",
+    "decision": "Webhook Presets",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Webhook Node Presets": [
+        "as-is",
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured"
+      ],
+      "Webhook Presets": [
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "automation_webhook_node_placement": {
+    "type": "placement",
+    "itemId": "automation_webhook_node",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "automation_webhook_node_question": {
+    "type": "placement",
+    "itemId": "automation_webhook_node",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "An automation tool that integrates with external systems. Could belong with Automation or with Data & Integrations depending on whether you prioritize the automation workflow context or the integration aspect.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "spc_data_quality_naming": {
+    "type": "naming",
+    "itemId": "spc_data_quality",
+    "status": "proposed",
+    "decision": "Product Catalog",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "Product Catalog Data": [
+        "as-is"
+      ],
+      "Product Catalog": [
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "spc_data_quality_placement": {
+    "type": "placement",
+    "itemId": "spc_data_quality",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "spc_data_quality_question": {
+    "type": "naming",
+    "itemId": "spc_data_quality",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "question": "Renamed from \"Product Catalog Data\" to \"Product Catalog\" per PM + research confirmation. The shorter name is clearer \u2014 \"Data\" was redundant since the page is already in a data-focused group.",
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "sap_commerce_cloud_integration_placement": {
+    "type": "placement",
+    "itemId": "sap_commerce_cloud_integration",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-17T14:29:24.612Z"
+  },
+  "group_analytics_groupname": {
+    "type": "structural",
+    "itemId": "group_analytics",
+    "itemName": "Group: Analytics",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Analytics": [
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured",
+        "as-is"
+      ],
+      "Reports & Analytics": [
+        "lt-progressive"
+      ]
+    },
+    "question": "What should the \"Analytics\" group be called? Different variants use different names.",
+    "timestamp": "2026-04-17T14:29:24.620Z"
+  },
+  "group_content_groupname": {
+    "type": "structural",
+    "itemId": "group_content",
+    "itemName": "Group: Content",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Content": [
+        "iter-flat",
+        "iter-sections",
+        "lt-progressive",
+        "as-is"
+      ],
+      "Content Management": [
+        "iter-restructured"
+      ]
+    },
+    "question": "What should the \"Content\" group be called? Different variants use different names.",
+    "timestamp": "2026-04-17T14:29:24.620Z"
+  },
+  "group_contacts_groupname": {
+    "type": "structural",
+    "itemId": "group_contacts",
+    "itemName": "Group: Contacts",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Contacts": [
+        "iter-flat",
+        "iter-sections",
+        "as-is"
+      ],
+      "Audience": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "question": "What should the \"Contacts\" group be called? Different variants use different names.",
+    "timestamp": "2026-04-17T14:29:24.620Z"
+  },
+  "group_management_groupname": {
+    "type": "structural",
+    "itemId": "group_management",
+    "itemName": "Group: Management",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Management": [
+        "iter-flat",
+        "as-is"
+      ],
+      "Account Management": [
+        "iter-sections"
+      ],
+      "Data Management": [
+        "iter-sections"
+      ],
+      "Data & Integrations": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "question": "What should the \"Management\" group be called? Different variants use different names.",
+    "timestamp": "2026-04-17T14:29:24.620Z"
+  },
+  "custdev_icalendar_configurator_naming": {
+    "type": "naming",
+    "itemId": "custdev_icalendar_configurator",
+    "status": "proposed",
+    "decision": "Calendar Event Generator",
+    "proposedBy": "Claude",
+    "notes": "",
+    "options": {
+      "iCalendar Configurator": [
+        "as-is"
+      ],
+      "iCalendar Configuration": [
+        "iter-flat",
+        "iter-sections",
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-20T09:55:50.133Z"
+  },
+  "embedded_messaging_placement": {
+    "type": "placement",
+    "itemId": "embedded_messaging",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Channels": [
+        "as-is",
+        "iter-flat"
+      ],
+      "Other": [
+        "iter-sections"
+      ]
+    },
+    "timestamp": "2026-04-20T09:55:50.133Z"
+  },
+  "add_contact_removal": {
+    "type": "removal",
+    "itemId": "add_contact",
+    "status": "open",
+    "decision": "",
+    "proposedBy": "",
+    "notes": "",
+    "options": {
+      "Keep": [
+        "iter-flat",
+        "iter-sections"
+      ],
+      "Remove": [
+        "iter-restructured",
+        "lt-progressive"
+      ]
+    },
+    "timestamp": "2026-04-20T09:55:50.134Z"
+  }
+}

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAP Engagement Cloud — Menu Restructuring</title>
-<link rel="stylesheet" href="style.css?v=51">
+<title>SAP Engagement Cloud – Menu Restructuring</title>
+<link rel="stylesheet" href="style.css?v=89">
 </head>
 <body>
 
@@ -12,6 +12,7 @@
   <div style="background:#fff;padding:40px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);text-align:center;max-width:360px;width:100%">
     <div style="font-size:18px;font-weight:700;color:#354A5F;margin-bottom:4px">SAP Engagement Cloud</div>
     <div style="font-size:14px;color:#6A6D70;margin-bottom:24px">Menu Restructuring</div>
+    <input id="authName" type="text" placeholder="Your name" style="width:100%;padding:10px 14px;border:1px solid #E5E5E6;border-radius:6px;font-size:14px;font-family:inherit;margin-bottom:8px;text-align:center">
     <input id="authPassword" type="password" placeholder="Password" style="width:100%;padding:10px 14px;border:1px solid #E5E5E6;border-radius:6px;font-size:14px;font-family:inherit;margin-bottom:12px;text-align:center">
     <button id="authSubmit" style="width:100%;padding:10px;background:#0070F2;color:#fff;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Enter</button>
     <div id="authError" style="color:#D93025;font-size:12px;margin-top:8px;display:none">Incorrect password</div>
@@ -27,12 +28,19 @@
     <span class="shell-bar-page">Menu Restructuring</span>
   </div>
   <div class="shell-bar-center">
-    <button class="mode-tab active" data-tab="ux">UX Versions</button>
+    <button class="mode-tab active" data-tab="ux">Proposals</button>
     <button class="mode-tab" data-tab="shortlist">Shortlist</button>
+    <button class="mode-tab" data-tab="decisions">Decisions</button>
   </div>
   <div class="shell-bar-right">
+    <div class="shell-more-wrap">
+      <button class="btn-shell btn-shell-icon" id="btnShellMore" title="More options">⋯</button>
+      <div class="shell-more-menu" id="shellMoreMenu">
+        <button class="shell-more-item" id="btnClear">Clear Feedback</button>
+        <button class="shell-more-item" id="btnShowArchived">Show Archived Variants</button>
+      </div>
+    </div>
     <button class="btn-shell" id="btnExport">Export Feedback</button>
-    <button class="btn-shell btn-shell-text" id="btnClear">Clear Feedback</button>
   </div>
 </div>
 
@@ -49,9 +57,11 @@
 <div class="info-bar">
   <div class="info-bar-desc" id="variantDesc"></div>
   <div class="info-bar-actions">
-    <button class="btn-edit-link" id="btnEditVariant">Edit this variant</button>
+    <button class="btn-detail-link" id="btnVariantDetails">Details ▾</button>
   </div>
 </div>
+
+<div class="variant-details-panel" id="variantDetailsPanel" style="display:none;"></div>
 
 <div class="main-content" id="mainContent">
   <nav class="sidebar" id="sidebar"></nav>
@@ -61,6 +71,8 @@
 </div>
 
 <div class="compare-view" id="compareView" style="display:none;"></div>
+
+<div class="decisions-view" id="decisionsView" style="display:none;"></div>
 
 <div class="custom-overlay" id="customOverlay" style="display:none;">
   <div class="custom-overlay-bar">
@@ -73,20 +85,27 @@
 </div><!-- /appContent -->
 
 <script>
-// Simple client-side password gate (not security — just access control)
-const PASS_HASH = 'cc4c6f4c6f6b9ea56653a4ce29e5e2885aa6e238e251c23561824424140fd115';
+// Simple client-side password gate (not security – just access control)
+const PASS_HASHES = [
+  'cc4c6f4c6f6b9ea56653a4ce29e5e2885aa6e238e251c23561824424140fd115',
+  '4d512b5b96a2e9d3f696029b3840a8337ab16a7593e28f9bb2284a2f4266cfb0'
+];
 async function checkAuth() {
   const stored = sessionStorage.getItem('menuAuthOk');
-  if (stored === 'true') { showApp(); return; }
+  const storedName = sessionStorage.getItem('menuUserName');
+  if (stored === 'true' && storedName) { showApp(); return; }
   document.getElementById('authSubmit').addEventListener('click', tryAuth);
   document.getElementById('authPassword').addEventListener('keydown', e => { if (e.key === 'Enter') tryAuth(); });
-  document.getElementById('authPassword').focus();
+  document.getElementById('authName').focus();
 }
 async function tryAuth() {
+  const name = document.getElementById('authName').value.trim();
   const pw = document.getElementById('authPassword').value;
+  if (!name) { document.getElementById('authName').style.borderColor = '#D93025'; return; }
   const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)))).map(b => b.toString(16).padStart(2,'0')).join('');
-  if (hash === PASS_HASH) {
+  if (PASS_HASHES.includes(hash)) {
     sessionStorage.setItem('menuAuthOk', 'true');
+    sessionStorage.setItem('menuUserName', name);
     showApp();
   } else {
     document.getElementById('authError').style.display = 'block';
@@ -100,6 +119,6 @@ function showApp() {
 }
 checkAuth();
 </script>
-<script src="app.js?v=51"></script>
+<script src="app.js?v=89"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
   "id": "d2",
   "name": "Lean Groups (D2)",
   "subtitle": "No separate Channel Settings",
-  "description": "Based on D1 but without a separate Channel Settings group — fewer top-level groups. Channel-related settings merge back into Channels. Event Attribution stays in Analytics. Audience group, context_access_manager in Administration, iCalendar in Data & Integrations all carry over from D1.",
+  "description": "Based on D1 but without a separate Channel Settings group – fewer top-level groups. Channel-related settings merge back into Channels. Event Attribution stays in Analytics. Audience group, context_access_manager in Administration, iCalendar in Data & Integrations all carry over from D1.",
   "links": [
     "home",
     "automation"

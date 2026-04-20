@@ -1,0 +1,185 @@
+{
+  "id": "C2",
+  "name": "Management Section Only",
+  "subtitle": "Section separator for Management only, channels at top level",
+  "description": "3-level structure from Peti's Figma designs. Channels separator groups Email, Mobile, Web sub-groups plus BMW Channels, Digital Ads, Embedded Messaging as standalone links. Management separator groups Account Management, Content Management, Data & Integrations.",
+  "links": [
+    "home",
+    "automation",
+    "custdev_bmw_channels",
+    "crm_ads",
+    "embedded_messaging"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics",
+        "unified_dashboard"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "consent",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "segments"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "bounce_mail_management",
+        "email_campaign_list",
+        "frequency_cap",
+        "internal_blacklist",
+        "link_categories"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "conversation",
+        "mobile_channel",
+        "mobile_wallet",
+        "sms_channel",
+        "sms_settings"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "sdk_management",
+        "business_area",
+        "security_settings",
+        "self_service_sso",
+        "context_access_manager",
+        "admin_user_management"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "content_design",
+        "templates",
+        "custdev_icalendar_configurator",
+        "mediadb_brand_center",
+        "personalization_0",
+        "aim_coupon_pools"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "engagement_events",
+        "integration_monitor",
+        "revenue_attributor",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "web_extend",
+        "automation_webhook_node"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "link",
+      "id": "crm_ads"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "separator",
+      "label": "Management"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
+  ],
+  "renames": {
+    "bounce_mail_management": "Bounce Management",
+    "conversation": "Conversational",
+    "mobile_channel": "Mobile Engage",
+    "sms_channel": "SMS Campaigns",
+    "templates": "Email Templates",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "aim_coupon_pools": "Omnichannel Voucher",
+    "sdk_management": "App and Channel Settings",
+    "business_area": "Business Areas",
+    "context_access_manager": "Tag Manager",
+    "admin_user_management": "User Management",
+    "revenue_attributor": "Revenue Attribution",
+    "sales_data_load_screen": "Sales Data Loads",
+    "automation_webhook_node": "Webhook Node Presets"
+  },
+  "removed": [
+    "add_contact",
+    "sap_cdp_segmentation",
+    "account_setup",
+    "sap_commerce_cloud_integration",
+    "spc_data_quality"
+  ],
+  "author": "Peti"
+}

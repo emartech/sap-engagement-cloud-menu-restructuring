@@ -1,0 +1,131 @@
+{
+  "id": "iter-restructured",
+  "name": "Restructured",
+  "subtitle": "Audience and Administration with progressive naming",
+  "description": "Restructured groups with Channels and Administration sections. Renames Contacts to Audience, Management to Administration. Moves Revenue Attribution to Analytics. Content split into Content Management under Administration. Removes Add Contact (covered by Contacts and Contact Lists).",
+  "author": "Tilly & Peti",
+  "tier": "1st Iteration",
+  "mergedFrom": ["D"],
+  "mergeNote": "Based on Tilly's D variant with Peti's naming contributions. Add Contact removed intentionally.",
+  "links": ["home", "automation"],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
+        "flexible_analytics",
+        "event_attribution",
+        "revenue_attributor"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "email_campaign_list",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "mobile_channel",
+        "sms_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "self_service_sso",
+        "sdk_management",
+        "business_area"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "content_design",
+        "templates",
+        "mediadb_brand_center",
+        "personalization_0",
+        "aim_coupon_pools",
+        "custdev_icalendar_configurator",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "universal_schema_builder",
+        "spc_data_quality",
+        "sales_data_load_screen",
+        "sap_commerce_cloud_integration",
+        "automation_webhook_node",
+        "web_extend"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {"type": "link", "id": "home"},
+    {"type": "group", "name": "Analytics"},
+    {"type": "group", "name": "Audience"},
+    {"type": "link", "id": "automation"},
+    {"type": "separator", "label": "Channels"},
+    {"type": "link", "id": "custdev_bmw_channels"},
+    {"type": "link", "id": "crm_ads"},
+    {"type": "group", "name": "Email"},
+    {"type": "link", "id": "embedded_messaging"},
+    {"type": "group", "name": "Mobile"},
+    {"type": "group", "name": "Web"},
+    {"type": "separator", "label": "Administration"},
+    {"type": "group", "name": "Account Management"},
+    {"type": "group", "name": "Content Management"},
+    {"type": "group", "name": "Data & Integrations"}
+  ],
+  "renames": {
+    "revenue_attributor": "Revenue Attribution",
+    "security_settings": "API User Management",
+    "personalization_0": "Personalization Tokens",
+    "aim_coupon_pools": "Omnichannel Vouchers",
+    "context_access_manager": "Asset Tag Manager",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "spc_data_quality": "Product Catalog",
+    "sdk_management": "App and Channel Settings",
+    "automation_webhook_node": "Webhook Node Presets",
+    "sales_data_load_screen": "Sales Data Loads"
+  },
+  "removed": ["add_contact"]
+}

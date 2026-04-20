@@ -1,0 +1,194 @@
+{
+  "id": "lt-progressive",
+  "name": "Progressive",
+  "subtitle": "Long-term vision with modern SAP naming and channel-split",
+  "description": "Long-term direction: Reports & Analytics (from CUST5), Personalization as own group (from Claude2), Audience instead of Contacts, channel-split with Email/Mobile/Web as top-level groups, Administration section. All items kept except Add Contact and SSO.",
+  "links": [
+    "home",
+    "automation",
+    "custdev_bmw_channels",
+    "crm_ads",
+    "embedded_messaging"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
+        "flexible_analytics",
+        "event_attribution",
+        "revenue_attributor"
+      ]
+    },
+    {
+      "name": "Audience",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "email_campaign_list",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "mobile_channel",
+        "sms_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Personalization",
+      "items": [
+        "personalization_0",
+        "aim_coupon_pools"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "mediadb_brand_center",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "sdk_management",
+        "business_area",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "universal_schema_builder",
+        "spc_data_quality",
+        "sales_data_load_screen",
+        "sap_commerce_cloud_integration",
+        "automation_webhook_node",
+        "web_extend"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "link",
+      "id": "crm_ads"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "group",
+      "name": "Personalization"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "separator",
+      "label": "Administration"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
+  ],
+  "renames": {
+    "revenue_attributor": "Revenue Attribution",
+    "event_attribution": "Conversion Analytics",
+    "security_settings": "API Credentials",
+    "personalization_0": "Personalization Tokens",
+    "aim_coupon_pools": "Omnichannel Vouchers",
+    "context_access_manager": "Asset Tag Manager",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "spc_data_quality": "Product Catalog",
+    "sdk_management": "App and Channel Settings",
+    "automation_webhook_node": "Webhook Presets",
+    "sales_data_load_screen": "Sales Data Loads",
+    "templates": "Email Templates",
+    "mobile_channel": "Mobile Engage",
+    "sms_channel": "SMS Campaigns",
+    "conversation": "Conversational Channels"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

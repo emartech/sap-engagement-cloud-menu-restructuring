@@ -1,8 +1,8 @@
 {
-  "id": "g1",
-  "name": "TillyG Version (G1)",
-  "subtitle": "Flat structure, TillyG renames",
-  "description": "As-Is structure flattened with TillyG naming suggestions. Contacts renamed to Audience. Management split into Administration + Data & Integrations. Email settings stay in Channels with Email prefixes.",
+  "id": "b3",
+  "name": "Conservative (B3)",
+  "subtitle": "Peti-revised conservative",
+  "description": "Peti's conservative revision based on B2. Standard flat structure with Channels group, Audience naming, email prefixes. SSO removed.",
   "links": [
     "home",
     "automation"
@@ -13,42 +13,43 @@
       "items": [
         "unified_dashboard",
         "ai_assisted_report_builder",
-        "audience_reporting",
-        "event_attribution",
-        "revenue_analytics",
         "campaign_analytics",
-        "flexible_analytics"
+        "revenue_attributor",
+        "audience_reporting",
+        "revenue_analytics",
+        "flexible_analytics",
+        "event_attribution"
       ]
     },
     {
       "name": "Channels",
       "items": [
-        "custdev_bmw_channels",
-        "conversation",
-        "crm_ads",
         "email_campaign_list",
         "link_categories",
         "bounce_mail_management",
         "frequency_cap",
         "internal_blacklist",
-        "embedded_messaging",
-        "mobile_channel",
-        "mobile_wallet",
         "sms_channel",
         "sms_settings",
+        "mobile_channel",
+        "mobile_wallet",
+        "conversation",
+        "web_channel",
         "web_push",
-        "web_channel"
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels"
       ]
     },
     {
       "name": "Content",
       "items": [
         "content_design",
-        "mediadb_brand_center",
         "templates",
         "personalization_0",
         "aim_coupon_pools",
-        "custdev_icalendar_configurator"
+        "context_access_manager",
+        "mediadb_brand_center"
       ]
     },
     {
@@ -64,28 +65,27 @@
       ]
     },
     {
-      "name": "Data & Integrations",
-      "items": [
-        "integration_monitor",
-        "engagement_events",
-        "revenue_attributor",
-        "web_extend",
-        "sales_data_load_screen",
-        "universal_schema_builder",
-        "automation_webhook_node",
-        "spc_data_quality",
-        "sap_commerce_cloud_integration"
-      ]
-    },
-    {
-      "name": "Administration",
+      "name": "Account Management",
       "items": [
         "account_setup",
         "admin_user_management",
         "security_settings",
         "sdk_management",
-        "business_area",
-        "context_access_manager"
+        "business_area"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "web_extend",
+        "sales_data_load_screen",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration",
+        "universal_schema_builder",
+        "custdev_icalendar_configurator"
       ]
     }
   ],
@@ -95,12 +95,12 @@
       "id": "home"
     },
     {
-      "type": "group",
-      "name": "Analytics"
-    },
-    {
       "type": "link",
       "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
     },
     {
       "type": "group",
@@ -116,29 +116,24 @@
     },
     {
       "type": "group",
-      "name": "Data & Integrations"
+      "name": "Account Management"
     },
     {
       "type": "group",
-      "name": "Administration"
+      "name": "Data & Integrations"
     }
   ],
   "renames": {
-    "event_attribution": "Conversion Goals (?)",
-    "personalization_0": "Personalization Tokens (?)",
-    "aim_coupon_pools": "Omnichannel Vouchers",
-    "templates": "Block-Based Email Templates",
     "link_categories": "Email Link Categories",
     "bounce_mail_management": "Email Bounce Management",
     "frequency_cap": "Email Frequency Cap",
     "internal_blacklist": "Email and Domain Blocklist",
+    "sms_settings": "SMS/MMS Settings",
     "conversation": "Conversational Channels",
-    "consent": "Consent Management",
-    "security_settings": "API Credentials (?)",
     "context_access_manager": "Asset Tag Management",
     "sdk_management": "Apps and Channel Settings",
-    "spc_data_quality": "Product Catalog",
-    "contacts_page": "Contacts"
+    "engagement_events": "Engagement Event Integrations",
+    "spc_data_quality": "Product Catalog"
   },
   "removed": [
     "add_contact",

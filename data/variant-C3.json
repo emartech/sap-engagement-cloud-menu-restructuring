@@ -1,0 +1,168 @@
+{
+  "id": "C3",
+  "name": "As-Is Sub-Groups",
+  "subtitle": "As-Is group names with Email, Mobile, Web, Other sub-groups",
+  "description": "3-level structure with Channels and Management separators. Uses original As-Is group names for channel sub-groups (Email, Mobile, Web). Keeps all items. Minimal renames \u2014 preserves the feel of the current production menu while adding sub-group structure.",
+  "author": "Tilly",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics",
+        "unified_dashboard"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "add_contact",
+        "consent",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "segments",
+        "sap_cdp_segmentation"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "custdev_icalendar_configurator",
+        "mediadb_brand_center",
+        "aim_coupon_pools",
+        "personalization_0"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "email_campaign_list",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "mobile_channel",
+        "mobile_wallet",
+        "sms_channel",
+        "sms_settings",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Other",
+      "items": [
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "self_service_sso",
+        "business_area"
+      ]
+    },
+    {
+      "name": "Data Management",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "spc_data_quality",
+        "revenue_attributor",
+        "sales_data_load_screen",
+        "sap_commerce_cloud_integration",
+        "universal_schema_builder",
+        "web_extend",
+        "automation_webhook_node"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "group",
+      "name": "Other"
+    },
+    {
+      "type": "separator",
+      "label": "Management"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data Management"
+    }
+  ],
+  "renames": {
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "spc_data_quality": "Product Catalog",
+    "sdk_management": "App and Channel Settings"
+  },
+  "removed": []
+}

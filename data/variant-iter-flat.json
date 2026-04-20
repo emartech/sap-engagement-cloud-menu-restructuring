@@ -1,0 +1,121 @@
+{
+  "id": "iter-flat",
+  "name": "Flat",
+  "subtitle": "Flat structure, all items, best naming from both authors",
+  "description": "2-level flat structure with 5 top-level groups. All menu items kept. Combines Tilly's completeness with Peti's clearer naming suggestions.",
+  "author": "Tilly & Peti",
+  "tier": "1st Iteration",
+  "mergedFrom": ["A1", "A2"],
+  "mergeNote": "Based on Tilly's A1 (all items) with Peti's A2 naming. Peti's original removed: Add Contact, SAP CDP Segmentation, Account Setup, SAP Commerce Cloud Integration, Product Catalog Data.",
+  "links": ["home", "automation"],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "custdev_bmw_channels",
+        "crm_ads",
+        "email_campaign_list",
+        "link_categories",
+        "bounce_mail_management",
+        "frequency_cap",
+        "internal_blacklist",
+        "embedded_messaging",
+        "mobile_channel",
+        "sms_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "conversation",
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "add_contact",
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "mediadb_brand_center",
+        "personalization_0",
+        "aim_coupon_pools",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Management",
+      "items": [
+        "account_setup",
+        "admin_user_management",
+        "security_settings",
+        "self_service_sso",
+        "sdk_management",
+        "business_area",
+        "context_access_manager",
+        "integration_monitor",
+        "engagement_events",
+        "revenue_attributor",
+        "web_extend",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "automation_webhook_node",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {"type": "link", "id": "home"},
+    {"type": "group", "name": "Analytics"},
+    {"type": "link", "id": "automation"},
+    {"type": "group", "name": "Channels"},
+    {"type": "group", "name": "Contacts"},
+    {"type": "group", "name": "Content"},
+    {"type": "group", "name": "Management"}
+  ],
+  "renames": {
+    "contacts_page": "Contacts Page",
+    "email_campaign_list": "Email Campaigns",
+    "link_categories": "Email Link Categories",
+    "bounce_mail_management": "Bounce Management",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email Internal Blocklist",
+    "mobile_channel": "Mobile Engage",
+    "sms_channel": "SMS Campaigns",
+    "conversation": "Conversational",
+    "templates": "Email Templates",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "aim_coupon_pools": "Omnichannel Voucher",
+    "sdk_management": "App and Channel Settings",
+    "context_access_manager": "Tag Manager",
+    "spc_data_quality": "Product Catalog",
+    "revenue_attributor": "Revenue Attribution",
+    "automation_webhook_node": "Webhook Node Presets",
+    "sales_data_load_screen": "Sales Data Loads",
+    "business_area": "Business Areas"
+  },
+  "removed": []
+}

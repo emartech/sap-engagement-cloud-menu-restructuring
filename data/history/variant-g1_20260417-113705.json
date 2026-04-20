@@ -23,21 +23,21 @@
     {
       "name": "Channels",
       "items": [
-        "custdev_bmw_channels",
-        "conversation",
-        "crm_ads",
         "email_campaign_list",
         "link_categories",
         "bounce_mail_management",
         "frequency_cap",
         "internal_blacklist",
-        "embedded_messaging",
         "mobile_channel",
-        "mobile_wallet",
         "sms_channel",
         "sms_settings",
+        "mobile_wallet",
+        "conversation",
         "web_push",
-        "web_channel"
+        "web_channel",
+        "crm_ads",
+        "embedded_messaging",
+        "custdev_bmw_channels"
       ]
     },
     {

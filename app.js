@@ -1,6 +1,6 @@
 (async function() {
   // ===== DATA LOADING =====
-  const VARIANT_FILES = ['as-is','variant-p1','variant-g1','variant-b2','variant-d2','variant-f3','variant-cust5','variant-claude','variant-claude2'];
+  const VARIANT_FILES = ['as-is','variant-iter-flat','variant-iter-sections','variant-iter-restructured','variant-lt-progressive','variant-b3','variant-d2','variant-f3','variant-cust5','variant-p1','variant-g1','variant-b2','variant-p2','variant-p3','variant-claude','variant-claude2','variant-A1','variant-A2','variant-B','variant-C1','variant-C2','variant-C3','variant-D'];
   const [items, ...variants] = await Promise.all([
     fetch('data/items.json').then(r => r.json()),
     ...VARIANT_FILES.map(f => fetch(`data/${f}.json`).then(r => r.json()))
@@ -14,16 +14,26 @@
 
   // Tab-to-variant mapping
   const TAB_MAP = {
-    'ux': { '1': 'as-is', '2': 'p1', '3': 'g1', '4': 'b2', '5': 'd2', '6': 'f3', '7': 'cust5', '8': 'claude', '9': 'claude2' },
+    'ux': { '1': 'as-is', '2': 'iter-flat', '3': 'iter-sections', '4': 'iter-restructured', '5': 'lt-progressive' },
     'shortlist': {}
   };
 
   const SUB_LABELS = { 'ux': {}, 'shortlist': {} };
 
-  // All variant IDs for the "across variants" table
-  const ALL_VARIANT_IDS = ['as-is','p1','g1','b2','d2','f3','cust5','claude','claude2'];
+  const ALL_VARIANT_IDS = ['as-is','iter-flat','iter-sections','iter-restructured','lt-progressive'];
+  const ALL_DECISION_IDS = ALL_VARIANT_IDS;
 
   // Populate SUB_LABELS from variant names AFTER variantsMap is built
+  // Restore saved tab order if available
+  const savedTabOrder = JSON.parse(localStorage.getItem('menuDemoTabOrder_ux') || 'null');
+  if (savedTabOrder && Array.isArray(savedTabOrder)) {
+    const savedSet = new Set(savedTabOrder);
+    const currentIds = Object.values(TAB_MAP['ux']);
+    const newIds = currentIds.filter(id => !savedSet.has(id));
+    const orderedIds = [...savedTabOrder.filter(id => currentIds.includes(id)), ...newIds];
+    TAB_MAP['ux'] = {};
+    orderedIds.forEach((id, i) => { TAB_MAP['ux'][String(i+1)] = id; });
+  }
   Object.entries(TAB_MAP['ux']).forEach(([k, vid]) => {
     const v = variantsMap[vid];
     SUB_LABELS['ux'][k] = v ? v.name : vid;
@@ -38,7 +48,7 @@
         body: JSON.stringify(data)
       });
     } catch (e) {
-      // Server not available — localStorage only
+      // Server not available – localStorage only
     }
   }
 
@@ -66,13 +76,16 @@
     editOriginal: null,
     custom: JSON.parse(localStorage.getItem('menuDemoCustom') || 'null'),
     customSource: 'f3',
-    compareColumns: ['p1','b2','f3'],
+    compareColumns: ['iter-flat','iter-sections','iter-restructured'],
     expanded: new Set(),
     feedback: savedFeedback,
-    naming: savedNaming
+    naming: savedNaming,
+    decisionFilter: 'all'
   };
 
-  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["p1","f3","cust5"]'));
+  state.decisions = JSON.parse(localStorage.getItem('menuDemoDecisions') || '{}');
+
+  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["iter-flat","iter-sections","iter-restructured"]'));
 
   function currentVariantId() {
     return TAB_MAP[state.mainTab]?.[state.sub] || 'as-is';
@@ -119,27 +132,24 @@
   function buildCandidates(itemId) {
     const item = itemsMap[itemId];
     if (!item) return {};
-    const c1 = variantsMap['c1'];
-    const c2 = variantsMap['c2'];
-    const a1 = variantsMap['a1'];
+    const flat = variantsMap['iter-flat'];
+    const sections = variantsMap['iter-sections'];
+    const restructured = variantsMap['iter-restructured'];
+    const progressive = variantsMap['lt-progressive'];
 
     const original = item.name;
     const tilly = (item.tillyName && item.tillyName !== '–' && item.tillyName !== '???' && !item.tillyName.startsWith('Remove') && !item.tillyName.startsWith('Replaced')) ? item.tillyName : null;
-    const baseline = a1?.renames?.[itemId] || null; // A1/B1 shared renames (the agreed baseline)
-    const c1name = c1?.renames?.[itemId] || null;
-    const c2name = c2?.renames?.[itemId] || null;
+    const flatName = flat?.renames?.[itemId] || null;
+    const sectionsName = sections?.renames?.[itemId] || null;
+    const restructuredName = restructured?.renames?.[itemId] || null;
+    const progressiveName = progressive?.renames?.[itemId] || null;
 
-    return { original, tilly, baseline, c1: c1name, c2: c2name };
+    return { original, tilly, flat: flatName, sections: sectionsName, restructured: restructuredName, progressive: progressiveName };
   }
 
-  // Count unique non-null candidates
   function uniqueCandidateValues(cands) {
     const vals = new Set();
-    if (cands.original) vals.add(cands.original);
-    if (cands.tilly) vals.add(cands.tilly);
-    if (cands.baseline) vals.add(cands.baseline);
-    if (cands.c1) vals.add(cands.c1);
-    if (cands.c2) vals.add(cands.c2);
+    Object.values(cands).forEach(v => { if (v) vals.add(v); });
     return vals;
   }
 
@@ -165,7 +175,8 @@
     const flags = item.flags || [];
     if (flags.includes('new')) changes.push('new');
     if (flags.includes('custom')) changes.push('custom');
-    if (variant.removed?.includes(itemId) || flags.includes('removed')) { changes.push('removed'); return changes; }
+    if (variant.removed?.includes(itemId)) { changes.push('removed'); return changes; }
+    if (variant.id !== 'as-is' && flags.includes('removed')) { changes.push('removed'); return changes; }
     if (variant.renames?.[itemId]) changes.push('renamed');
     const curParent = getItemParentInVariant(itemId, variant);
     const asIsParent = item.asIsParent;
@@ -188,6 +199,7 @@
   const mainContent = document.getElementById('mainContent');
   const compareView = document.getElementById('compareView');
   const customView = document.getElementById('customView');
+  const decisionsView = document.getElementById('decisionsView');
 
   // ===== TAB HANDLING =====
   document.querySelectorAll('.mode-tab').forEach(tab => {
@@ -199,8 +211,13 @@
       document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       updateSubToggle();
-      render();
-      if (state.viewMode === 'compare') renderCompare();
+      updateViewVisibility();
+      if (state.mainTab === 'decisions') {
+        renderDecisions();
+      } else {
+        render();
+        if (state.viewMode === 'compare') renderCompare();
+      }
     });
   });
 
@@ -208,6 +225,12 @@
 
   function updateSubToggle() {
     const tab = state.mainTab;
+
+    if (tab === 'decisions') {
+      subToggle.style.display = 'flex';
+      subToggle.innerHTML = '<span class="compare-view-label">Decision Tracker</span>';
+      return;
+    }
 
     if (tab === 'shortlist') {
       // Build from starred variants
@@ -235,7 +258,7 @@
       subToggle.style.display = 'flex';
 
       if (state.viewMode === 'compare') {
-        subToggle.innerHTML = '<span class="compare-view-label">Compare View — Shortlist</span>';
+        subToggle.innerHTML = '<span class="compare-view-label">Compare View – Shortlist</span><button class="compare-ctrl-btn" id="compareExpandAll">Expand All</button><button class="compare-ctrl-btn" id="compareCollapseAll">Collapse All</button>';
         return;
       }
 
@@ -253,16 +276,23 @@
 
       if (state.viewMode === 'compare') {
         // Compare mode: replace tabs with label
-        subToggle.innerHTML = '<span class="compare-view-label">Compare View</span>';
+        subToggle.innerHTML = '<span class="compare-view-label">Compare View</span><button class="compare-ctrl-btn" id="compareExpandAll">Expand All</button><button class="compare-ctrl-btn" id="compareCollapseAll">Collapse All</button>';
         return;
       }
 
       subToggle.innerHTML = Object.keys(subs).map(k => {
         const vid = subs[k];
-        const isStarred = state.starred.has(vid);
-        const starIcon = vid === 'as-is' ? '' : `<span class="star-toggle${isStarred ? ' starred' : ''}" data-star-vid="${vid}">${isStarred ? '\u2605' : '\u2606'}</span>`;
-        return `<button class="variant-tab${state.sub === k ? ' active' : ''}" data-sub="${k}">${labels[k] || k}${starIcon}</button>`;
+        const vr = variantsMap[vid];
+        const menuTrigger = vid === 'as-is' ? '' : `<span class="variant-menu-trigger" data-vmenu-vid="${vid}">\u22EF</span>`;
+        const tierBadge = vr?.tier === 'Long-term' ? '<span class="variant-tier-badge">LT</span>' : '';
+        return `<button class="variant-tab${state.sub === k ? ' active' : ''}" data-sub="${k}">${tierBadge}${labels[k] || k}${menuTrigger}</button>`;
       }).join('') + '<button class="variant-tab variant-tab-add" id="btnCustomBuilder" title="New Variant">+</button>';
+
+      // Show archived count link if any
+      const archived = JSON.parse(localStorage.getItem('menuDemoArchived') || '[]');
+      if (archived.length > 0) {
+        subToggle.innerHTML += `<span class="variant-tab-archived" id="showArchived">Archived (${archived.length})</span>`;
+      }
     } else {
       subToggle.style.display = 'none';
       subToggle.innerHTML = '';
@@ -272,7 +302,7 @@
     // Attach sub-button click handlers
     subToggle.querySelectorAll('.variant-tab').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        if (e.target.closest('.star-toggle')) return; // handled separately
+        if (e.target.closest('.variant-menu-trigger')) return; // handled separately
         state.sub = btn.dataset.sub;
         state.selectedId = null;
         render();
@@ -281,20 +311,40 @@
       });
     });
 
-    // Attach star toggle handlers
-    subToggle.querySelectorAll('.star-toggle').forEach(star => {
-      star.addEventListener('click', (e) => {
+    // Attach variant context menu triggers
+    subToggle.querySelectorAll('.variant-menu-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        const vid = star.dataset.starVid;
-        if (state.starred.has(vid)) {
-          state.starred.delete(vid);
-        } else {
-          state.starred.add(vid);
-        }
-        localStorage.setItem('menuDemoStarred', JSON.stringify([...state.starred]));
-        updateSubToggle();
+        const vid = trigger.dataset.vmenuVid;
+        showVariantMenu(trigger, vid);
       });
     });
+
+    // Attach archived link handler
+    const archivedLink = document.getElementById('showArchived');
+    if (archivedLink) {
+      archivedLink.addEventListener('click', () => {
+        const archived = JSON.parse(localStorage.getItem('menuDemoArchived') || '[]');
+        if (archived.length === 0) return;
+        const msg = archived.map(a => `${a.name} (archived ${new Date(a.timestamp).toLocaleDateString()})`).join('\n');
+        const restore = prompt('Archived variants:\n' + msg + '\n\nType a variant name to restore, or Cancel:');
+        if (!restore) return;
+        const found = archived.find(a => a.name.toLowerCase() === restore.toLowerCase() || a.id === restore);
+        if (found) {
+          // Restore: remove from archived, re-add to TAB_MAP
+          const remaining = archived.filter(a => a.id !== found.id);
+          localStorage.setItem('menuDemoArchived', JSON.stringify(remaining));
+          if (variantsMap[found.id]) {
+            const nextKey = String(Object.keys(TAB_MAP['ux']).length + 1);
+            TAB_MAP['ux'][nextKey] = found.id;
+            SUB_LABELS['ux'][nextKey] = variantsMap[found.id].name;
+          }
+          updateSubToggle();
+        } else {
+          alert('Variant not found in archive.');
+        }
+      });
+    }
 
     // Attach + New Variant button handler
     const addBtn = subToggle.querySelector('.variant-tab-add');
@@ -309,9 +359,56 @@
         renderCustom();
       });
     }
-  }
 
-  // ===== VIEW MODE SELECTOR =====
+    // Tab drag-and-drop reordering (UX and Phase1 tabs)
+    if (tab === 'ux') {
+      subToggle.querySelectorAll('.variant-tab[data-sub]').forEach(tabEl => {
+        tabEl.setAttribute('draggable', 'true');
+        tabEl.addEventListener('dragstart', (e) => {
+          if (e.target.closest('.variant-menu-trigger')) { e.preventDefault(); return; }
+          e.dataTransfer.setData('text/plain', tabEl.dataset.sub);
+          tabEl.style.opacity = '0.4';
+        });
+        tabEl.addEventListener('dragend', () => { tabEl.style.opacity = ''; });
+        tabEl.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          tabEl.style.borderBottomColor = '#0070F2';
+        });
+        tabEl.addEventListener('dragleave', () => {
+          tabEl.style.borderBottomColor = tabEl.classList.contains('active') ? '#0070F2' : 'transparent';
+        });
+        tabEl.addEventListener('drop', (e) => {
+          e.preventDefault();
+          tabEl.style.borderBottomColor = tabEl.classList.contains('active') ? '#0070F2' : 'transparent';
+          const fromKey = e.dataTransfer.getData('text/plain');
+          const toKey = tabEl.dataset.sub;
+          if (fromKey === toKey) return;
+          const curTab = state.mainTab;
+          const entries = Object.entries(TAB_MAP[curTab]).sort((a,b) => parseInt(a[0]) - parseInt(b[0]));
+          const ids = entries.map(e => e[1]);
+          const fromIdx = ids.indexOf(TAB_MAP[curTab][fromKey]);
+          const toIdx = ids.indexOf(TAB_MAP[curTab][toKey]);
+          if (fromIdx < 0 || toIdx < 0) return;
+          const [moved] = ids.splice(fromIdx, 1);
+          ids.splice(toIdx, 0, moved);
+          TAB_MAP[curTab] = {};
+          SUB_LABELS[curTab] = {};
+          ids.forEach((id, i) => {
+            const k = String(i + 1);
+            TAB_MAP[curTab][k] = id;
+            const vr = variantsMap[id];
+            SUB_LABELS[curTab][k] = vr ? vr.name : id;
+          });
+          const currentVid = currentVariantId();
+          for (const [k, id] of Object.entries(TAB_MAP[curTab])) {
+            if (id === currentVid) { state.sub = k; break; }
+          }
+          updateSubToggle();
+          localStorage.setItem('menuDemoTabOrder_' + curTab, JSON.stringify(ids));
+        });
+      });
+    }
+  }
   function setViewMode(mode) {
     state.viewMode = mode;
     document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === mode));
@@ -324,33 +421,299 @@
     btn.addEventListener('click', () => setViewMode(btn.dataset.view));
   });
 
-  // Custom Builder — full screen overlay
+  // Custom Builder – full screen overlay
   const customOverlay = document.getElementById('customOverlay');
+  const detailsPanel = document.getElementById('variantDetailsPanel');
   // Note: btnCustomBuilder click is handled in updateSubToggle (dynamic + button)
-  document.getElementById('btnEditVariant').addEventListener('click', () => {
+  // Note: Edit is now in the context menu (handleVariantAction)
+
+  // Details panel toggle
+  document.getElementById('btnVariantDetails').addEventListener('click', () => {
+    if (detailsPanel.classList.contains('active')) {
+      detailsPanel.classList.remove('active');
+      detailsPanel.style.display = 'none';
+    } else {
+      renderVariantDetails();
+      detailsPanel.classList.add('active');
+      detailsPanel.style.display = 'block';
+    }
+  });
+
+  function getItemParentInV(vid, itemId) {
+    const v = variantsMap[vid];
+    if (!v) return null;
+    if (v.links?.includes(itemId)) return '(link)';
+    for (const g of (v.groups || [])) {
+      const gItems = getAllGroupItemIds(g);
+      if (gItems.includes(itemId)) return g.name;
+    }
+    return null;
+  }
+
+  // ===== IA SCORING HELPERS =====
+  function getGroupSiblings(vid, itemId) {
+    const v = variantsMap[vid];
+    if (!v) return new Set();
+    for (const g of (v.groups || [])) {
+      const gItems = new Set(getAllGroupItemIds(g));
+      if (gItems.has(itemId)) return gItems;
+    }
+    return new Set();
+  }
+
+  function calcJaccardSimilarity(vid1, vid2) {
+    const allItemIds = items.filter(it => it.type !== 'group').map(it => it.id);
+    let scores = [];
+    allItemIds.forEach(itemId => {
+      const sibs1 = getGroupSiblings(vid1, itemId);
+      const sibs2 = getGroupSiblings(vid2, itemId);
+      if (!sibs1.size && !sibs2.size) { scores.push(1); return; }
+      if (!sibs1.size || !sibs2.size) { scores.push(0); return; }
+      const intersection = [...sibs1].filter(id => sibs2.has(id)).length;
+      const union = new Set([...sibs1, ...sibs2]).size;
+      scores.push(union > 0 ? intersection / union : 1);
+    });
+    return scores.length > 0 ? Math.round(scores.reduce((a,b) => a+b, 0) / scores.length * 100) : 100;
+  }
+
+  function calcNamingSimilarity(vid1, vid2) {
+    const v1 = variantsMap[vid1], v2 = variantsMap[vid2];
+    let same = 0, total = 0;
+    items.forEach(it => {
+      if (it.type === 'group') return;
+      const n1 = v1?.renames?.[it.id] || it.name;
+      const n2 = v2?.renames?.[it.id] || it.name;
+      total++; if (n1 === n2) same++;
+    });
+    return total > 0 ? Math.round(same / total * 100) : 100;
+  }
+
+  function calcItemRetention(vid) {
+    const v = variantsMap[vid];
+    const asIs = variantsMap['as-is'];
+    if (!v || !asIs) return 100;
+    const asIsItems = new Set();
+    (asIs.groups || []).forEach(g => getAllGroupItemIds(g).forEach(id => asIsItems.add(id)));
+    const vItems = new Set();
+    (v.groups || []).forEach(g => getAllGroupItemIds(g).forEach(id => vItems.add(id)));
+    (v.links || []).filter(id => id !== 'home' && id !== 'automation').forEach(id => vItems.add(id));
+    const kept = [...asIsItems].filter(id => vItems.has(id) && !v.removed?.includes(id)).length;
+    return asIsItems.size > 0 ? Math.round(kept / asIsItems.size * 100) : 100;
+  }
+
+  function renderVariantDetails() {
     const v = currentVariant();
-    state.editingVariantId = v.id;
-    state.editOriginal = JSON.parse(JSON.stringify(v));
-    // Deep-copy variant into custom entries format, respecting entryOrder
-    const builtEntries = buildEntries(v);
-    const entries = builtEntries.map(entry => {
-      if (entry.type === 'link') {
-        return { type: 'link', id: entry.id, customName: v.renames?.[entry.id] || null };
+    const vid = currentVariantId();
+    if (!v || vid === 'as-is') {
+      detailsPanel.innerHTML = '<div style="padding:12px;font-size:12px;color:#6A6D70">This is the baseline As-Is menu structure. All variants are compared against it.</div>';
+      return;
+    }
+
+    const groupSizes = (v.groups || []).map(g => ({ name: g.name, size: getAllGroupItemIds(g).length }));
+    const topLevelCount = (v.links?.length || 0) + (v.groups?.length || 0);
+    const maxGrp = Math.max(...groupSizes.map(g => g.size), 0);
+    const minGrp = Math.min(...groupSizes.filter(g => g.size > 0).map(g => g.size), 99);
+    const renames = Object.keys(v.renames || {}).length;
+    const removed = (v.removed || []).length;
+    const retention = calcItemRetention(vid);
+    const grpSim = calcJaccardSimilarity('as-is', vid);
+    const namSim = calcNamingSimilarity('as-is', vid);
+
+    // Structural changes
+    const asIsGroups = (variantsMap['as-is']?.groups || []);
+    const varGroups = (v.groups || []);
+    const groupChanges = [];
+    const matchedAsIs = new Set();
+    varGroups.forEach(vg => {
+      const vgItems = new Set(getAllGroupItemIds(vg));
+      let bestMatch = null, bestJac = 0;
+      asIsGroups.forEach(ag => {
+        const agItems = new Set(getAllGroupItemIds(ag));
+        const inter = [...vgItems].filter(id => agItems.has(id)).length;
+        const union = new Set([...vgItems, ...agItems]).size;
+        const jac = union > 0 ? inter / union : 0;
+        if (jac > bestJac) { bestJac = jac; bestMatch = ag; }
+      });
+      if (bestMatch && bestJac > 0.4) {
+        matchedAsIs.add(bestMatch.name);
+        if (bestMatch.name !== vg.name) groupChanges.push({ type: 'renamed', from: bestMatch.name, to: vg.name });
       } else {
-        return {
-          type: 'group',
-          name: entry.group.name,
-          items: getAllGroupItemIds(entry.group).filter(id => !v.removed?.includes(id)).map(id => ({
-            id, customName: v.renames?.[id] || null
-          }))
-        };
+        groupChanges.push({ type: 'new', name: vg.name, size: getAllGroupItemIds(vg).length });
       }
     });
-    state.custom = { entries };
-    customOverlay.style.display = 'flex';
-    customOverlay.classList.add('active');
-    renderCustom();
-  });
+    asIsGroups.forEach(ag => {
+      if (!matchedAsIs.has(ag.name)) groupChanges.push({ type: 'split', name: ag.name });
+    });
+
+    const movedItems = [];
+    items.forEach(it => {
+      if (it.type === 'group') return;
+      const s1 = getGroupSiblings('as-is', it.id);
+      const s2 = getGroupSiblings(vid, it.id);
+      if (!s1.size || !s2.size) return;
+      const inter = [...s1].filter(x => s2.has(x)).length;
+      const union = new Set([...s1, ...s2]).size;
+      if (union > 0 && inter / union < 0.5) {
+        const from = getItemParentInV('as-is', it.id) || '?';
+        const to = getItemParentInV(vid, it.id) || '?';
+        if (from !== to) movedItems.push({ name: v.renames?.[it.id] || it.name, from, to });
+      }
+    });
+
+    // Similar variants – compare within current tab
+    const simPool = ALL_VARIANT_IDS;
+    const sims = [];
+    simPool.forEach(oid => {
+      if (oid === vid || oid === 'as-is') return;
+      const ov = variantsMap[oid];
+      if (!ov) return;
+      const gs = calcJaccardSimilarity(vid, oid);
+      const ns = calcNamingSimilarity(vid, oid);
+      const combined = Math.round((gs + ns) / 2);
+      sims.push({ vid: oid, label: ov.id && ov.id !== oid ? ov.id + ' – ' + ov.name : ov.name, combined: combined, grouping: gs, naming: ns });
+    });
+    sims.sort((a, b) => b.combined - a.combined);
+
+    // === IA RATING ===
+    const sizes = groupSizes.map(g => g.size);
+    const avgSize = sizes.length > 0 ? sizes.reduce((a,b) => a+b, 0) / sizes.length : 0;
+    const stdDev = sizes.length > 0 ? Math.sqrt(sizes.reduce((a,s) => a + (s - avgSize) ** 2, 0) / sizes.length) : 0;
+    const balanceScore = Math.max(0, Math.round(100 - stdDev * 6));
+    const hasSeparators = (v.entryOrder || []).some(e => e.type === 'separator');
+    const hasOversized = sizes.some(s => s > 12);
+    // Separators HELP: they reduce cognitive load. Flat with large groups is WORSE.
+    const depthScore = hasSeparators ? 90 : (hasOversized ? 65 : 80);
+    const totalItems = items.filter(it => it.type !== 'group').length;
+    const namingScore = Math.min(100, Math.round(50 + (renames / totalItems) * 150));
+    const completenessScore = retention;
+    const iaRating = Math.round((balanceScore * 0.3 + depthScore * 0.25 + namingScore * 0.2 + completenessScore * 0.25));
+    const ratingColor = iaRating >= 80 ? '#188038' : iaRating >= 60 ? '#E37400' : '#D93025';
+    const ratingBg = iaRating >= 80 ? '#E6F4EA' : iaRating >= 60 ? '#FEF7E0' : '#FFF0F0';
+
+    // === RENDER ===
+    let html = '<div class="vd-panel">';
+
+    // Row 1: Header
+    html += '<div class="vd-header">';
+    html += '<div class="vd-header-left">';
+    if (v.author) html += `<span class="vd-author">${esc(v.author)}</span>`;
+    if (v.tier) html += `<span class="vd-tier ${v.tier === 'Long-term' ? 'vd-tier-lt' : 'vd-tier-iter'}">${esc(v.tier)}</span>`;
+    html += `<span class="vd-title">${esc(v.name)}</span>`;
+    html += '</div>';
+    html += `<span class="vd-ia-badge" style="color:${ratingColor};background:${ratingBg}" title="Balance ${balanceScore} · Depth ${depthScore} · Naming ${namingScore} · Completeness ${completenessScore}">IA ${iaRating}</span>`;
+    html += '</div>';
+
+    if (v.mergeNote) {
+      html += `<div class="vd-merge-note">${esc(v.mergeNote)}</div>`;
+    }
+
+    // Row 2: Three-column layout
+    html += '<div class="vd-body">';
+
+    // Column 1: Metrics
+    html += '<div class="vd-col vd-col-metrics">';
+    html += '<div class="vd-col-title">Compared to As-Is</div>';
+    const retCls = retention === 100 ? 'vd-metric-good' : retention >= 90 ? '' : 'vd-metric-warn';
+    const remCls = removed > 0 ? 'vd-metric-bad' : '';
+    html += '<div class="vd-metrics-grid">';
+    html += `<div class="vd-metric ${retCls}"><span class="vd-metric-value">${retention}%</span><span class="vd-metric-label">items kept</span></div>`;
+    html += `<div class="vd-metric"><span class="vd-metric-value">${namSim}%</span><span class="vd-metric-label">naming</span></div>`;
+    html += `<div class="vd-metric"><span class="vd-metric-value">${grpSim}%</span><span class="vd-metric-label">grouping</span></div>`;
+    html += `<div class="vd-metric ${remCls}"><span class="vd-metric-value">${removed}</span><span class="vd-metric-label">removed</span></div>`;
+    html += '</div>';
+    if (removed > 0) {
+      const removedNames = (v.removed || []).map(id => v.renames?.[id] || itemsMap[id]?.name || id);
+      html += `<div class="vd-removed-list">${removedNames.map(n => esc(n)).join(', ')}</div>`;
+    }
+    html += '<div class="vd-col-title" style="margin-top:12px">Structure</div>';
+    html += '<div class="vd-metrics-grid">';
+    html += `<div class="vd-metric"><span class="vd-metric-value">${topLevelCount}</span><span class="vd-metric-label">top-level</span></div>`;
+    html += `<div class="vd-metric"><span class="vd-metric-value">${minGrp}</span><span class="vd-metric-label">smallest</span></div>`;
+    html += `<div class="vd-metric"><span class="vd-metric-value">${maxGrp}</span><span class="vd-metric-label">largest</span></div>`;
+    html += `<div class="vd-metric"><span class="vd-metric-value">${renames}</span><span class="vd-metric-label">renamed</span></div>`;
+    html += '</div>';
+    html += '</div>';
+
+    // Column 2: Similar versions
+    html += '<div class="vd-col vd-col-similar">';
+    html += '<div class="vd-col-title">Similar Proposals</div>';
+    if (sims.length === 0) {
+      html += '<div style="font-size:11px;color:#8D9094">No other variants to compare</div>';
+    }
+    sims.slice(0, 6).forEach(s => {
+      const barW = Math.max(s.combined, 5);
+      const barColor = s.combined >= 80 ? '#34A853' : s.combined >= 50 ? '#FBBC04' : '#EA4335';
+      const textColor = s.combined >= 80 ? '#188038' : s.combined >= 50 ? '#6A6D70' : '#D93025';
+      html += '<div class="vd-sim-row">';
+      html += `<span class="vd-sim-pct" style="color:${textColor}">${s.combined}%</span>`;
+      html += `<div class="vd-sim-bar"><div style="width:${barW}%;background:${barColor}"></div></div>`;
+      html += `<a href="#" class="vd-sim-link" data-sim-vid="${esc(s.vid)}">${esc(s.label)}</a>`;
+      html += '</div>';
+    });
+    html += '</div>';
+
+    // Column 3: Changes
+    html += '<div class="vd-col vd-col-changes">';
+    const renamedGrps = groupChanges.filter(c => c.type === 'renamed');
+    const newGrps = groupChanges.filter(c => c.type === 'new');
+    // Only show "split" for groups that actually had multiple items and were broken up, not for single-item groups that became links
+    const splits = groupChanges.filter(c => c.type === 'split').filter(c => {
+      const ag = asIsGroups.find(g => g.name === c.name);
+      return ag && getAllGroupItemIds(ag).length > 1;
+    });
+    const hasChanges = renamedGrps.length > 0 || newGrps.length > 0 || splits.length > 0 || movedItems.length > 0;
+
+    html += '<div class="vd-col-title">Changes vs As-Is</div>';
+    if (!hasChanges) {
+      html += '<div style="font-size:11px;color:#8D9094">Same structure as As-Is</div>';
+    } else {
+      if (renamedGrps.length) {
+        renamedGrps.forEach(c => { html += `<div class="vd-change-line"><span class="vd-tag vd-tag-renamed">renamed</span>${esc(c.from)} → ${esc(c.to)}</div>`; });
+      }
+      if (newGrps.length) {
+        newGrps.forEach(c => { html += `<div class="vd-change-line"><span class="vd-tag vd-tag-new">new</span>${esc(c.name)} (${c.size})</div>`; });
+      }
+      if (splits.length) {
+        splits.forEach(c => { html += `<div class="vd-change-line"><span class="vd-tag vd-tag-split">split</span>${esc(c.name)}</div>`; });
+      }
+      if (movedItems.length) {
+        const movePatterns = {};
+        movedItems.forEach(m => {
+          const key = m.from + '→' + m.to;
+          if (!movePatterns[key]) movePatterns[key] = { from: m.from, to: m.to, items: [] };
+          movePatterns[key].items.push(m.name);
+        });
+        html += `<div class="vd-col-title" style="margin-top:8px">Moves (${movedItems.length})</div>`;
+        Object.values(movePatterns).sort((a,b) => b.items.length - a.items.length).forEach(p => {
+          html += `<div class="vd-move"><span class="vd-move-from">${esc(p.from)}</span> → <span class="vd-move-to">${esc(p.to)}</span> (${p.items.length})</div>`;
+        });
+      }
+    }
+    const oversized = groupSizes.filter(g => g.size > 12);
+    oversized.forEach(g => { html += `<div class="vd-warn">⚠ ${esc(g.name)}: ${g.size} items</div>`; });
+    html += '</div>';
+
+    html += '</div></div>';
+
+    detailsPanel.innerHTML = html;
+
+    // Wire up similar variant links
+    detailsPanel.querySelectorAll('.vd-sim-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetVid = link.dataset.simVid;
+        const tab = state.mainTab;
+        const map = TAB_MAP[tab];
+        for (const [k, id] of Object.entries(map)) {
+          if (id === targetVid) { state.sub = k; render(); return; }
+        }
+      });
+    });
+  }
+
+  function items_map_name(id) {
+    return itemsMap[id]?.name || id;
+  }
   document.getElementById('customBack').addEventListener('click', () => {
     state.editingVariantId = null;
     state.editOriginal = null;
@@ -361,11 +724,21 @@
   });
 
   function updateViewVisibility() {
-    mainContent.style.display = state.viewMode === 'menu' ? 'flex' : 'none';
-    compareView.style.display = state.viewMode === 'compare' ? 'flex' : 'none';
-    compareView.classList.toggle('active', state.viewMode === 'compare');
+    const isDecisions = state.mainTab === 'decisions';
+    mainContent.style.display = (!isDecisions && state.viewMode === 'menu') ? 'flex' : 'none';
+    compareView.style.display = (!isDecisions && state.viewMode === 'compare') ? 'flex' : 'none';
+    compareView.classList.toggle('active', !isDecisions && state.viewMode === 'compare');
+    decisionsView.style.display = isDecisions ? 'flex' : 'none';
+    decisionsView.classList.toggle('active', isDecisions);
+    const variantBar = document.querySelector('.variant-bar');
     const infoBar = document.querySelector('.info-bar');
-    if (infoBar) infoBar.style.display = state.viewMode === 'compare' ? 'none' : 'flex';
+    if (isDecisions) {
+      if (variantBar) variantBar.style.display = 'none';
+      if (infoBar) infoBar.style.display = 'none';
+    } else {
+      if (variantBar) variantBar.style.display = '';
+      if (infoBar) infoBar.style.display = state.viewMode === 'compare' ? 'none' : 'flex';
+    }
   }
 
   // Export / Clear feedback
@@ -382,30 +755,62 @@
       saveFeedback();
       render();
     }
+    document.getElementById('shellMoreMenu').classList.remove('open');
+  });
+
+  // Shell bar ⋯ menu toggle
+  document.getElementById('btnShellMore').addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.getElementById('shellMoreMenu').classList.toggle('open');
+  });
+  document.addEventListener('click', () => {
+    document.getElementById('shellMoreMenu').classList.remove('open');
+  });
+
+  // Show archived variants
+  document.getElementById('btnShowArchived').addEventListener('click', () => {
+    document.getElementById('shellMoreMenu').classList.remove('open');
+    const archived = Object.keys(variantsMap).filter(vid => {
+      const inUx = Object.values(TAB_MAP['ux']).includes(vid);
+      return !inUx && vid !== 'as-is';
+    });
+    if (archived.length === 0) { alert('No archived variants.'); return; }
+    const list = archived.map(vid => {
+      const v = variantsMap[vid];
+      return v ? `${v.id} – ${v.name}${v.author ? ' (' + v.author + ')' : ''}` : vid;
+    }).join('\n');
+    alert('Archived variants (' + archived.length + '):\n\n' + list);
   });
 
   // ===== RENDER SIDEBAR =====
   function render() {
     const v = currentVariant();
-    
-    variantDesc.textContent = v.subtitle + " — " + v.description;
 
-    const isShortlist = state.mainTab === 'shortlist';
-    const isAsIs = currentVariantId() === 'as-is';
-    document.getElementById('btnEditVariant').style.display = (isShortlist || isAsIs) ? 'none' : '';
+    variantDesc.textContent = v.subtitle + " – " + v.description;
+    const removedCount = (v.removed || []).length;
+    if (removedCount > 0) {
+      variantDesc.innerHTML = variantDesc.textContent + ` <span style="color:#D93025;font-weight:600">\u26A0 ${removedCount} item${removedCount > 1 ? 's' : ''} removed</span>`;
+    }
+
+    // Re-render details panel if it's open (keep it open across variant switches)
+    if (detailsPanel.classList.contains('active')) {
+      renderVariantDetails();
+    }
 
     renderSidebar(v);
     renderDetail();
   }
 
   function buildEntries(v) {
-    // If variant has entryOrder, use it to interleave links and groups in the saved order
+    // If variant has entryOrder, use it to interleave links, groups, separators, and footer markers
     if (v.entryOrder) {
       const groupMap = {};
       (v.groups || []).forEach(g => { groupMap[g.name] = g; });
       return v.entryOrder.map(e => {
         if (e.type === 'link') return { type: 'link', id: e.id };
         if (e.type === 'group' && groupMap[e.name]) return { type: 'group', group: groupMap[e.name] };
+        if (e.type === 'separator') return { type: 'separator', label: e.label };
+        if (e.type === 'footer-start') return { type: 'footer-start' };
         return null;
       }).filter(Boolean);
     }
@@ -417,14 +822,30 @@
   }
 
   function renderSidebar(v) {
-    const scrollTop = sidebar.scrollTop;
-    let html = '<div class="sidebar-controls"><button class="sidebar-ctrl-btn" id="expandAll">Expand All</button><button class="sidebar-ctrl-btn" id="collapseAll">Collapse All</button></div>';
+    const sidebarMain = sidebar.querySelector('.sidebar-main');
+    const scrollTop = sidebarMain ? sidebarMain.scrollTop : 0;
+    let controlsHtml = '<div class="sidebar-controls"><button class="sidebar-ctrl-btn" id="expandAll">Expand All</button><button class="sidebar-ctrl-btn" id="collapseAll">Collapse All</button></div>';
 
     const entries = buildEntries(v);
     const globalRenderedRemoved = new Set();
 
+    let mainHtml = controlsHtml;
+    let footerHtml = '';
+    let inFooter = false;
+
     entries.forEach(entry => {
-      if (entry.type === 'link') {
+      let entryHtml = '';
+
+      if (entry.type === 'footer-start') {
+        inFooter = true;
+        return;
+      }
+
+      if (entry.type === 'separator') {
+        entryHtml += '<div class="nav-separator">';
+        if (entry.label) entryHtml += '<span class="nav-separator-label">' + esc(entry.label) + '</span>';
+        entryHtml += '</div>';
+      } else if (entry.type === 'link') {
         const id = entry.id;
         const item = itemsMap[id];
         if (!item) return;
@@ -432,11 +853,11 @@
         const changes = getItemChanges(id, v);
         const fb = getFb(v.id, id);
         const sel = state.selectedId === id ? ' selected' : '';
-        html += '<div class="nav-group-header' + sel + '" data-id="' + id + '">';
-        html += '<span class="group-name">' + esc(name) + '</span>';
-        html += renderFbInline(fb);
-        if (fb.vote || fb.comment) html += '<span class="fb-dot"></span>';
-        html += '</div>';
+        entryHtml += '<div class="nav-group-header' + sel + '" data-id="' + id + '">';
+        entryHtml += '<span class="group-name">' + esc(name) + '</span>';
+        entryHtml += renderFbInline(fb);
+        if (fb.vote || fb.comment) entryHtml += '<span class="fb-dot"></span>';
+        entryHtml += '</div>';
       } else if (entry.type === 'group') {
         const g = entry.group;
         const isExpanded = state.expanded.has(g.name);
@@ -446,21 +867,21 @@
         const groupSelected = state.selectedId === groupId;
         const groupFb = getFb(v.id, groupId);
 
-        html += '<div class="nav-group-header' + (isExpanded ? ' expanded' : '') + (groupSelected ? ' selected' : '') + '" data-group="' + esc(g.name) + '" data-id="' + groupId + '">';
-        html += '<span class="group-name">' + esc(g.name) + ' <span class="group-count">(' + visibleCount + ')</span></span>';
-        html += renderFbInline(groupFb);
-        if (groupFb.vote || groupFb.comment) html += '<span class="fb-dot"></span>';
-        html += '<span class="chevron">›</span>';
-        html += '</div>';
-        html += '<div class="nav-child-wrap' + (isExpanded ? ' open' : '') + '">';
+        entryHtml += '<div class="nav-group-header' + (isExpanded ? ' expanded' : '') + (groupSelected ? ' selected' : '') + '" data-group="' + esc(g.name) + '" data-id="' + groupId + '">';
+        entryHtml += '<span class="group-name">' + esc(g.name) + ' <span class="group-count">(' + visibleCount + ')</span></span>';
+        entryHtml += renderFbInline(groupFb);
+        if (groupFb.vote || groupFb.comment) entryHtml += '<span class="fb-dot"></span>';
+        entryHtml += '<span class="chevron">›</span>';
+        entryHtml += '</div>';
+        entryHtml += '<div class="nav-child-wrap' + (isExpanded ? ' open' : '') + '">';
 
         if (g.subgroups) {
           g.subgroups.forEach(sg => {
-            if (sg.label) html += '<div class="nav-subgroup-label">' + esc(sg.label) + '</div>';
-            sg.items.forEach((id, ii) => { html += renderChildItem(id, v, g.name, ii); });
+            if (sg.label) entryHtml += '<div class="nav-subgroup-label">' + esc(sg.label) + '</div>';
+            sg.items.forEach((id, ii) => { entryHtml += renderChildItem(id, v, g.name, ii); });
           });
         } else if (g.items) {
-          g.items.forEach((id, ii) => { html += renderChildItem(id, v, g.name, ii); });
+          g.items.forEach((id, ii) => { entryHtml += renderChildItem(id, v, g.name, ii); });
         }
 
         // Append removed items that originally belonged to this group
@@ -509,17 +930,21 @@
           }
 
           if (matches) {
-            html += renderChildItem(rid, v, g.name, -1);
+            entryHtml += renderChildItem(rid, v, g.name, -1);
             globalRenderedRemoved.add(rid);
           }
         });
 
-        html += '</div>';
+        entryHtml += '</div>';
       }
+
+      if (inFooter) footerHtml += entryHtml;
+      else mainHtml += entryHtml;
     });
 
-    sidebar.innerHTML = html;
-    sidebar.scrollTop = scrollTop;
+    sidebar.innerHTML = '<div class="sidebar-main">' + mainHtml + '</div>' +
+      (footerHtml ? '<div class="sidebar-footer"><div class="sidebar-footer-label">Footer</div>' + footerHtml + '</div>' : '');
+    sidebar.querySelector('.sidebar-main').scrollTop = scrollTop;
     attachSidebarEvents();
   }
 
@@ -662,6 +1087,16 @@
     html += `<div class="detail-id">${esc(id)}</div>`;
     html += '</div>';
 
+    // About this feature
+    if (item.rationale?.what) {
+      html += '<div class="detail-section"><div class="detail-section-title">About</div>';
+      html += `<div style="font-size:13px;line-height:1.6;color:#32363A">${esc(item.rationale.what)}</div>`;
+      if (item.rationale?.officialCategory) {
+        html += `<div style="margin-top:8px;padding:6px 10px;background:#E8F0FE;border-radius:4px;font-size:12px"><strong>SAP Help Portal:</strong> ${esc(item.rationale.officialCategory)}</div>`;
+      }
+      html += '</div>';
+    }
+
     // Analytics
     html += '<div class="detail-section"><div class="detail-section-title">Usage Analytics</div>';
     if (item.upv || item.pv) {
@@ -669,7 +1104,7 @@
       const vEntries = buildEntries(v);
       let rankPool;
       if (isTopLevel) {
-        rankPool = vEntries.map(entry => {
+        rankPool = vEntries.filter(entry => entry.type === 'link' || entry.type === 'group').map(entry => {
           if (entry.type === 'link') { const li = itemsMap[entry.id]; return { upv: li?.upv || 0, pv: li?.pv || 0 }; }
           else { const gItems = getAllGroupItemIds(entry.group).map(gid => itemsMap[gid]).filter(Boolean); return { upv: gItems.reduce((s,i) => s + (i.upv||0), 0), pv: gItems.reduce((s,i) => s + (i.pv||0), 0) }; }
         });
@@ -724,7 +1159,7 @@
     }
     html += '</div>';
 
-    // Across variants — smart grouped display
+    // Across variants – smart grouped display
     html += '<div class="detail-section"><div class="detail-section-title">Across All Variants</div>';
 
     // Collect unique (parent, displayName) combinations and which variants use each
@@ -753,7 +1188,7 @@
     const groupList = Object.values(groups);
 
     if (groupList.length === 1 && removedVids.length === 0) {
-      // All variants have the same parent and name — one compact line
+      // All variants have the same parent and name – one compact line
       const g = groupList[0];
       html += `<div class="placement-row placement-compact">
         <span class="placement-parent">${esc(g.parent)}</span>
@@ -762,7 +1197,7 @@
         <span class="placement-note">Same in all variants</span>
       </div>`;
     } else {
-      // Multiple placements — show grouped
+      // Multiple placements – show grouped
       groupList.forEach(g => {
         const isCurrent = g.hasCurrent;
         html += `<div class="placement-row${isCurrent ? ' placement-current' : ''}">
@@ -771,14 +1206,14 @@
           <span class="placement-name">${esc(g.name)}</span>
           <span class="placement-variants">${g.variants.map(vid => {
             const isCur = vid === v.id;
-            return `<span class="placement-vid${isCur ? ' placement-vid-current' : ''}">${vid.toUpperCase()}</span>`;
+            return `<span class="placement-vid${isCur ? ' placement-vid-current' : ''}">${esc((variantsMap[vid]||{}).name||vid)}</span>`;
           }).join(' ')}</span>
         </div>`;
       });
       if (removedVids.length > 0) {
         html += `<div class="placement-row placement-removed">
           <span class="placement-parent" style="color:#D93025">Removed</span>
-          <span class="placement-variants">${removedVids.map(vid => `<span class="placement-vid">${vid.toUpperCase()}</span>`).join(' ')}</span>
+          <span class="placement-variants">${removedVids.map(vid => `<span class="placement-vid">${esc((variantsMap[vid]||{}).name||vid)}</span>`).join(' ')}</span>
         </div>`;
       }
     }
@@ -791,7 +1226,7 @@
         if (c === 'renamed') html += `<li>Renamed from "${esc(item.name)}" to "${esc(displayName)}"</li>`;
         else if (c === 'moved') html += `<li>Moved from ${esc(item.asIsParent)} to ${esc(curParent || '?')}</li>`;
         else if (c === 'removed') html += `<li style="color:#D93025">Removed from menu</li>`;
-        else if (c === 'new') html += `<li style="color:#188038">New item — page to be created</li>`;
+        else if (c === 'new') html += `<li style="color:#188038">New item – page to be created</li>`;
         else if (c === 'custom') html += `<li style="color:#7B1FA2">Customer-specific feature</li>`;
       });
       html += '</ul></div>';
@@ -832,10 +1267,6 @@
       const r = item.rationale;
       html += '<div class="detail-section"><div class="detail-section-title">Placement Rationale</div>';
       html += '<div class="rationale-card">';
-      html += `<div class="rationale-what"><strong>What this feature does:</strong> ${esc(r.what)}</div>`;
-      if (r.officialCategory) {
-        html += `<div style="margin:8px 0;padding:6px 10px;background:#E8F0FE;border-radius:4px;font-size:12px"><strong>SAP Help Portal category:</strong> ${esc(r.officialCategory)}</div>`;
-      }
       if (r.arguments) {
         html += '<div class="rationale-args"><strong>Arguments for each placement:</strong>';
         html += '<table class="rationale-table">';
@@ -947,7 +1378,7 @@
           return;
         }
       }
-      // Group doesn't exist in this variant — check if items are elsewhere
+      // Group doesn't exist in this variant – check if items are elsewhere
       groupAcrossVariants[vid] = null;
     });
 
@@ -967,7 +1398,7 @@
     html += '</div>';
 
     // Strength indicator
-    const allTopLevel = entries.map(entry => {
+    const allTopLevel = entries.filter(entry => entry.type === 'link' || entry.type === 'group').map(entry => {
       if (entry.type === 'link') { const it2 = itemsMap[entry.id]; return { name: it2?.name || entry.id, upv: it2?.upv || 0, pv: it2?.pv || 0 }; }
       else { const gItems2 = getAllGroupItemIds(entry.group).map(id2 => itemsMap[id2]).filter(Boolean); return { name: entry.group.name, upv: gItems2.reduce((s,i) => s + (i.upv||0), 0), pv: gItems2.reduce((s,i) => s + (i.pv||0), 0) }; }
     });
@@ -1037,10 +1468,38 @@
     });
     html += '</div>';
 
-    detailPanel.innerHTML = html;
-  }
+    // Group Feedback
+    const groupFb = getFb(v.id, groupId);
+    html += '<div class="detail-section"><div class="detail-section-title">Your Feedback on this Group</div><div class="feedback-section">';
+    html += '<div class="feedback-vote-row">';
+    html += `<button class="feedback-vote-btn${groupFb.vote === 'up' ? ' active-up' : ''}" data-group-vote="up">👍 Good grouping</button>`;
+    html += `<button class="feedback-vote-btn${groupFb.vote === 'down' ? ' active-down' : ''}" data-group-vote="down">👎 Needs change</button>`;
+    html += '</div>';
+    html += `<textarea class="feedback-comment-input" placeholder="Notes about this group (naming, items that should move, etc.)..." data-group-comment>${esc(groupFb.comment || '')}</textarea>`;
+    html += '</div></div>';
 
-  // ===== COMPARE MODE =====
+    detailPanel.innerHTML = html;
+
+    detailPanel.querySelectorAll('[data-group-vote]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const vote = btn.dataset.groupVote;
+        const cur = getFb(v.id, groupId);
+        setFb(v.id, groupId, 'vote', cur.vote === vote ? null : vote);
+        renderGroupDetail(groupId);
+        renderSidebar(v);
+      });
+    });
+    const grpTextarea = detailPanel.querySelector('[data-group-comment]');
+    if (grpTextarea) {
+      let debounce;
+      grpTextarea.addEventListener('input', () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          setFb(v.id, groupId, 'comment', grpTextarea.value);
+        }, 300);
+      });
+    }
+  }
   function renderCompare() {
     // Always: As-Is fixed first + 3 selectable variant slots
     const selectableIds = state.compareColumns.slice(0, 3);
@@ -1048,7 +1507,6 @@
 
     const isShortlistCompare = state.mainTab === 'shortlist';
     if (isShortlistCompare) {
-      // Override: use As-Is + all starred, no dropdowns
       allColumns.length = 0;
       allColumns.push('as-is', ...state.starred);
     }
@@ -1061,10 +1519,9 @@
       html += `<div class="compare-col${isAsIs ? ' compare-col-asis' : ''}" data-compare-variant="${vid}">`;
 
       if (isAsIs) {
-        // Fixed As-Is header (no dropdown)
         html += `<div class="compare-col-header compare-col-header-asis">${esc(v.name)}</div>`;
       } else if (!isShortlistCompare) {
-        // Selectable header with dropdown — disable already-selected variants in other slots
+        // Selectable header with dropdown – disable already-selected variants in other slots
         const slotIdx = ci - 1;
         const otherSelected = new Set(selectableIds.filter((id, i) => i !== slotIdx));
         html += `<div class="compare-col-header"><select class="compare-col-select" data-compare-slot="${slotIdx}">`;
@@ -1082,7 +1539,11 @@
       // Use buildEntries to match sidebar order
       const entries = buildEntries(v);
       entries.forEach(entry => {
-        if (entry.type === 'link') {
+        if (entry.type === 'separator') {
+          html += `<div class="compare-separator-label">${entry.label ? esc(entry.label) : ''}</div>`;
+        } else if (entry.type === 'footer-start') {
+          html += `<div class="compare-divider" style="height:2px;background:#E5E5E6;margin:6px 0"></div>`;
+        } else if (entry.type === 'link') {
           const id = entry.id;
           const name = getDisplayName(id, v);
           const fb = getFb(vid, id);
@@ -1092,9 +1553,13 @@
           html += `<div class="compare-link" data-cid="${id}" data-cvid="${vid}"><span>${esc(name)}</span><span class="compare-fb${hasVote ? ' has-vote' : ''}"><button class="compare-fb-btn${upCls}" data-cfb-vote="up" data-cfb-vid="${vid}" data-cfb-id="${id}">👍</button><button class="compare-fb-btn${downCls}" data-cfb-vote="down" data-cfb-vid="${vid}" data-cfb-id="${id}">👎</button></span></div>`;
         } else if (entry.type === 'group') {
           const g = entry.group;
-          html += `<div class="compare-group-name">${esc(g.name)}</div>`;
-          const allIds = getAllGroupItemIds(g);
-          allIds.forEach(id => {
+          const gKey = vid + '_' + g.name;
+          const isExpanded = state.compareExpanded ? state.compareExpanded.has(gKey) : true;
+          const childCount = getAllGroupItemIds(g).length;
+          html += `<div class="compare-group-name" data-cgroup="${esc(gKey)}" style="cursor:pointer"><span>${esc(g.name)}</span> <span style="font-size:10px;color:#8D9094">(${childCount})</span> <span class="compare-chevron" style="font-size:10px;color:#8D9094;margin-left:auto">${isExpanded ? '▾' : '›'}</span></div>`;
+          html += `<div class="compare-child-wrap" data-cchildren="${esc(gKey)}" style="${isExpanded ? '' : 'display:none'}">`;
+
+          const renderCompareItem = (id) => {
             const item = itemsMap[id];
             if (!item) return;
             const name = getDisplayName(id, v);
@@ -1106,7 +1571,18 @@
             const upCls = fb.vote === 'up' ? ' voted voted-up' : '';
             const downCls = fb.vote === 'down' ? ' voted voted-down' : '';
             html += `<div class="compare-item${isRemoved ? ' is-removed' : ''}" data-cid="${id}" data-cvid="${vid}"><span>${esc(name)}${pillsHtml}</span><span class="compare-fb${hasVote ? ' has-vote' : ''}"><button class="compare-fb-btn${upCls}" data-cfb-vote="up" data-cfb-vid="${vid}" data-cfb-id="${id}">👍</button><button class="compare-fb-btn${downCls}" data-cfb-vote="down" data-cfb-vid="${vid}" data-cfb-id="${id}">👎</button></span></div>`;
-          });
+          };
+
+          if (g.subgroups) {
+            g.subgroups.forEach(sg => {
+              if (sg.label) html += `<div class="compare-subgroup-label">${esc(sg.label)}</div>`;
+              sg.items.forEach(id => renderCompareItem(id));
+            });
+          } else {
+            (g.items || []).forEach(id => renderCompareItem(id));
+          }
+
+          html += '</div>';
         }
       });
 
@@ -1128,7 +1604,7 @@
         if (e.target.closest('.compare-fb-btn')) return; // handled below
         const cid = el.dataset.cid;
         compareView.querySelectorAll(`[data-cid="${cid}"]`).forEach(e => {
-          e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (e !== el) e.scrollIntoView({ behavior: 'smooth', block: 'center' });
           e.classList.add('compare-pulse');
           setTimeout(() => e.classList.remove('compare-pulse'), 1500);
         });
@@ -1155,6 +1631,41 @@
         state.compareColumns[slot] = sel.value;
         renderCompare();
       });
+    });
+
+    // Compare group expand/collapse
+    if (!state.compareExpanded) state.compareExpanded = new Set();
+
+    compareView.querySelectorAll('[data-cgroup]').forEach(header => {
+      header.addEventListener('click', () => {
+        const gKey = header.dataset.cgroup;
+        if (state.compareExpanded.has(gKey)) {
+          state.compareExpanded.delete(gKey);
+        } else {
+          state.compareExpanded.add(gKey);
+        }
+        const children = compareView.querySelectorAll(`[data-cchildren="${gKey}"]`);
+        const isNowExpanded = state.compareExpanded.has(gKey);
+        children.forEach(c => { c.style.display = isNowExpanded ? '' : 'none'; });
+        const chevron = header.querySelector('.compare-chevron');
+        if (chevron) chevron.textContent = isNowExpanded ? '▾' : '›';
+      });
+    });
+
+    // Expand All / Collapse All
+    const expAllBtn = document.getElementById('compareExpandAll');
+    const colAllBtn = document.getElementById('compareCollapseAll');
+    if (expAllBtn) expAllBtn.addEventListener('click', () => {
+      compareView.querySelectorAll('[data-cgroup]').forEach(h => {
+        state.compareExpanded.add(h.dataset.cgroup);
+      });
+      compareView.querySelectorAll('.compare-child-wrap').forEach(c => { c.style.display = ''; });
+      compareView.querySelectorAll('.compare-chevron').forEach(c => { c.textContent = '▾'; });
+    });
+    if (colAllBtn) colAllBtn.addEventListener('click', () => {
+      state.compareExpanded.clear();
+      compareView.querySelectorAll('.compare-child-wrap').forEach(c => { c.style.display = 'none'; });
+      compareView.querySelectorAll('.compare-chevron').forEach(c => { c.textContent = '›'; });
     });
   }
 
@@ -1195,7 +1706,7 @@
 
   function renderCustom() {
     const isEditMode = !!state.editingVariantId;
-    const sourceVariant = isEditMode ? state.editOriginal : (variantsMap[state.customSource] || variantsMap['f2']);
+    const sourceVariant = isEditMode ? state.editOriginal : (variantsMap[state.customSource] || variantsMap['as-is']);
     const customIds = getCustomItemIds();
 
     // Save scroll positions
@@ -1213,7 +1724,7 @@
     } else {
       const variantOptions = ALL_VARIANT_IDS.map(vid => {
         const v = variantsMap[vid];
-        return v ? `<option value="${vid}"${vid === state.customSource ? ' selected' : ''}>${v.name} — ${v.subtitle}</option>` : '';
+        return v ? `<option value="${vid}"${vid === state.customSource ? ' selected' : ''}>${v.name} – ${v.subtitle}</option>` : '';
       }).join('');
       html += `<label style="font-size:12px;font-weight:600;color:#6A6D70">Source:</label>
         <select id="customSourceSelect">${variantOptions}</select>
@@ -1233,7 +1744,7 @@
       html += '<div class="custom-source"><div class="custom-source-header">Source Menu (drag from here)</div>';
     }
 
-    // Source panel — use buildEntries for correct order
+    // Source panel – use buildEntries for correct order
     const srcEntries = buildEntries(sourceVariant);
     srcEntries.forEach(entry => {
       if (entry.type === 'link') {
@@ -1272,7 +1783,19 @@
       // Add a drop bar before the first entry
       html += `<div class="entry-drop-bar" data-entry-drop="0"></div>`;
       entries.forEach((entry, ei) => {
-        if (entry.type === 'link') {
+        if (entry.type === 'separator') {
+          html += `<div class="custom-tgt-entry-link" draggable="true" data-tgt-entry-idx="${ei}" style="background:#F5F6F7;border-style:dashed;font-weight:600;color:#8D9094;font-size:12px">
+            <span class="drag-handle">\u283F</span>
+            <span style="flex:1">${esc(entry.label || 'Separator')}</span>
+            <button class="custom-tgt-item-remove" data-remove-entry="${ei}">\u2715</button>
+          </div>`;
+        } else if (entry.type === 'footer-start') {
+          html += `<div class="custom-tgt-entry-link" draggable="true" data-tgt-entry-idx="${ei}" style="background:#FFF8E1;border:2px dashed #F9A825;font-weight:700;color:#E76500;font-size:11px;text-transform:uppercase;letter-spacing:.5px;justify-content:center">
+            <span class="drag-handle">\u283F</span>
+            <span style="flex:1;text-align:center">Footer Section</span>
+            <button class="custom-tgt-item-remove" data-remove-entry="${ei}">\u2715</button>
+          </div>`;
+        } else if (entry.type === 'link') {
           const item = itemsMap[entry.id];
           if (!item) return;
           const displayName = entry.customName || item.name;
@@ -1316,6 +1839,8 @@
         <input type="text" id="customNewEntryName" placeholder="Name...">
         <button id="customAddGroup">Add Group</button>
         <button id="customAddItem">Add Item</button>
+        <button id="customAddSeparator">Add Separator</button>
+        <button id="customAddFooter">Add Footer Divider</button>
       </div>`;
     } else {
       html += '<div class="custom-tgt-entries" data-drop-zone="entries"></div>';
@@ -1324,6 +1849,8 @@
         <input type="text" id="customNewEntryName" placeholder="Name...">
         <button id="customAddGroup">Add Group</button>
         <button id="customAddItem">Add Item</button>
+        <button id="customAddSeparator">Add Separator</button>
+        <button id="customAddFooter">Add Footer Divider</button>
       </div>`;
     }
 
@@ -1360,7 +1887,13 @@
           name: g.name,
           items: g.items.map(it => it.id)
         })),
-        entryOrder: entries.map(e => e.type === 'link' ? { type: 'link', id: e.id } : { type: 'group', name: e.name }),
+        entryOrder: entries.map(e => {
+          if (e.type === 'link') return { type: 'link', id: e.id };
+          if (e.type === 'group') return { type: 'group', name: e.name };
+          if (e.type === 'separator') return { type: 'separator', label: e.label };
+          if (e.type === 'footer-start') return { type: 'footer-start' };
+          return null;
+        }).filter(Boolean),
         renames: { ...(orig.renames || {}) },
         removed: orig.removed || ['add_contact', 'self_service_sso']
       };
@@ -1429,6 +1962,10 @@
       const entries = builtEntries.map(entry => {
         if (entry.type === 'link') {
           return { type: 'link', id: entry.id, customName: sv.renames?.[entry.id] || null };
+        } else if (entry.type === 'separator') {
+          return { type: 'separator', label: entry.label };
+        } else if (entry.type === 'footer-start') {
+          return { type: 'footer-start' };
         } else {
           return {
             type: 'group',
@@ -1459,7 +1996,13 @@
           name: g.name,
           items: g.items.map(it => it.id)
         })),
-        entryOrder: entries.map(e => e.type === 'link' ? { type: 'link', id: e.id } : { type: 'group', name: e.name }),
+        entryOrder: entries.map(e => {
+          if (e.type === 'link') return { type: 'link', id: e.id };
+          if (e.type === 'group') return { type: 'group', name: e.name };
+          if (e.type === 'separator') return { type: 'separator', label: e.label };
+          if (e.type === 'footer-start') return { type: 'footer-start' };
+          return null;
+        }).filter(Boolean),
         renames: {},
         removed: ['add_contact', 'self_service_sso']
       };
@@ -1503,6 +2046,13 @@
           name: g.name,
           items: g.items.map(it => it.id)
         })),
+        entryOrder: entries.map(e => {
+          if (e.type === 'link') return { type: 'link', id: e.id };
+          if (e.type === 'group') return { type: 'group', name: e.name };
+          if (e.type === 'separator') return { type: 'separator', label: e.label };
+          if (e.type === 'footer-start') return { type: 'footer-start' };
+          return null;
+        }).filter(Boolean),
         renames: {},
         removed: ['add_contact', 'self_service_sso']
       };
@@ -1579,6 +2129,33 @@
         state.custom.entries.push({ type: 'link', id: itemId, customName: name });
         saveCustom();
         renderCustom();
+      });
+    }
+
+    // Add separator
+    const addSepBtn = document.getElementById('customAddSeparator');
+    if (addSepBtn) {
+      addSepBtn.addEventListener('click', () => {
+        if (!state.custom) state.custom = { entries: [] };
+        if (!state.custom.entries) state.custom.entries = [];
+        const label = addInput ? (addInput.value.trim() || 'Section') : 'Section';
+        state.custom.entries.push({ type: 'separator', label: label });
+        saveCustom();
+        renderCustom();
+      });
+    }
+
+    // Add footer divider
+    const addFooterBtn = document.getElementById('customAddFooter');
+    if (addFooterBtn) {
+      addFooterBtn.addEventListener('click', () => {
+        if (!state.custom) state.custom = { entries: [] };
+        if (!state.custom.entries) state.custom.entries = [];
+        if (!state.custom.entries.some(e => e.type === 'footer-start')) {
+          state.custom.entries.push({ type: 'footer-start' });
+          saveCustom();
+          renderCustom();
+        }
       });
     }
 
@@ -1754,7 +2331,7 @@
       el.addEventListener('dragend', () => { el.style.opacity = ''; });
     });
 
-    // Target items — draggable via handle only
+    // Target items – draggable via handle only
     customView.querySelectorAll('.custom-tgt-item').forEach(el => {
       // Make the entire item draggable but only visually initiate from handle
       el.setAttribute('draggable', 'true');
@@ -1823,7 +2400,7 @@
       }
     }
 
-    // Drop zones — all elements with data-drop-zone
+    // Drop zones – all elements with data-drop-zone
     customView.querySelectorAll('[data-drop-zone]').forEach(zone => {
       zone.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -1935,7 +2512,7 @@
       });
     });
 
-    // Entry-level drop bars — wide targets between groups/links for easy dropping
+    // Entry-level drop bars – wide targets between groups/links for easy dropping
     customView.querySelectorAll('.entry-drop-bar').forEach(bar => {
       bar.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -1992,7 +2569,7 @@
       });
     });
 
-    // Entry reordering (groups and top-level links) — from header drag handle
+    // Entry reordering (groups and top-level links) – from header drag handle
     customView.querySelectorAll('[data-tgt-entry-idx]').forEach(el => {
       const handle = el.querySelector('.drag-handle') || (el.matches('.custom-tgt-entry-link') ? el : null);
       if (!handle) return;
@@ -2059,6 +2636,666 @@
     }
   }
 
+  // ===== DECISION TRACKER =====
+  function saveDecisions() {
+    localStorage.setItem('menuDemoDecisions', JSON.stringify(state.decisions));
+    saveToServer('decisions', state.decisions);
+  }
+
+  function extractName(suggestion) {
+    const match = suggestion.match(/"([^"]+)"/);
+    return match ? match[1] : suggestion.split('\u2014')[0].trim();
+  }
+
+  function generateDecisions() {
+    const decisions = state.decisions;
+
+    items.forEach(item => {
+      if (item.type === 'group') return;
+
+      // Naming decisions: items with different names across variants
+      const names = {};
+      ALL_DECISION_IDS.forEach(vid => {
+        const v = variantsMap[vid];
+        if (!v) return;
+        const dn = getDisplayName(item.id, v);
+        if (!names[dn]) names[dn] = [];
+        names[dn].push(vid);
+      });
+      if (Object.keys(names).length > 1) {
+        const key = item.id + '_naming';
+        if (!decisions[key]) {
+          decisions[key] = {
+            type: 'naming',
+            itemId: item.id,
+            status: item.rationale?.namingSuggestion ? 'proposed' : 'open',
+            decision: item.rationale?.namingSuggestion ? extractName(item.rationale.namingSuggestion) : '',
+            proposedBy: item.rationale?.namingSuggestion ? 'Claude' : '',
+            notes: '',
+            options: names,
+            timestamp: new Date().toISOString()
+          };
+        } else {
+          decisions[key].options = names;
+        }
+      }
+
+      // Placement decisions: items with different parents across variants
+      const placements = {};
+      ALL_DECISION_IDS.forEach(vid => {
+        const v = variantsMap[vid];
+        if (!v) return;
+        const parent = getItemParentInVariant(item.id, v);
+        if (parent && parent !== '(top-level link)') {
+          if (!placements[parent]) placements[parent] = [];
+          placements[parent].push(vid);
+        }
+      });
+      if (Object.keys(placements).length > 1) {
+        const key = item.id + '_placement';
+        if (!decisions[key]) {
+          decisions[key] = {
+            type: 'placement',
+            itemId: item.id,
+            status: item.rationale?.currentChoice ? 'proposed' : 'open',
+            decision: item.rationale?.currentChoice || '',
+            proposedBy: item.rationale?.currentChoice ? 'Claude' : '',
+            notes: '',
+            options: placements,
+            timestamp: new Date().toISOString()
+          };
+        } else {
+          decisions[key].options = placements;
+        }
+      }
+
+      // Open question decisions
+      if (item.rationale?.openQuestion) {
+        const key = item.id + '_question';
+        if (!decisions[key]) {
+          decisions[key] = {
+            type: item.rationale.openQuestion.toLowerCase().includes('name') || item.rationale.openQuestion.toLowerCase().includes('rename') ? 'naming' : 'placement',
+            itemId: item.id,
+            status: 'open',
+            decision: '',
+            proposedBy: '',
+            notes: '',
+            question: item.rationale.openQuestion,
+            timestamp: new Date().toISOString()
+          };
+        }
+      }
+
+      // Removal decisions: items removed in some variants but not others
+      const removedIn = [];
+      const keptIn = [];
+      ALL_DECISION_IDS.forEach(vid => {
+        const v = variantsMap[vid];
+        if (!v || vid === 'as-is') return;
+        if (v.removed?.includes(item.id)) removedIn.push(vid);
+        else keptIn.push(vid);
+      });
+      if (removedIn.length > 0 && keptIn.length > 0) {
+        const key = item.id + '_removal';
+        if (!decisions[key]) {
+          decisions[key] = {
+            type: 'removal',
+            itemId: item.id,
+            status: 'open',
+            decision: '',
+            proposedBy: '',
+            notes: '',
+            options: { 'Keep': keptIn, 'Remove': removedIn },
+            timestamp: new Date().toISOString()
+          };
+        }
+      }
+    });
+
+    // Group-level structural decisions: group names that differ across variants
+    const groupNamesAcross = {};
+    ALL_DECISION_IDS.forEach(vid => {
+      const v = variantsMap[vid];
+      if (!v || vid === 'as-is') return;
+      const entries = buildEntries(v);
+      entries.forEach(entry => {
+        if (entry.type === 'group') {
+          const gName = entry.group.name;
+          // Normalize to find equivalent groups by item overlap
+          const gItems = new Set(getAllGroupItemIds(entry.group));
+          // Find the As-Is equivalent
+          const asIs = variantsMap['as-is'];
+          if (asIs) {
+            const asIsEntries = buildEntries(asIs);
+            asIsEntries.forEach(ae => {
+              if (ae.type !== 'group') return;
+              const aeItems = new Set(getAllGroupItemIds(ae.group));
+              const overlap = [...gItems].filter(id => aeItems.has(id)).length;
+              const maxSize = Math.max(gItems.size, aeItems.size);
+              if (maxSize > 0 && overlap / maxSize > 0.4) {
+                // These are equivalent groups
+                const baseKey = 'group_' + ae.group.name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                if (!groupNamesAcross[baseKey]) groupNamesAcross[baseKey] = { asIsName: ae.group.name, names: {} };
+                if (!groupNamesAcross[baseKey].names[gName]) groupNamesAcross[baseKey].names[gName] = [];
+                groupNamesAcross[baseKey].names[gName].push(vid);
+              }
+            });
+          }
+        }
+      });
+    });
+
+    // Create structural decisions for groups with multiple names
+    Object.entries(groupNamesAcross).forEach(([baseKey, data]) => {
+      // Add As-Is name
+      if (!data.names[data.asIsName]) data.names[data.asIsName] = [];
+      data.names[data.asIsName].push('as-is');
+
+      if (Object.keys(data.names).length > 1) {
+        const key = baseKey + '_groupname';
+        if (!decisions[key]) {
+          decisions[key] = {
+            type: 'structural',
+            itemId: baseKey,
+            itemName: 'Group: ' + data.asIsName,
+            status: 'open',
+            decision: '',
+            proposedBy: '',
+            notes: '',
+            options: data.names,
+            question: `What should the "${data.asIsName}" group be called? Different variants use different names.`,
+            timestamp: new Date().toISOString()
+          };
+        } else {
+          decisions[key].options = data.names;
+        }
+      }
+    });
+
+    // Remove item-level open questions that are really about group naming
+    // (e.g., Segments' question about Contacts vs Audience is a group decision)
+    const groupQuestionItems = ['segments', 'contacts_page'];
+    groupQuestionItems.forEach(id => {
+      const qKey = id + '_question';
+      if (decisions[qKey] && decisions[qKey].question?.includes('group')) {
+        delete decisions[qKey];
+      }
+    });
+
+    state.decisions = decisions;
+    saveDecisions();
+  }
+
+  function renderDecisions() {
+    generateDecisions();
+    const scrollEl = decisionsView.querySelector('.decisions-scroll');
+    const scrollTop = scrollEl ? scrollEl.scrollTop : 0;
+    const decisions = state.decisions;
+    const filter = state.decisionFilter;
+
+    // Collect decision entries
+    let entries = Object.entries(decisions);
+
+    // Filter
+    if (filter === 'open') entries = entries.filter(([, d]) => d.status === 'open');
+    else if (filter === 'proposed') entries = entries.filter(([, d]) => d.status === 'proposed');
+    else if (filter === 'approved') entries = entries.filter(([, d]) => d.status === 'approved');
+    else if (filter === 'deferred') entries = entries.filter(([, d]) => d.status === 'deferred');
+    else if (filter === 'skipped') entries = entries.filter(([, d]) => d.status === 'skipped');
+    else if (filter === 'naming') entries = entries.filter(([, d]) => d.type === 'naming');
+    else if (filter === 'placement') entries = entries.filter(([, d]) => d.type === 'placement');
+    else if (filter === 'removal') entries = entries.filter(([, d]) => d.type === 'removal');
+    else if (filter === 'structural') entries = entries.filter(([, d]) => d.type === 'structural');
+    else if (filter === 'debated') entries = entries.filter(([, d]) => {
+      if (d.type === 'placement' && d.options && Object.keys(d.options).length <= 1) return false;
+      if (d.type === 'naming' && d.options && Object.keys(d.options).length <= 1) return false;
+      return true;
+    });
+
+    // Sort: open first, then proposed, then approved, then deferred; within each, by UPV desc
+    const statusOrder = { open: 0, proposed: 1, approved: 2, deferred: 3, skipped: 4 };
+    entries.sort((a, b) => {
+      const sa = statusOrder[a[1].status] ?? 2;
+      const sb = statusOrder[b[1].status] ?? 2;
+      if (sa !== sb) return sa - sb;
+      const upvA = itemsMap[a[1].itemId]?.upv || 0;
+      const upvB = itemsMap[b[1].itemId]?.upv || 0;
+      return upvB - upvA;
+    });
+
+    // Progress stats
+    const allEntries = Object.values(decisions);
+    const totalCount = allEntries.length;
+    const approvedCount = allEntries.filter(d => d.status === 'approved').length;
+    const openCount = allEntries.filter(d => d.status === 'open').length;
+    const proposedCount = allEntries.filter(d => d.status === 'proposed').length;
+    const deferredCount = allEntries.filter(d => d.status === 'deferred').length;
+    const skippedCount = allEntries.filter(d => d.status === 'skipped').length;
+    const progressPct = totalCount > 0 ? Math.round((approvedCount / totalCount) * 100) : 0;
+
+    // Items that need email dependency note
+    const emailDepItems = ['link_categories', 'bounce_mail_management', 'frequency_cap', 'internal_blacklist', 'sms_settings'];
+
+    let html = '';
+
+    // Toolbar
+    html += '<div class="decisions-toolbar">';
+    html += '<div class="decisions-progress">';
+    html += `<div class="decisions-progress-label">${approvedCount} of ${totalCount} decided (${progressPct}%) \u2014 ${openCount} open, ${proposedCount} proposed, ${skippedCount} skipped, ${deferredCount} deferred</div>`;
+    html += `<div class="decisions-progress-bar"><div class="decisions-progress-fill" style="width:${progressPct}%"></div></div>`;
+    html += '</div>';
+    html += '<div class="decisions-filter">';
+    const filters = [
+      ['all', 'All (' + totalCount + ')'],
+      ['open', 'Open (' + openCount + ')'],
+      ['proposed', 'Proposed (' + proposedCount + ')'],
+      ['approved', 'Approved (' + approvedCount + ')'],
+      ['deferred', 'Deferred (' + deferredCount + ')'],
+      ['skipped', 'Skipped (' + skippedCount + ')'],
+      ['naming', 'Naming'],
+      ['placement', 'Placement'],
+      ['removal', 'Removal'],
+      ['structural', 'Structural'],
+      ['debated', 'Debated Only']
+    ];
+    filters.forEach(([key, label]) => {
+      html += `<button class="decisions-filter-btn${filter === key ? ' active' : ''}" data-dfilter="${key}">${label}</button>`;
+    });
+    html += '</div>';
+    html += '<button class="btn-export-decisions" id="btnExportDecisions">Export JSON</button>';
+    html += '</div>';
+
+    // Group entries by itemId for combined display
+    const grouped = new Map();
+    entries.forEach(([key, d]) => {
+      const gid = d.itemId || key;
+      if (!grouped.has(gid)) grouped.set(gid, []);
+      grouped.get(gid).push([key, d]);
+    });
+
+    // Cards – one per item, sub-sections for each decision type
+    html += '<div class="decisions-scroll">';
+
+    if (grouped.size === 0) {
+      html += '<div style="text-align:center;padding:40px;color:#8D9094;font-size:14px">No decisions match the current filter.</div>';
+    }
+
+    grouped.forEach((itemEntries, gid) => {
+      const firstD = itemEntries[0][1];
+      const item = itemsMap[firstD.itemId];
+      const isStructural = firstD.type === 'structural';
+      const itemName = firstD.itemName || item?.name || firstD.itemId;
+      if (!item && !isStructural) return;
+      const upv = item?.upv ? fmt(item.upv) : '\u2014';
+      const allApproved = itemEntries.every(([,d]) => d.status === 'approved');
+      const anyDeferred = itemEntries.some(([,d]) => d.status === 'deferred');
+      const statusCls = allApproved ? ' status-approved' : anyDeferred ? ' status-deferred' : '';
+
+      html += `<div class="decision-card${statusCls}">`;
+
+      // Item header
+      html += '<div class="decision-card-header">';
+      const typeBadges = itemEntries.map(([,d]) => `<span class="decision-type-badge decision-type-${d.type}">${d.type}</span>`).join('');
+      html += typeBadges;
+      html += `<span class="decision-item-name">${esc(itemName)}</span>`;
+      html += `<span class="decision-item-meta">UPV: ${upv}</span>`;
+      html += '</div>';
+
+      // Reviewer comments (once per item, not per sub-decision)
+      const comments = [];
+      if (item?.petiComment) comments.push('Peti: ' + item.petiComment);
+      if (item?.tillyCom && item.tillyCom.length > 0) comments.push('TillyG: ' + item.tillyCom);
+      if (comments.length > 0) {
+        html += `<div class="decision-card-body"><div class="decision-comments">${comments.map(c => esc(c)).join('<br>')}</div></div>`;
+      }
+
+      // SAP category (once per item)
+      if (item?.rationale?.officialCategory) {
+        html += `<div class="decision-card-body"><div class="decision-sap">SAP category: ${esc(item.rationale.officialCategory)}</div></div>`;
+      }
+
+      // Sub-sections – one per decision type
+      itemEntries.forEach(([key, d]) => {
+        html += `<div class="decision-card-body" data-dkey="${esc(key)}" style="border-top:1px solid #F0F0F0;padding-top:8px;margin-top:4px">`;
+        html += `<div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8D9094;margin-bottom:4px;display:flex;align-items:center;gap:8px">${d.type} <select class="decision-status" data-dstatus="${esc(key)}" style="font-size:10px;padding:1px 4px">`;
+        ['open', 'proposed', 'approved', 'deferred'].forEach(s => {
+          html += `<option value="${s}"${d.status === s ? ' selected' : ''}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`;
+        });
+        html += '</select></div>';
+
+        if (d.question) {
+          html += `<div class="decision-dep-note" style="background:#FFF8E1;border-left-color:#F9A825;margin-bottom:10px"><strong>Open question:</strong> ${esc(d.question)}</div>`;
+        }
+
+        if (d.options && Object.keys(d.options).length > 0) {
+          html += '<div class="decision-options">';
+          Object.entries(d.options).forEach(([optName, optVariants]) => {
+            const isSelected = d.decision === optName;
+            const variantLabels = (Array.isArray(optVariants) ? optVariants : []).map(vid => { const vr = variantsMap[vid]; return vr ? vr.name : vid; }).join(', ');
+            html += `<div class="decision-option${isSelected ? ' selected' : ''}" data-dopt="${esc(key)}" data-dopt-val="${esc(optName)}">`;
+            html += `<div class="decision-option-name">${esc(optName)}</div>`;
+            if (variantLabels) html += `<div class="decision-option-source">${esc(variantLabels)}</div>`;
+            html += '</div>';
+          });
+          html += '</div>';
+        }
+
+        if (item?.rationale?.namingSuggestion && d.type === 'naming') {
+          html += `<div class="decision-rec"><strong>Recommendation:</strong> ${esc(item.rationale.namingSuggestion)}</div>`;
+        }
+        if (item?.rationale?.currentChoice && d.type === 'placement') {
+          html += `<div class="decision-rec"><strong>Current decision:</strong> ${esc(item.rationale.currentChoice)}</div>`;
+        }
+
+        if (emailDepItems.includes(d.itemId) && d.type === 'naming') {
+          html += '<div class="decision-dep-note">Naming depends on parent group decision: if placed under "Email," the "Email" prefix may be redundant.</div>';
+        }
+
+        html += '<div class="decision-card-footer">';
+        html += `<button class="decision-approve-btn" data-dapprove="${esc(key)}">${d.status === 'approved' ? '\u2713 Approved' : 'Approve'}</button>`;
+        html += `<button class="decision-defer-btn" data-ddefer="${esc(key)}">${d.status === 'deferred' ? 'Deferred' : 'Defer'}</button>`;
+        html += `<button class="decision-skip-btn" data-dskip="${esc(key)}">${d.status === 'skipped' ? 'Skipped' : 'Skip'}</button>`;
+        html += '</div>';
+
+        html += '</div>';
+      });
+
+      // Notes section (per item, shared)
+      const firstKey = itemEntries[0][0];
+      const firstNotes = itemEntries[0][1].notes;
+      const notesArr = Array.isArray(firstNotes) ? firstNotes : (typeof firstNotes === 'string' && firstNotes ? [{ text: firstNotes, author: 'TillyG', time: itemEntries[0][1].timestamp }] : []);
+      html += '<div class="decision-notes-section">';
+      notesArr.forEach(note => {
+        const timeStr = note.time ? new Date(note.time).toLocaleDateString('en-GB', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) : '';
+        html += `<div class="decision-note"><div class="decision-note-header"><strong>${esc(note.author || 'Anonymous')}</strong><span class="decision-note-time">${timeStr}</span></div><div class="decision-note-text">${esc(note.text)}</div></div>`;
+      });
+      html += `<div class="decision-note-add"><input class="decision-note-input" placeholder="Add a note..." data-dnote-key="${esc(firstKey)}"><button class="decision-note-btn" data-dnote-add="${esc(firstKey)}">Post</button></div>`;
+      html += '</div>';
+
+      html += '</div>';
+    });
+
+    html += '</div>';
+
+    decisionsView.innerHTML = html;
+    const newScrollEl = decisionsView.querySelector('.decisions-scroll');
+    if (newScrollEl) newScrollEl.scrollTop = scrollTop;
+
+    // Attach events
+
+    // Filter buttons
+    decisionsView.querySelectorAll('.decisions-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.decisionFilter = btn.dataset.dfilter;
+        renderDecisions();
+      });
+    });
+
+    // Status dropdowns
+    decisionsView.querySelectorAll('.decision-status').forEach(sel => {
+      sel.addEventListener('change', () => {
+        const key = sel.dataset.dstatus;
+        if (state.decisions[key]) {
+          state.decisions[key].status = sel.value;
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+
+    // Option clicks
+    decisionsView.querySelectorAll('.decision-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const key = opt.dataset.dopt;
+        const val = opt.dataset.doptVal;
+        if (state.decisions[key]) {
+          if (state.decisions[key].decision === val) {
+            state.decisions[key].decision = '';
+          } else {
+            state.decisions[key].decision = val;
+          }
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+
+    // Approve buttons
+    decisionsView.querySelectorAll('.decision-approve-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.dapprove;
+        if (state.decisions[key]) {
+          state.decisions[key].status = state.decisions[key].status === 'approved' ? 'proposed' : 'approved';
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+
+    // Defer buttons
+    decisionsView.querySelectorAll('.decision-defer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.ddefer;
+        if (state.decisions[key]) {
+          state.decisions[key].status = state.decisions[key].status === 'deferred' ? 'open' : 'deferred';
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+
+    // Skip buttons
+    decisionsView.querySelectorAll('.decision-skip-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.dskip;
+        if (state.decisions[key]) {
+          state.decisions[key].status = state.decisions[key].status === 'skipped' ? 'open' : 'skipped';
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+
+    // Post note button
+    decisionsView.querySelectorAll('.decision-note-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.dnoteAdd;
+        const input = decisionsView.querySelector(`[data-dnote-key="${key}"]`);
+        if (!input || !input.value.trim()) return;
+        if (state.decisions[key]) {
+          if (!Array.isArray(state.decisions[key].notes)) state.decisions[key].notes = [];
+          state.decisions[key].notes.push({
+            text: input.value.trim(),
+            author: sessionStorage.getItem('menuUserName') || 'Anonymous',
+            time: new Date().toISOString()
+          });
+          saveDecisions();
+          renderDecisions();
+        }
+      });
+    });
+    // Also post on Enter key
+    decisionsView.querySelectorAll('.decision-note-input').forEach(input => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const key = input.dataset.dnoteKey;
+          const btn = decisionsView.querySelector(`[data-dnote-add="${key}"]`);
+          if (btn) btn.click();
+        }
+      });
+    });
+
+    // Export
+    const exportBtn = document.getElementById('btnExportDecisions');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const exportData = {};
+        Object.entries(state.decisions).forEach(([key, d]) => {
+          const item = itemsMap[d.itemId];
+          exportData[key] = {
+            itemName: item?.name || d.itemId,
+            type: d.type,
+            status: d.status,
+            decision: d.decision,
+            notes: d.notes,
+            question: d.question || null,
+            options: d.options
+          };
+        });
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'decisions-export.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+  }
+
+  // ===== VARIANT CONTEXT MENU =====
+  function showVariantMenu(trigger, vid) {
+    closeVariantMenu();
+    const menu = document.createElement('div');
+    menu.className = 'variant-menu';
+    menu.id = 'variantMenuDropdown';
+
+    const isStarred = state.starred.has(vid);
+
+    menu.innerHTML = `
+      <button class="variant-menu-item" data-vmaction="edit" data-vmvid="${vid}">\u270F\uFE0F Edit</button>
+      <button class="variant-menu-item" data-vmaction="shortlist" data-vmvid="${vid}">${isStarred ? '\u2605 Remove from Shortlist' : '\u2606 Add to Shortlist'}</button>
+      <button class="variant-menu-item" data-vmaction="download" data-vmvid="${vid}">\uD83D\uDCE5 Download JSON</button>
+      <button class="variant-menu-item" data-vmaction="duplicate" data-vmvid="${vid}">\uD83D\uDCCB Duplicate</button>
+      <div class="variant-menu-divider"></div>
+      <button class="variant-menu-item" data-vmaction="archive" data-vmvid="${vid}">\uD83D\uDCE6 Archive</button>
+      <button class="variant-menu-item variant-menu-danger" data-vmaction="delete" data-vmvid="${vid}">\uD83D\uDDD1\uFE0F Delete</button>
+    `;
+
+    // Position below trigger
+    const rect = trigger.getBoundingClientRect();
+    menu.style.position = 'fixed';
+    menu.style.top = (rect.bottom + 4) + 'px';
+    menu.style.left = rect.left + 'px';
+    menu.style.zIndex = '1000';
+
+    document.body.appendChild(menu);
+
+    // Handle actions
+    menu.querySelectorAll('.variant-menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const action = item.dataset.vmaction;
+        const targetVid = item.dataset.vmvid;
+        handleVariantAction(action, targetVid);
+        closeVariantMenu();
+      });
+    });
+
+    // Close on click outside
+    setTimeout(() => {
+      document.addEventListener('click', closeVariantMenu, { once: true });
+    }, 10);
+  }
+
+  function closeVariantMenu() {
+    const existing = document.getElementById('variantMenuDropdown');
+    if (existing) existing.remove();
+  }
+
+  function handleVariantAction(action, vid) {
+    const v = variantsMap[vid];
+    if (!v) return;
+
+    switch(action) {
+      case 'edit':
+        // Trigger the edit variant flow
+        state.editingVariantId = vid;
+        state.editOriginal = JSON.parse(JSON.stringify(v));
+        const builtEntries = buildEntries(v);
+        const entries = builtEntries.map(entry => {
+          if (entry.type === 'link') return { type: 'link', id: entry.id, customName: v.renames?.[entry.id] || null };
+          if (entry.type === 'separator') return { type: 'separator', label: entry.label };
+          if (entry.type === 'footer-start') return { type: 'footer-start' };
+          return { type: 'group', name: entry.group.name, items: getAllGroupItemIds(entry.group).filter(id => !v.removed?.includes(id)).map(id => ({ id, customName: v.renames?.[id] || null })) };
+        });
+        state.custom = { entries };
+        customOverlay.style.display = 'flex';
+        customOverlay.classList.add('active');
+        renderCustom();
+        break;
+
+      case 'shortlist':
+        if (state.starred.has(vid)) state.starred.delete(vid);
+        else state.starred.add(vid);
+        localStorage.setItem('menuDemoStarred', JSON.stringify([...state.starred]));
+        updateSubToggle();
+        break;
+
+      case 'download':
+        const blob = new Blob([JSON.stringify(v, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = `variant-${vid}.json`; a.click();
+        URL.revokeObjectURL(url);
+        break;
+
+      case 'duplicate':
+        const newId = vid + '-copy-' + Date.now();
+        const copy = JSON.parse(JSON.stringify(v));
+        copy.id = newId;
+        copy.name = v.name + ' (Copy)';
+        variantsMap[newId] = copy;
+        ALL_VARIANT_IDS.push(newId);
+        const nextKey = String(Object.keys(TAB_MAP['ux']).length + 1);
+        TAB_MAP['ux'][nextKey] = newId;
+        SUB_LABELS['ux'][nextKey] = copy.name;
+        updateSubToggle();
+        // Save to server
+        fetch(`/save/variant/${newId}`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(copy) }).catch(() => {});
+        break;
+
+      case 'archive':
+        if (!confirm(`Archive "${v.name}"? It will be hidden but can be restored.`)) return;
+        const archivedList = JSON.parse(localStorage.getItem('menuDemoArchived') || '[]');
+        archivedList.push({ id: vid, name: v.name, timestamp: new Date().toISOString() });
+        localStorage.setItem('menuDemoArchived', JSON.stringify(archivedList));
+        // Remove from TAB_MAP
+        for (const [k, id] of Object.entries(TAB_MAP['ux'])) {
+          if (id === vid) { delete TAB_MAP['ux'][k]; break; }
+        }
+        // Reindex TAB_MAP
+        const remaining = Object.values(TAB_MAP['ux']);
+        TAB_MAP['ux'] = {};
+        SUB_LABELS['ux'] = {};
+        remaining.forEach((id, i) => {
+          TAB_MAP['ux'][String(i+1)] = id;
+          const vr = variantsMap[id];
+          SUB_LABELS['ux'][String(i+1)] = vr ? vr.name : id;
+        });
+        // Switch to first variant if current was archived
+        if (currentVariantId() === vid) { state.sub = '1'; render(); }
+        updateSubToggle();
+        break;
+
+      case 'delete':
+        if (!confirm(`Delete "${v.name}"? This cannot be undone.`)) return;
+        // Remove from TAB_MAP
+        for (const [k, id] of Object.entries(TAB_MAP['ux'])) {
+          if (id === vid) { delete TAB_MAP['ux'][k]; break; }
+        }
+        const rem2 = Object.values(TAB_MAP['ux']);
+        TAB_MAP['ux'] = {};
+        SUB_LABELS['ux'] = {};
+        rem2.forEach((id, i) => {
+          TAB_MAP['ux'][String(i+1)] = id;
+          const vr = variantsMap[id];
+          SUB_LABELS['ux'][String(i+1)] = vr ? vr.name : id;
+        });
+        delete variantsMap[vid];
+        if (currentVariantId() === vid) { state.sub = '1'; render(); }
+        updateSubToggle();
+        break;
+    }
+  }
+
   // ===== HELPERS =====
   function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
   function fmt(n) { return n != null ? n.toLocaleString() : '—'; }
@@ -2066,4 +3303,5 @@
   // ===== INITIAL RENDER =====
   updateSubToggle();
   render();
+  generateDecisions();
 })();

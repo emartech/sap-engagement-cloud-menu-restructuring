@@ -1,0 +1,131 @@
+{
+  "id": "A1",
+  "name": "Flat, All Items",
+  "subtitle": "Flat structure keeping all menu items",
+  "description": "2-levels, alphabetical order, no sub-groups. All items listed directly under their parent group. Matches the current production menu structure with groups collapsed to a single level.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics",
+        "unified_dashboard"
+      ]
+    },
+    {
+      "name": "Channels",
+      "items": [
+        "custdev_bmw_channels",
+        "conversation",
+        "crm_ads",
+        "bounce_mail_management",
+        "email_campaign_list",
+        "frequency_cap",
+        "internal_blacklist",
+        "link_categories",
+        "embedded_messaging",
+        "mobile_channel",
+        "mobile_wallet",
+        "sms_channel",
+        "sms_settings",
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "add_contact",
+        "consent",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "segments",
+        "sap_cdp_segmentation"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "custdev_icalendar_configurator",
+        "mediadb_brand_center",
+        "aim_coupon_pools",
+        "personalization_0"
+      ]
+    },
+    {
+      "name": "Management",
+      "items": [
+        "account_setup",
+        "sdk_management",
+        "business_area",
+        "engagement_events",
+        "integration_monitor",
+        "spc_data_quality",
+        "revenue_attributor",
+        "sap_commerce_cloud_integration",
+        "sales_data_load_screen",
+        "admin_user_management",
+        "security_settings",
+        "self_service_sso",
+        "context_access_manager",
+        "universal_schema_builder",
+        "web_extend",
+        "automation_webhook_node"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Management"
+    }
+  ],
+  "renames": {
+    "bounce_mail_management": "Email Bounce Management",
+    "email_campaign_list": "Email Campaigns",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email Internal Blocklist",
+    "link_categories": "Email Link Categories",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "spc_data_quality": "Product Catalog",
+    "sdk_management": "App and Channel Settings"
+  },
+  "removed": [],
+  "author": "Tilly"
+}

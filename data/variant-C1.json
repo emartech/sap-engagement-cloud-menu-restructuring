@@ -1,0 +1,175 @@
+{
+  "id": "C1",
+  "name": "Channels and Management Sections",
+  "subtitle": "Section separators for Channels and Management",
+  "description": "3-levels with sub-groups, alphabetical order on top-level and within groups. Preserves the current As-Is structure with Channels and Management as section separators containing sub-groups.",
+  "links": [
+    "home",
+    "automation"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "ai_assisted_report_builder",
+        "audience_reporting",
+        "campaign_analytics",
+        "event_attribution",
+        "flexible_analytics",
+        "revenue_analytics",
+        "unified_dashboard"
+      ]
+    },
+    {
+      "name": "Contacts",
+      "items": [
+        "add_contact",
+        "consent",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "segments",
+        "sap_cdp_segmentation"
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        "content_design",
+        "templates",
+        "custdev_icalendar_configurator",
+        "mediadb_brand_center",
+        "aim_coupon_pools",
+        "personalization_0",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "bounce_mail_management",
+        "email_campaign_list",
+        "frequency_cap",
+        "internal_blacklist",
+        "link_categories"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "conversation",
+        "mobile_channel",
+        "mobile_wallet",
+        "sms_channel",
+        "sms_settings"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "business_area",
+        "self_service_sso",
+        "security_settings",
+        "admin_user_management",
+        "sdk_management"
+      ]
+    },
+    {
+      "name": "Data Management",
+      "items": [
+        "integration_monitor",
+        "engagement_events",
+        "spc_data_quality",
+        "revenue_attributor",
+        "sales_data_load_screen",
+        "sap_commerce_cloud_integration",
+        "universal_schema_builder",
+        "web_extend",
+        "automation_webhook_node"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "link",
+      "id": "crm_ads"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "separator",
+      "label": "Management"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data Management"
+    }
+  ],
+  "renames": {
+    "bounce_mail_management": "Email Bounce Management",
+    "email_campaign_list": "Email Campaigns",
+    "frequency_cap": "Email Frequency Cap",
+    "internal_blacklist": "Email Internal Blocklist",
+    "link_categories": "Email Link Categories",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "context_access_manager": "Tag Manager",
+    "spc_data_quality": "Product Catalog"
+  },
+  "removed": [],
+  "author": "Tilly"
+}

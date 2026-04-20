@@ -1,4 +1,135 @@
 {
+  "a1": {
+    "unified_dashboard": {
+      "vote": "up",
+      "comment": "This is the main page of Analytics"
+    },
+    "ai_assisted_report_builder": {
+      "vote": "up",
+      "comment": "It's an important AI feature"
+    },
+    "audience_reporting": {
+      "vote": "up"
+    },
+    "event_attribution": {
+      "vote": "down",
+      "comment": "This is more like a setting. It should be in the same group as conversion goals."
+    },
+    "campaign_analytics": {
+      "vote": "down",
+      "comment": "This is more relevant, shouldn't be almost at the end of the list"
+    },
+    "revenue_analytics": {
+      "vote": "down",
+      "comment": "Is this the right place? Isn't this more important based on analytics? "
+    },
+    "flexible_analytics": {
+      "vote": "up",
+      "comment": ""
+    },
+    "content_design": {
+      "vote": "up"
+    },
+    "mediadb_brand_center": {
+      "vote": "up"
+    },
+    "templates": {
+      "vote": "down",
+      "comment": "Not sure if this is the right place for this, altough email templates are the legacy version of \"Content Design\"..."
+    },
+    "personalization_0": {
+      "vote": "down",
+      "comment": "This is more important based on analytics"
+    },
+    "aim_coupon_pools": {
+      "vote": "down",
+      "comment": "Right placement? Check analytics"
+    },
+    "custdev_icalendar_configurator": {
+      "comment": "Is this a content? Wha not under Administration/Management?",
+      "vote": "down"
+    },
+    "email_campaign_list": {
+      "vote": "up",
+      "comment": ""
+    },
+    "segments": {
+      "comment": "We could maybe rename this to Audicence/Audiences?"
+    },
+    "consent": {
+      "comment": "Consent Management? Not sure"
+    },
+    "context_access_manager": {
+      "comment": "Not sure about the name and the placement..."
+    },
+    "home": {
+      "vote": "up"
+    },
+    "automation": {
+      "vote": "up"
+    }
+  },
+  "a2": {
+    "sdk_management": {
+      "vote": "up"
+    },
+    "engagement_events": {
+      "vote": "up"
+    },
+    "contacts_page": {
+      "vote": "up"
+    },
+    "automation": {
+      "vote": "up"
+    },
+    "home": {
+      "vote": "up"
+    }
+  },
+  "b1": {
+    "automation": {
+      "vote": "up"
+    },
+    "home": {
+      "vote": "up"
+    },
+    "unified_dashboard": {
+      "vote": "up"
+    },
+    "ai_assisted_report_builder": {
+      "vote": "up"
+    },
+    "revenue_attributor": {
+      "vote": "up",
+      "comment": "Better here, I guess, but I don't like the order. Not sure how event and revenue attribution work. Should check SAP Help portal to understand it better."
+    },
+    "revenue_analytics": {
+      "comment": "More importnat"
+    },
+    "campaign_analytics": {
+      "comment": "More importnat"
+    },
+    "conversation": {
+      "vote": "up"
+    },
+    "contacts_page": {
+      "vote": "up",
+      "comment": "Contacts under contacts is strange... Audience maybe?"
+    },
+    "sdk_management": {
+      "comment": "Why is this here if we have a separate channels setting main menu group?"
+    },
+    "engagement_events": {
+      "vote": "up",
+      "comment": "I like this category. Shouldn't iCalendar integration live here?"
+    },
+    "context_access_manager": {
+      "comment": "Not sure about the placement. The purpose of this feature is to categorize business objects, e.g., automation programs and/or emails. These are platform-level tags that can be used for different assets as well (e.g., contacts). "
+    },
+    "custdev_icalendar_configurator": {
+      "comment": "Not sure about the placement"
+    }
+  },
   "b2": {
     "context_access_manager": {
       "vote": "down",
@@ -12,6 +143,65 @@
     },
     "home": {
       "vote": null
+    }
+  },
+  "c1": {
+    "account_setup": {
+      "comment": "Administration as a group name is promising, but maybe with the channels setting, this is too much already (features for daily use vs. settings)"
+    },
+    "integration_monitor": {
+      "comment": "I like this Data & Integrations category name. Not sure if we can use & in the menu item names regarding the SAP UI string standards."
+    }
+  },
+  "e1": {
+    "revenue_attributor": {
+      "vote": "down",
+      "comment": "It could also be under Administration, together with Event attribution, but if this is only for Analytics, it may be better to keep a better distribution here."
+    },
+    "ai_assisted_report_builder": {
+      "vote": "down",
+      "comment": "This should be the second after Unified Dashboard."
+    },
+    "templates": {
+      "comment": "Is this the only possible placement for this menu item?"
+    },
+    "context_access_manager": {
+      "vote": "up",
+      "comment": "Asset Tagging (?)"
+    },
+    "sms_settings": {
+      "comment": "No! Just \"SMS Settings\". "
+    },
+    "event_attribution": {
+      "comment": "Where is Revenue Attribution?!??? Chat SAP Engagement Cloud help portal to understand details!"
+    },
+    "sdk_management": {
+      "comment": "Should be more logical like: 1. Accunt setup 2. User management 3. Business ares 4. Apps and Channel Settings 5. Email-related settings; SMS settings"
+    },
+    "personalization_0": {
+      "comment": "Personalization Tokens (?)"
+    },
+    "group_channels": {
+      "vote": null
+    }
+  },
+  "e3": {
+    "conversation": {
+      "comment": "This name is not 100% good... Should we maybe revert to \"Conversational Channel\" at least in one version?"
+    },
+    "mobile_wallet": {
+      "comment": "The visits are not reflected on the menu order."
+    },
+    "segments": {
+      "vote": "down",
+      "comment": "This should stay segmentation!"
+    },
+    "consent": {
+      "comment": "Why not Consent Management?",
+      "vote": "down"
+    },
+    "universal_schema_builder": {
+      "comment": ""
     }
   },
   "as-is": {
@@ -31,14 +221,25 @@
       "comment": ""
     }
   },
+  "f2": {
+    "engagement_events": {
+      "comment": ""
+    }
+  },
   "f3": {
     "group_content": {
+      "vote": null
+    },
+    "group_data_and_integrations": {
       "vote": null
     }
   },
   "cust5": {
     "embedded_messaging": {
-      "vote": "down"
+      "vote": null
+    },
+    "group_content_management": {
+      "vote": null
     }
   },
   "p1": {
@@ -82,6 +283,29 @@
     "mediadb_brand_center": {
       "vote": "down",
       "comment": "This can only stay if it can be opened as a regular page instead of modal dialog."
+    }
+  },
+  "p3": {
+    "group_content_management": {
+      "vote": null
+    },
+    "group_account_management": {
+      "vote": null
+    }
+  },
+  "g1": {
+    "segments": {
+      "vote": "up"
+    }
+  },
+  "C1": {
+    "group_channel_settings": {
+      "vote": "down"
+    }
+  },
+  "iter-sections": {
+    "group_content": {
+      "vote": null
     }
   }
 }
