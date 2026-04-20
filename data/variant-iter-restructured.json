@@ -5,9 +5,14 @@
   "description": "Restructured groups with Channels and Administration sections. Renames Contacts to Audience, Management to Administration. Moves Revenue Attribution to Analytics. Content split into Content Management under Administration. Removes Add Contact (covered by Contacts and Contact Lists).",
   "author": "Tilly & Peti",
   "tier": "1st Iteration",
-  "mergedFrom": ["D"],
+  "mergedFrom": [
+    "D"
+  ],
   "mergeNote": "Based on Tilly's D variant with Peti's naming contributions. Add Contact removed intentionally.",
-  "links": ["home", "automation"],
+  "links": [
+    "home",
+    "automation"
+  ],
   "groups": [
     {
       "name": "Analytics",
@@ -99,33 +104,77 @@
     }
   ],
   "entryOrder": [
-    {"type": "link", "id": "home"},
-    {"type": "group", "name": "Analytics"},
-    {"type": "group", "name": "Audience"},
-    {"type": "link", "id": "automation"},
-    {"type": "separator", "label": "Channels"},
-    {"type": "link", "id": "custdev_bmw_channels"},
-    {"type": "link", "id": "crm_ads"},
-    {"type": "group", "name": "Email"},
-    {"type": "link", "id": "embedded_messaging"},
-    {"type": "group", "name": "Mobile"},
-    {"type": "group", "name": "Web"},
-    {"type": "separator", "label": "Administration"},
-    {"type": "group", "name": "Account Management"},
-    {"type": "group", "name": "Content Management"},
-    {"type": "group", "name": "Data & Integrations"}
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Audience"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "link",
+      "id": "crm_ads"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "link",
+      "id": "embedded_messaging"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "separator",
+      "label": "Administration"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
   ],
   "renames": {
-    "revenue_attributor": "Revenue Attribution",
     "security_settings": "API User Management",
     "personalization_0": "Personalization Tokens",
     "aim_coupon_pools": "Omnichannel Vouchers",
     "context_access_manager": "Asset Tag Manager",
     "custdev_icalendar_configurator": "iCalendar Configuration",
     "spc_data_quality": "Product Catalog",
-    "sdk_management": "App and Channel Settings",
-    "automation_webhook_node": "Webhook Node Presets",
-    "sales_data_load_screen": "Sales Data Loads"
+    "sdk_management": "App and Channel Settings"
   },
-  "removed": ["add_contact"]
+  "removed": [
+    "add_contact"
+  ]
 }

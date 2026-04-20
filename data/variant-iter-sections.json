@@ -5,9 +5,16 @@
   "description": "Flat menu with Channels and Management section separators. Channel sub-groups: Email, Mobile, Web, Other. Management sub-groups: Account Management, Data Management. All items kept. As-Is group names for familiarity.",
   "author": "Tilly & Peti",
   "tier": "1st Iteration",
-  "mergedFrom": ["C1", "C2", "C3"],
+  "mergedFrom": [
+    "C1",
+    "C2",
+    "C3"
+  ],
   "mergeNote": "Based on Tilly's C1/C3 structure (all items, As-Is names) with Peti's C2 input on management grouping.",
-  "links": ["home", "automation"],
+  "links": [
+    "home",
+    "automation"
+  ],
   "groups": [
     {
       "name": "Analytics",
@@ -108,30 +115,64 @@
     }
   ],
   "entryOrder": [
-    {"type": "link", "id": "home"},
-    {"type": "group", "name": "Analytics"},
-    {"type": "link", "id": "automation"},
-    {"type": "group", "name": "Contacts"},
-    {"type": "group", "name": "Content"},
-    {"type": "separator", "label": "Channels"},
-    {"type": "group", "name": "Email"},
-    {"type": "group", "name": "Mobile"},
-    {"type": "group", "name": "Web"},
-    {"type": "group", "name": "Other"},
-    {"type": "separator", "label": "Management"},
-    {"type": "group", "name": "Account Management"},
-    {"type": "group", "name": "Data Management"}
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "group",
+      "name": "Other"
+    },
+    {
+      "type": "separator",
+      "label": "Management"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Data Management"
+    }
   ],
   "renames": {
     "contacts_page": "Contacts Page",
     "custdev_icalendar_configurator": "iCalendar Configuration",
     "spc_data_quality": "Product Catalog",
-    "sdk_management": "App and Channel Settings",
-    "revenue_attributor": "Revenue Attribution",
-    "automation_webhook_node": "Webhook Node Presets",
-    "sales_data_load_screen": "Sales Data Loads",
-    "business_area": "Business Areas",
-    "context_access_manager": "Tag Manager"
+    "sdk_management": "App and Channel Settings"
   },
   "removed": []
 }

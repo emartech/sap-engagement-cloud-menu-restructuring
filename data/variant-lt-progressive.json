@@ -5,7 +5,11 @@
   "description": "Long-term direction: Audience instead of Contacts, channel-split with Email/Mobile/Web as top-level groups, Administration section with Account Management, Content Management, Data & Integrations, and Personalization. All items kept except Add Contact and SSO.",
   "author": "Tilly & Peti",
   "tier": "Long-term",
-  "mergedFrom": ["cust5", "claude2", "f3"],
+  "mergedFrom": [
+    "cust5",
+    "claude2",
+    "f3"
+  ],
   "mergeNote": "Vision variant combining bold ideas from multiple sources. Represents the long-term IA direction.",
   "links": [
     "home",
@@ -175,7 +179,6 @@
     }
   ],
   "renames": {
-    "revenue_attributor": "Revenue Attribution",
     "event_attribution": "Conversion Analytics",
     "security_settings": "API Credentials",
     "personalization_0": "Personalization Tokens",
@@ -185,10 +188,6 @@
     "spc_data_quality": "Product Catalog",
     "sdk_management": "App and Channel Settings",
     "automation_webhook_node": "Webhook Presets",
-    "sales_data_load_screen": "Sales Data Loads",
-    "templates": "Email Templates",
-    "mobile_channel": "Mobile Engage",
-    "sms_channel": "SMS Campaigns",
     "conversation": "Conversational Channels"
   },
   "removed": [

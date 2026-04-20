@@ -5,9 +5,15 @@
   "description": "2-level flat structure with 5 top-level groups. All menu items kept. Combines Tilly's completeness with Peti's clearer naming suggestions.",
   "author": "Tilly & Peti",
   "tier": "1st Iteration",
-  "mergedFrom": ["A1", "A2"],
+  "mergedFrom": [
+    "A1",
+    "A2"
+  ],
   "mergeNote": "Based on Tilly's A1 (all items) with Peti's A2 naming. Peti's original removed: Add Contact, SAP CDP Segmentation, Account Setup, SAP Commerce Cloud Integration, Product Catalog Data.",
-  "links": ["home", "automation"],
+  "links": [
+    "home",
+    "automation"
+  ],
   "groups": [
     {
       "name": "Analytics",
@@ -88,34 +94,43 @@
     }
   ],
   "entryOrder": [
-    {"type": "link", "id": "home"},
-    {"type": "group", "name": "Analytics"},
-    {"type": "link", "id": "automation"},
-    {"type": "group", "name": "Channels"},
-    {"type": "group", "name": "Contacts"},
-    {"type": "group", "name": "Content"},
-    {"type": "group", "name": "Management"}
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "group",
+      "name": "Channels"
+    },
+    {
+      "type": "group",
+      "name": "Contacts"
+    },
+    {
+      "type": "group",
+      "name": "Content"
+    },
+    {
+      "type": "group",
+      "name": "Management"
+    }
   ],
   "renames": {
     "contacts_page": "Contacts Page",
-    "email_campaign_list": "Email Campaigns",
     "link_categories": "Email Link Categories",
-    "bounce_mail_management": "Bounce Management",
     "frequency_cap": "Email Frequency Cap",
     "internal_blacklist": "Email Internal Blocklist",
-    "mobile_channel": "Mobile Engage",
-    "sms_channel": "SMS Campaigns",
-    "conversation": "Conversational",
-    "templates": "Email Templates",
     "custdev_icalendar_configurator": "iCalendar Configuration",
-    "aim_coupon_pools": "Omnichannel Voucher",
     "sdk_management": "App and Channel Settings",
-    "context_access_manager": "Tag Manager",
-    "spc_data_quality": "Product Catalog",
-    "revenue_attributor": "Revenue Attribution",
-    "automation_webhook_node": "Webhook Node Presets",
-    "sales_data_load_screen": "Sales Data Loads",
-    "business_area": "Business Areas"
+    "spc_data_quality": "Product Catalog"
   },
   "removed": []
 }
