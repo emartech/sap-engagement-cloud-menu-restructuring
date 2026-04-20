@@ -590,6 +590,13 @@
     const ratingColor = iaRating >= 80 ? '#188038' : iaRating >= 60 ? '#E37400' : '#D93025';
     const ratingBg = iaRating >= 80 ? '#E6F4EA' : iaRating >= 60 ? '#FEF7E0' : '#FFF0F0';
 
+    // IA tooltip reasoning
+    const balanceReason = balanceScore >= 85 ? 'Well-balanced group sizes' : balanceScore >= 60 ? 'Some groups are much larger than others' : 'Very uneven group sizes';
+    const depthReason = hasSeparators ? 'Separators help scan long menus' : (hasOversized ? 'Large groups without separators hurt scannability' : 'Flat structure, manageable group sizes');
+    const namingReason = renames > 10 ? 'Many intentional renames for clarity' : renames > 3 ? 'Some renames improve naming' : 'Mostly original names';
+    const complReason = completenessScore === 100 ? 'All menu items kept' : completenessScore >= 90 ? 'Most items kept (' + removed + ' removed)' : removed + ' items removed';
+    const iaTooltip = `IA Score: ${iaRating}/100\n\nBalance (${balanceScore}): ${balanceReason}\nStructure (${depthScore}): ${depthReason}\nNaming (${namingScore}): ${namingReason}\nCompleteness (${completenessScore}): ${complReason}`;
+
     // === RENDER ===
     let html = '<div class="vd-panel">';
 
@@ -600,7 +607,7 @@
     if (v.tier) html += `<span class="vd-tier ${v.tier === 'Long-term' ? 'vd-tier-lt' : 'vd-tier-iter'}">${esc(v.tier)}</span>`;
     html += `<span class="vd-title">${esc(v.name)}</span>`;
     html += '</div>';
-    html += `<span class="vd-ia-badge" style="color:${ratingColor};background:${ratingBg}" title="Balance ${balanceScore} · Depth ${depthScore} · Naming ${namingScore} · Completeness ${completenessScore}">IA ${iaRating}</span>`;
+    html += `<span class="vd-ia-badge" style="color:${ratingColor};background:${ratingBg}" title="${esc(iaTooltip)}">IA ${iaRating}</span>`;
     html += '</div>';
 
     if (v.mergeNote) {
