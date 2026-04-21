@@ -3338,27 +3338,50 @@
       const el = document.querySelector(step.target);
       if (!el) { endWalkthrough(); return; }
       const rect = el.getBoundingClientRect();
+      const pad = 8;
 
       let spot = overlay.querySelector('.wt-spotlight');
       if (!spot) { spot = document.createElement('div'); spot.className = 'wt-spotlight'; overlay.appendChild(spot); }
-      spot.style.top = (rect.top - 6) + 'px';
-      spot.style.left = (rect.left - 6) + 'px';
-      spot.style.width = (rect.width + 12) + 'px';
-      spot.style.height = (rect.height + 12) + 'px';
+      spot.style.top = (rect.top - pad) + 'px';
+      spot.style.left = (rect.left - pad) + 'px';
+      spot.style.width = (rect.width + pad * 2) + 'px';
+      spot.style.height = (rect.height + pad * 2) + 'px';
       backdrop.style.display = 'none';
 
       textEl.textContent = step.text;
       stepEl.textContent = (idx + 1) + ' / ' + steps.length;
       nextBtn.textContent = idx === steps.length - 1 ? 'Done' : 'Next';
 
-      const ttW = 360;
-      let ttLeft = rect.left + rect.width / 2 - ttW / 2;
-      let ttTop = rect.bottom + 16;
-      if (ttTop + 200 > window.innerHeight) ttTop = rect.top - 180;
-      if (ttLeft < 16) ttLeft = 16;
-      if (ttLeft + ttW > window.innerWidth - 16) ttLeft = window.innerWidth - ttW - 16;
-      tooltip.style.left = ttLeft + 'px';
-      tooltip.style.top = ttTop + 'px';
+      tooltip.style.visibility = 'hidden';
+      tooltip.style.left = '0px';
+      tooltip.style.top = '0px';
+
+      requestAnimationFrame(() => {
+        const ttRect = tooltip.getBoundingClientRect();
+        const ttW = ttRect.width;
+        const ttH = ttRect.height;
+        const gap = 12;
+
+        let ttLeft, ttTop;
+        const spaceBelow = window.innerHeight - rect.bottom - gap;
+        const spaceAbove = rect.top - gap;
+
+        if (spaceBelow >= ttH) {
+          ttTop = rect.bottom + gap;
+        } else if (spaceAbove >= ttH) {
+          ttTop = rect.top - ttH - gap;
+        } else {
+          ttTop = Math.max(16, Math.min(window.innerHeight - ttH - 16, rect.top + rect.height / 2 - ttH / 2));
+        }
+
+        ttLeft = rect.left + rect.width / 2 - ttW / 2;
+        if (ttLeft < 16) ttLeft = 16;
+        if (ttLeft + ttW > window.innerWidth - 16) ttLeft = window.innerWidth - ttW - 16;
+
+        tooltip.style.left = ttLeft + 'px';
+        tooltip.style.top = ttTop + 'px';
+        tooltip.style.visibility = 'visible';
+      });
     }
 
     function endWalkthrough() {
