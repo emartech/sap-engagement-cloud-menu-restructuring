@@ -12,11 +12,11 @@
       "items": [
         "unified_dashboard",
         "ai_assisted_report_builder",
-        "audience_reporting",
         "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
         "event_attribution",
-        "flexible_analytics",
-        "revenue_analytics"
+        "flexible_analytics"
       ]
     },
     {
@@ -35,10 +35,10 @@
       "name": "Email",
       "items": [
         "email_campaign_list",
-        "link_categories",
+        "internal_blacklist",
         "bounce_mail_management",
-        "frequency_cap",
-        "internal_blacklist"
+        "link_categories",
+        "frequency_cap"
       ]
     },
     {
@@ -69,36 +69,37 @@
       "name": "Account Management",
       "items": [
         "account_setup",
+        "business_area",
         "admin_user_management",
         "security_settings",
+        "self_service_sso",
         "sdk_management",
-        "business_area",
         "context_access_manager"
       ]
     },
     {
       "name": "Content Management",
       "items": [
+        "personalization_0",
+        "aim_coupon_pools",
         "content_design",
         "templates",
         "mediadb_brand_center",
-        "custdev_icalendar_configurator",
-        "personalization_0",
-        "aim_coupon_pools"
+        "custdev_icalendar_configurator"
       ]
     },
     {
       "name": "Data & Integrations",
       "items": [
-        "integration_monitor",
         "engagement_events",
+        "automation_webhook_node",
+        "web_extend",
+        "integration_monitor",
         "revenue_attributor",
+        "sales_data_load_screen",
         "universal_schema_builder",
         "spc_data_quality",
-        "sales_data_load_screen",
-        "sap_commerce_cloud_integration",
-        "automation_webhook_node",
-        "web_extend"
+        "sap_commerce_cloud_integration"
       ]
     }
   ],

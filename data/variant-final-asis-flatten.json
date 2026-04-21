@@ -1,54 +1,45 @@
 {
   "id": "final-asis-flatten",
   "name": "As-Is Flatten (Final)",
-  "subtitle": "Final proposal \u2013 As-Is structure with Channels and Management sections",
+  "subtitle": "Final proposal – As-Is structure with Channels and Management sections",
   "description": "Final as-is flatten proposal for stakeholder alignment. Preserves original group names (Contacts, Content). Channels and Management separators with sub-groups: Email, Mobile, Web, Other Channels. Account Management and Data Management under Management.",
   "author": "Tilly & Peti",
   "tier": "1st Iteration",
-  "mergedFrom": [
-    "C1",
-    "C2",
-    "C3"
-  ],
-  "mergeNote": "Based on Tilly's C1/C3 structure (all items, As-Is names) with Peti's C2 input on management grouping.",
-  "links": [
-    "home",
-    "automation"
-  ],
+  "links": ["home", "automation", "custdev_bmw_channels"],
   "groups": [
     {
       "name": "Analytics",
       "items": [
         "unified_dashboard",
         "ai_assisted_report_builder",
-        "audience_reporting",
         "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
         "event_attribution",
-        "flexible_analytics",
-        "revenue_analytics"
+        "flexible_analytics"
       ]
     },
     {
       "name": "Contacts",
       "items": [
-        "add_contact",
         "segments",
         "sap_cdp_segmentation",
         "contacts_page",
         "contact_lists",
         "sap_corporate_account",
         "sap_corporate_account_list",
-        "consent"
+        "consent",
+        "add_contact"
       ]
     },
     {
       "name": "Content",
       "items": [
+        "personalization_0",
+        "aim_coupon_pools",
         "content_design",
         "templates",
         "mediadb_brand_center",
-        "personalization_0",
-        "aim_coupon_pools",
         "custdev_icalendar_configurator"
       ]
     },
@@ -56,10 +47,10 @@
       "name": "Email",
       "items": [
         "email_campaign_list",
-        "link_categories",
+        "internal_blacklist",
         "bounce_mail_management",
-        "frequency_cap",
-        "internal_blacklist"
+        "link_categories",
+        "frequency_cap"
       ]
     },
     {
@@ -83,90 +74,51 @@
       "name": "Other Channels",
       "items": [
         "crm_ads",
-        "embedded_messaging",
-        "custdev_bmw_channels"
+        "embedded_messaging"
       ]
     },
     {
       "name": "Account Management",
       "items": [
         "account_setup",
+        "business_area",
         "admin_user_management",
         "security_settings",
         "self_service_sso",
         "sdk_management",
-        "business_area",
         "context_access_manager"
       ]
     },
     {
       "name": "Data Management",
       "items": [
-        "integration_monitor",
         "engagement_events",
+        "integration_monitor",
         "revenue_attributor",
-        "web_extend",
         "sales_data_load_screen",
-        "universal_schema_builder",
-        "automation_webhook_node",
+        "sap_commerce_cloud_integration",
         "spc_data_quality",
-        "sap_commerce_cloud_integration"
+        "universal_schema_builder",
+        "web_extend",
+        "automation_webhook_node"
       ]
     }
   ],
   "entryOrder": [
-    {
-      "type": "link",
-      "id": "home"
-    },
-    {
-      "type": "group",
-      "name": "Analytics"
-    },
-    {
-      "type": "link",
-      "id": "automation"
-    },
-    {
-      "type": "group",
-      "name": "Contacts"
-    },
-    {
-      "type": "group",
-      "name": "Content"
-    },
-    {
-      "type": "separator",
-      "label": "Channels"
-    },
-    {
-      "type": "group",
-      "name": "Email"
-    },
-    {
-      "type": "group",
-      "name": "Mobile"
-    },
-    {
-      "type": "group",
-      "name": "Web"
-    },
-    {
-      "type": "group",
-      "name": "Other Channels"
-    },
-    {
-      "type": "separator",
-      "label": "Management"
-    },
-    {
-      "type": "group",
-      "name": "Account Management"
-    },
-    {
-      "type": "group",
-      "name": "Data Management"
-    }
+    {"type": "link", "id": "home"},
+    {"type": "group", "name": "Analytics"},
+    {"type": "link", "id": "automation"},
+    {"type": "group", "name": "Contacts"},
+    {"type": "group", "name": "Content"},
+    {"type": "separator", "label": "Channels"},
+    {"type": "link", "id": "custdev_bmw_channels"},
+    {"type": "group", "name": "Email"},
+    {"type": "group", "name": "Mobile"},
+    {"type": "group", "name": "Web"},
+    {"type": "group", "name": "Other Channels"},
+    {"type": "separator", "label": "Management"},
+    {"type": "group", "name": "Account Management"},
+    {"type": "group", "name": "Data Management"}
   ],
   "renames": {
     "contacts_page": "Contacts Page",
