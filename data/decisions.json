@@ -80,11 +80,11 @@
       "Event Attribution": [
         "as-is",
         "iter-flat",
-        "iter-sections",
+        "final-asis-flatten",
         "iter-restructured"
       ],
       "Conversion Analytics": [
-        "lt-progressive"
+        "final-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.127Z"
@@ -190,11 +190,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.127Z"
@@ -220,11 +220,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -277,11 +277,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -307,11 +307,11 @@
       "Personalization": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten",
+        "final-progressive"
       ],
       "Personalization Tokens": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -327,13 +327,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
+        "final-progressive",
         "iter-restructured"
-      ],
-      "Personalization": [
-        "lt-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -359,11 +357,11 @@
       "Omnichannel Voucher": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten",
+        "final-progressive"
       ],
       "Omnichannel Vouchers": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -379,13 +377,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
+        "final-progressive",
         "iter-restructured"
-      ],
-      "Personalization": [
-        "lt-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -411,11 +407,11 @@
       "Content": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Content Management": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -449,9 +445,9 @@
         "iter-flat"
       ],
       "Email": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -466,9 +462,9 @@
     "options": {
       "Link Categories": [
         "as-is",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ],
       "Email Link Categories": [
         "iter-flat"
@@ -489,9 +485,9 @@
         "iter-flat"
       ],
       "Email": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -516,9 +512,9 @@
     "options": {
       "Bounce Management": [
         "as-is",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ],
       "Email Bounce Management": [
         "iter-flat"
@@ -539,9 +535,9 @@
         "iter-flat"
       ],
       "Email": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -566,9 +562,9 @@
     "options": {
       "Frequency Cap": [
         "as-is",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ],
       "Email Frequency Cap": [
         "iter-flat"
@@ -589,9 +585,9 @@
         "iter-flat"
       ],
       "Email": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -616,9 +612,9 @@
     "options": {
       "Internal Blocklist": [
         "as-is",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ],
       "Email Internal Blocklist": [
         "iter-flat"
@@ -639,9 +635,9 @@
         "iter-flat"
       ],
       "Email": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -669,9 +665,9 @@
         "iter-flat"
       ],
       "Mobile": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -728,9 +724,9 @@
         "iter-flat"
       ],
       "Mobile": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -782,9 +778,9 @@
         "iter-flat"
       ],
       "Mobile": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -812,9 +808,9 @@
         "iter-flat"
       ],
       "Mobile": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -830,11 +826,11 @@
       "Conversational": [
         "as-is",
         "iter-flat",
-        "iter-sections",
+        "final-asis-flatten",
         "iter-restructured"
       ],
       "Conversational Channels": [
-        "lt-progressive"
+        "final-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -852,9 +848,9 @@
         "iter-flat"
       ],
       "Mobile": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -882,9 +878,9 @@
         "iter-flat"
       ],
       "Web": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -912,9 +908,9 @@
         "iter-flat"
       ],
       "Web": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -941,8 +937,9 @@
         "as-is",
         "iter-flat"
       ],
-      "Other": [
-        "iter-sections"
+      "Other Channels": [
+        "final-asis-flatten",
+        "final-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -992,11 +989,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1012,11 +1011,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1031,12 +1032,12 @@
     "options": {
       "Contacts": [
         "as-is",
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ],
       "Contacts Page": [
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1052,11 +1053,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1072,11 +1075,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1092,11 +1097,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1112,11 +1119,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1156,11 +1165,13 @@
       "Contacts": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Audiences": [
+        "final-progressive"
       ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1188,9 +1199,9 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1208,9 +1219,9 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1228,7 +1239,7 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
+        "final-asis-flatten",
         "iter-restructured"
       ]
     },
@@ -1278,13 +1289,13 @@
       "Security Settings": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "API Credentials": [
+        "final-progressive"
       ],
       "API User Management": [
         "iter-restructured"
-      ],
-      "API Credentials": [
-        "lt-progressive"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1302,9 +1313,9 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1332,9 +1343,9 @@
       ],
       "App and Channel Settings": [
         "iter-flat",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1352,9 +1363,9 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1382,9 +1393,9 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1400,11 +1411,11 @@
       "Tag Manager": [
         "as-is",
         "iter-flat",
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Asset Tag Manager": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1422,8 +1433,8 @@
         "iter-flat"
       ],
       "Account Management": [
-        "iter-sections",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive"
       ],
       "Content Management": [
         "iter-restructured"
@@ -1454,11 +1465,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1510,11 +1521,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1542,11 +1553,13 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
+      ],
+      "Data & Integrations": [
+        "final-progressive"
       ],
       "Analytics": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1574,11 +1587,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1596,11 +1609,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1618,11 +1631,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1670,11 +1683,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1702,9 +1715,9 @@
       ],
       "Product Catalog": [
         "iter-flat",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1722,11 +1735,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1754,11 +1767,11 @@
         "iter-flat"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-16T13:12:39.128Z"
@@ -1796,12 +1809,12 @@
     "options": {
       "Content": [
         "iter-flat",
-        "iter-sections",
+        "final-asis-flatten",
         "as-is"
       ],
       "Content Management": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "question": "What should the \"Content\" group be called? Different variants use different names.",
@@ -1818,12 +1831,14 @@
     "options": {
       "Contacts": [
         "iter-flat",
-        "iter-sections",
+        "final-asis-flatten",
         "as-is"
       ],
+      "Audiences": [
+        "final-progressive"
+      ],
       "Audience": [
-        "iter-restructured",
-        "lt-progressive"
+        "iter-restructured"
       ]
     },
     "question": "What should the \"Contacts\" group be called? Different variants use different names.",
@@ -1843,14 +1858,14 @@
         "as-is"
       ],
       "Account Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data Management": [
-        "iter-sections"
+        "final-asis-flatten"
       ],
       "Data & Integrations": [
-        "iter-restructured",
-        "lt-progressive"
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "question": "What should the \"Management\" group be called? Different variants use different names.",
@@ -1895,8 +1910,8 @@
         "as-is",
         "iter-flat"
       ],
-      "Other": [
-        "iter-sections"
+      "Other Channels": [
+        "final-asis-flatten"
       ]
     },
     "timestamp": "2026-04-16T21:49:15.484Z"
@@ -1914,9 +1929,9 @@
       ],
       "iCalendar Configuration": [
         "iter-flat",
-        "iter-sections",
-        "iter-restructured",
-        "lt-progressive"
+        "final-asis-flatten",
+        "final-progressive",
+        "iter-restructured"
       ]
     },
     "timestamp": "2026-04-17T21:38:16.206Z"
@@ -2063,8 +2078,9 @@
         "as-is",
         "iter-flat"
       ],
-      "Other": [
-        "iter-sections"
+      "Other Channels": [
+        "final-asis-flatten",
+        "final-progressive"
       ]
     },
     "timestamp": "2026-04-17T21:45:15.457Z"

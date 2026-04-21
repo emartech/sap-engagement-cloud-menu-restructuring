@@ -3314,4 +3314,66 @@
   updateSubToggle();
   render();
   generateDecisions();
+
+  // ===== WALKTHROUGH =====
+  if (!localStorage.getItem('menuDemoWalkthroughDone')) {
+    const steps = [
+      { target: '#variantTabs', text: 'Switch between menu proposals using these tabs. The starred ones appear in the Shortlist as our final candidates.' },
+      { target: '#sidebar', text: 'Browse the menu structure. Click any item or group to see details, usage analytics, and leave your feedback.' },
+      { target: '[data-view="compare"]', text: 'Compare proposals side by side. Click on any item to highlight it across all versions.' },
+      { target: '.shell-bar-center', text: 'Use the Shortlist tab for final proposals and the Decisions tab for open naming and placement questions.' },
+      { target: '#btnExport', text: 'When you\'re done, click Export Feedback to download your comments as a JSON file. Send it to TillyG for processing.' }
+    ];
+    let currentStep = 0;
+    const overlay = document.getElementById('walkthrough');
+    const backdrop = document.getElementById('wtBackdrop');
+    const tooltip = document.getElementById('wtTooltip');
+    const textEl = document.getElementById('wtText');
+    const stepEl = document.getElementById('wtStep');
+    const nextBtn = document.getElementById('wtNext');
+    const skipBtn = document.getElementById('wtSkip');
+
+    function showStep(idx) {
+      const step = steps[idx];
+      const el = document.querySelector(step.target);
+      if (!el) { endWalkthrough(); return; }
+      const rect = el.getBoundingClientRect();
+
+      let spot = overlay.querySelector('.wt-spotlight');
+      if (!spot) { spot = document.createElement('div'); spot.className = 'wt-spotlight'; overlay.appendChild(spot); }
+      spot.style.top = (rect.top - 6) + 'px';
+      spot.style.left = (rect.left - 6) + 'px';
+      spot.style.width = (rect.width + 12) + 'px';
+      spot.style.height = (rect.height + 12) + 'px';
+      backdrop.style.display = 'none';
+
+      textEl.textContent = step.text;
+      stepEl.textContent = (idx + 1) + ' / ' + steps.length;
+      nextBtn.textContent = idx === steps.length - 1 ? 'Done' : 'Next';
+
+      const ttW = 360;
+      let ttLeft = rect.left + rect.width / 2 - ttW / 2;
+      let ttTop = rect.bottom + 16;
+      if (ttTop + 200 > window.innerHeight) ttTop = rect.top - 180;
+      if (ttLeft < 16) ttLeft = 16;
+      if (ttLeft + ttW > window.innerWidth - 16) ttLeft = window.innerWidth - ttW - 16;
+      tooltip.style.left = ttLeft + 'px';
+      tooltip.style.top = ttTop + 'px';
+    }
+
+    function endWalkthrough() {
+      overlay.style.display = 'none';
+      localStorage.setItem('menuDemoWalkthroughDone', 'true');
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentStep++;
+      if (currentStep >= steps.length) endWalkthrough();
+      else showStep(currentStep);
+    });
+    skipBtn.addEventListener('click', endWalkthrough);
+
+    overlay.style.display = 'block';
+    showStep(0);
+  }
 })();
