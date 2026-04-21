@@ -14,13 +14,13 @@
 
   // Tab-to-variant mapping
   const TAB_MAP = {
-    'ux': { '1': 'as-is', '2': 'final-progressive', '3': 'final-asis-flatten', '4': 'iter-flat', '5': 'iter-restructured' },
+    'ux': { '1': 'as-is', '2': 'iter-flat', '3': 'final-asis-flatten', '4': 'final-progressive', '5': 'iter-restructured' },
     'shortlist': {}
   };
 
   const SUB_LABELS = { 'ux': {}, 'shortlist': {} };
 
-  const ALL_VARIANT_IDS = ['as-is','final-progressive','final-asis-flatten','iter-flat','iter-restructured'];
+  const ALL_VARIANT_IDS = ['as-is','iter-flat','final-asis-flatten','final-progressive','iter-restructured'];
   const ALL_DECISION_IDS = ALL_VARIANT_IDS;
 
   // Populate SUB_LABELS from variant names AFTER variantsMap is built
@@ -76,7 +76,7 @@
     editOriginal: null,
     custom: JSON.parse(localStorage.getItem('menuDemoCustom') || 'null'),
     customSource: 'f3',
-    compareColumns: ['final-progressive','final-asis-flatten','iter-flat'],
+    compareColumns: ['iter-flat','final-asis-flatten','final-progressive'],
     expanded: new Set(),
     feedback: savedFeedback,
     naming: savedNaming,
