@@ -86,6 +86,9 @@
   state.decisions = JSON.parse(localStorage.getItem('menuDemoDecisions') || '{}');
 
   state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["final-progressive","final-asis-flatten"]'));
+  // Clean stale starred IDs not in current variants
+  const validVids = new Set(Object.values(TAB_MAP['ux']));
+  [...state.starred].forEach(vid => { if (!validVids.has(vid)) state.starred.delete(vid); });
 
   function currentVariantId() {
     return TAB_MAP[state.mainTab]?.[state.sub] || 'as-is';
