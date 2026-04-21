@@ -1,6 +1,6 @@
 (async function() {
   // ===== DATA LOADING =====
-  const VARIANT_FILES = ['as-is','variant-iter-flat','variant-iter-sections','variant-iter-restructured','variant-lt-progressive','variant-b3','variant-d2','variant-f3','variant-cust5','variant-p1','variant-g1','variant-b2','variant-p2','variant-p3','variant-claude','variant-claude2','variant-A1','variant-A2','variant-B','variant-C1','variant-C2','variant-C3','variant-D'];
+  const VARIANT_FILES = ['as-is','variant-final-progressive','variant-final-asis-flatten','variant-iter-flat','variant-iter-restructured','variant-iter-sections','variant-lt-progressive','variant-b3','variant-d2','variant-f3','variant-cust5','variant-p1','variant-g1','variant-b2','variant-p2','variant-p3','variant-claude','variant-claude2','variant-A1','variant-A2','variant-B','variant-C1','variant-C2','variant-C3','variant-D'];
   const [items, ...variants] = await Promise.all([
     fetch('data/items.json').then(r => r.json()),
     ...VARIANT_FILES.map(f => fetch(`data/${f}.json`).then(r => r.json()))
@@ -14,13 +14,13 @@
 
   // Tab-to-variant mapping
   const TAB_MAP = {
-    'ux': { '1': 'as-is', '2': 'iter-flat', '3': 'iter-sections', '4': 'iter-restructured', '5': 'lt-progressive' },
+    'ux': { '1': 'as-is', '2': 'final-progressive', '3': 'final-asis-flatten', '4': 'iter-flat', '5': 'iter-restructured' },
     'shortlist': {}
   };
 
   const SUB_LABELS = { 'ux': {}, 'shortlist': {} };
 
-  const ALL_VARIANT_IDS = ['as-is','iter-flat','iter-sections','iter-restructured','lt-progressive'];
+  const ALL_VARIANT_IDS = ['as-is','final-progressive','final-asis-flatten','iter-flat','iter-restructured'];
   const ALL_DECISION_IDS = ALL_VARIANT_IDS;
 
   // Populate SUB_LABELS from variant names AFTER variantsMap is built
@@ -76,7 +76,7 @@
     editOriginal: null,
     custom: JSON.parse(localStorage.getItem('menuDemoCustom') || 'null'),
     customSource: 'f3',
-    compareColumns: ['iter-flat','iter-sections','iter-restructured'],
+    compareColumns: ['final-progressive','final-asis-flatten','iter-flat'],
     expanded: new Set(),
     feedback: savedFeedback,
     naming: savedNaming,
@@ -85,7 +85,7 @@
 
   state.decisions = JSON.parse(localStorage.getItem('menuDemoDecisions') || '{}');
 
-  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["iter-flat","iter-sections","iter-restructured"]'));
+  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["final-progressive","final-asis-flatten"]'));
 
   function currentVariantId() {
     return TAB_MAP[state.mainTab]?.[state.sub] || 'as-is';

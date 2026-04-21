@@ -307,5 +307,13 @@
     "group_content": {
       "vote": null
     }
+  },
+  "iter-restructured": {
+    "group_account_management": {
+      "vote": null
+    },
+    "group_content_management": {
+      "vote": null
+    }
   }
 }
