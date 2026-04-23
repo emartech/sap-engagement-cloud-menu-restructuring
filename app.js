@@ -2426,15 +2426,12 @@
         e.stopPropagation();
         clearDropIndicators();
 
-        let data;
-        try { data = JSON.parse(e.dataTransfer.getData('application/x-menu-item')); } catch { return; }
-
         if (!state.custom) state.custom = { entries: [] };
         if (!state.custom.entries) state.custom.entries = [];
         const zoneName = zone.dataset.dropZone;
         const customIds = getCustomItemIds();
 
-        // Calculate drop index
+        // Calculate drop index within group
         let dropIdx = -1;
         const targetItem = e.target.closest('.custom-tgt-item');
         if (targetItem && targetItem.dataset.tgtIdx !== undefined) {
@@ -2443,6 +2440,32 @@
           dropIdx = parseInt(targetItem.dataset.tgtIdx);
           if (e.clientY > midY) dropIdx += 1;
         }
+
+        // Handle entry-level items (links/groups) being dropped into a group zone
+        let entryData;
+        try { entryData = JSON.parse(e.dataTransfer.getData('application/x-menu-entry')); } catch {}
+        if (entryData && entryData.source === 'entry-reorder' && zoneName.startsWith('group-')) {
+          const srcIdx = entryData.idx;
+          const srcEntry = state.custom.entries[srcIdx];
+          if (srcEntry && srcEntry.type === 'link' && srcEntry.id) {
+            const ei = parseInt(zoneName.split('-')[1]);
+            if (state.custom.entries[ei]?.type === 'group') {
+              const newItem = { id: srcEntry.id, customName: srcEntry.customName || null };
+              if (dropIdx >= 0 && dropIdx <= state.custom.entries[ei].items.length) {
+                state.custom.entries[ei].items.splice(dropIdx, 0, newItem);
+              } else {
+                state.custom.entries[ei].items.push(newItem);
+              }
+              state.custom.entries.splice(srcIdx, 1);
+              saveCustom();
+              renderCustom();
+              return;
+            }
+          }
+        }
+
+        let data;
+        try { data = JSON.parse(e.dataTransfer.getData('application/x-menu-item')); } catch { return; }
 
         if (data.source === 'panel') {
           if (customIds.has(data.id)) return;
