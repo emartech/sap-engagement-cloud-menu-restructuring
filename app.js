@@ -1,6 +1,6 @@
 (async function() {
   // ===== DATA LOADING =====
-  const VARIANT_FILES = ['as-is','variant-final-progressive','variant-final-asis-flatten','variant-iter-flat','variant-iter-restructured','variant-iter-sections','variant-lt-progressive','variant-b3','variant-d2','variant-f3','variant-cust5','variant-p1','variant-g1','variant-b2','variant-p2','variant-p3','variant-claude','variant-claude2','variant-A1','variant-A2','variant-B','variant-C1','variant-C2','variant-C3','variant-D'];
+  const VARIANT_FILES = ['as-is','variant-final-progressive','variant-final-asis-flatten','variant-final-progressive-copy-1777465547970','variant-iter-flat','variant-iter-restructured','variant-iter-sections','variant-lt-progressive','variant-b3','variant-d2','variant-f3','variant-cust5','variant-p1','variant-g1','variant-b2','variant-p2','variant-p3','variant-claude','variant-claude2','variant-A1','variant-A2','variant-B','variant-C1','variant-C2','variant-C3','variant-D'];
   const [items, ...variants] = await Promise.all([
     fetch('data/items.json').then(r => r.json()),
     ...VARIANT_FILES.map(f => fetch(`data/${f}.json`).then(r => r.json()))
@@ -14,13 +14,13 @@
 
   // Tab-to-variant mapping
   const TAB_MAP = {
-    'ux': { '1': 'as-is', '2': 'iter-flat', '3': 'final-asis-flatten', '4': 'final-progressive', '5': 'iter-restructured' },
+    'ux': { '1': 'as-is', '2': 'iter-flat', '3': 'final-asis-flatten', '4': 'final-progressive', '5': 'final-progressive-copy-1777465547970', '6': 'iter-restructured' },
     'shortlist': {}
   };
 
   const SUB_LABELS = { 'ux': {}, 'shortlist': {} };
 
-  const ALL_VARIANT_IDS = ['as-is','iter-flat','final-asis-flatten','final-progressive','iter-restructured'];
+  const ALL_VARIANT_IDS = ['as-is','iter-flat','final-asis-flatten','final-progressive','final-progressive-copy-1777465547970','iter-restructured'];
   const ALL_DECISION_IDS = ALL_VARIANT_IDS;
 
   // Populate SUB_LABELS from variant names AFTER variantsMap is built
@@ -85,7 +85,7 @@
 
   state.decisions = JSON.parse(localStorage.getItem('menuDemoDecisions') || '{}');
 
-  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["final-progressive","final-asis-flatten"]'));
+  state.starred = new Set(JSON.parse(localStorage.getItem('menuDemoStarred') || '["final-progressive","final-asis-flatten","final-progressive-copy-1777465547970"]'));
   // Clean stale starred IDs not in current variants
   const validVids = new Set(Object.values(TAB_MAP['ux']));
   [...state.starred].forEach(vid => { if (!validVids.has(vid)) state.starred.delete(vid); });

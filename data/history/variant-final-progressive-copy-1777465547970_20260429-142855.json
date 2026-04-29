@@ -1,0 +1,181 @@
+{
+  "id": "final-progressive-copy-1777465547970",
+  "name": "Progressive (Final) (Copy)",
+  "subtitle": "Final proposal \u2013 Audiences, Channels + Management sections, Content Management includes Personalization",
+  "description": "Final progressive proposal for stakeholder alignment. Renames Contacts to Audiences. Channels and Management separators. Content Management includes Personalization and Omnichannel Voucher. Other Channels group for Digital Ads and Embedded Messaging. All items kept except Add Contact and SSO.",
+  "author": "Tilly & Peti",
+  "tier": "1st Iteration",
+  "links": [
+    "home",
+    "automation",
+    "custdev_bmw_channels"
+  ],
+  "groups": [
+    {
+      "name": "Analytics",
+      "items": [
+        "unified_dashboard",
+        "ai_assisted_report_builder",
+        "campaign_analytics",
+        "revenue_analytics",
+        "audience_reporting",
+        "event_attribution",
+        "flexible_analytics"
+      ]
+    },
+    {
+      "name": "Audiences",
+      "items": [
+        "segments",
+        "sap_cdp_segmentation",
+        "contacts_page",
+        "contact_lists",
+        "sap_corporate_account",
+        "sap_corporate_account_list",
+        "consent"
+      ]
+    },
+    {
+      "name": "Email",
+      "items": [
+        "email_campaign_list",
+        "internal_blacklist",
+        "bounce_mail_management",
+        "link_categories",
+        "frequency_cap"
+      ]
+    },
+    {
+      "name": "Mobile",
+      "items": [
+        "mobile_channel",
+        "sms_channel",
+        "sms_settings",
+        "mobile_wallet",
+        "conversation"
+      ]
+    },
+    {
+      "name": "Web",
+      "items": [
+        "web_channel",
+        "web_push"
+      ]
+    },
+    {
+      "name": "Other Channels",
+      "items": [
+        "crm_ads",
+        "embedded_messaging"
+      ]
+    },
+    {
+      "name": "Account Management",
+      "items": [
+        "account_setup",
+        "business_area",
+        "admin_user_management",
+        "security_settings",
+        "self_service_sso",
+        "sdk_management",
+        "context_access_manager"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "items": [
+        "personalization_0",
+        "aim_coupon_pools",
+        "content_design",
+        "templates",
+        "mediadb_brand_center",
+        "custdev_icalendar_configurator"
+      ]
+    },
+    {
+      "name": "Data & Integrations",
+      "items": [
+        "engagement_events",
+        "automation_webhook_node",
+        "web_extend",
+        "integration_monitor",
+        "revenue_attributor",
+        "sales_data_load_screen",
+        "universal_schema_builder",
+        "spc_data_quality",
+        "sap_commerce_cloud_integration"
+      ]
+    }
+  ],
+  "entryOrder": [
+    {
+      "type": "link",
+      "id": "home"
+    },
+    {
+      "type": "group",
+      "name": "Analytics"
+    },
+    {
+      "type": "group",
+      "name": "Audiences"
+    },
+    {
+      "type": "link",
+      "id": "automation"
+    },
+    {
+      "type": "separator",
+      "label": "Channels"
+    },
+    {
+      "type": "link",
+      "id": "custdev_bmw_channels"
+    },
+    {
+      "type": "group",
+      "name": "Email"
+    },
+    {
+      "type": "group",
+      "name": "Mobile"
+    },
+    {
+      "type": "group",
+      "name": "Web"
+    },
+    {
+      "type": "group",
+      "name": "Other Channels"
+    },
+    {
+      "type": "separator",
+      "label": "Management"
+    },
+    {
+      "type": "group",
+      "name": "Account Management"
+    },
+    {
+      "type": "group",
+      "name": "Content Management"
+    },
+    {
+      "type": "group",
+      "name": "Data & Integrations"
+    }
+  ],
+  "renames": {
+    "event_attribution": "Conversion Analytics",
+    "security_settings": "API Credentials",
+    "context_access_manager": "Asset Tag Manager",
+    "custdev_icalendar_configurator": "iCalendar Configuration",
+    "spc_data_quality": "Product Catalog",
+    "sdk_management": "App and Channel Settings",
+    "conversation": "Conversational Channels"
+  },
+  "removed": [
+    "add_contact",
+    "self_service_sso"
+  ]
+}

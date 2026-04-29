@@ -1858,7 +1858,8 @@
         "as-is"
       ],
       "Account Management": [
-        "final-asis-flatten"
+        "final-asis-flatten",
+        "final-progressive"
       ],
       "Data Management": [
         "final-asis-flatten"
