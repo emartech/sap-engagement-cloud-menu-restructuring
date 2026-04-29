@@ -1938,6 +1938,11 @@
       // Update in-memory
       variantsMap[orig.id] = updated;
 
+      // Update tab label
+      for (const [k, vid] of Object.entries(TAB_MAP['ux'])) {
+        if (vid === orig.id) { SUB_LABELS['ux'][k] = updated.name; break; }
+      }
+
       // Close overlay
       state.editingVariantId = null;
       state.editOriginal = null;
@@ -2087,7 +2092,7 @@
       // Add to UX tab
       const nextKey = String(Object.keys(TAB_MAP['ux']).length + 1);
       TAB_MAP['ux'][nextKey] = varId;
-      SUB_LABELS['ux'][nextKey] = varCode;
+      SUB_LABELS['ux'][nextKey] = varName;
 
       // Switch to the new variant in menu view
       state.mainTab = 'ux';
